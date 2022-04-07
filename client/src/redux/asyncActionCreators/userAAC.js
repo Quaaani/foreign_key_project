@@ -6,6 +6,7 @@ export const axiosAddUser = (payload) => {
     // GET
     const response = await axios.get('/example')
     console.log('AXIOS GET RESPONSE =>', response)
+    dispatch(addUserAC(response.data))
 
     // POST
     const responseTwo = await axios.post('/example', payload)
