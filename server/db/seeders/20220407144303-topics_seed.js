@@ -2,7 +2,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const topicPath = path.join(process.env.PWD, 'files', 'Topic.txt');
+const topicPath = path.join(process.env.PWD, 'files', 'Topics.txt');
 
 module.exports = {
   async up(queryInterface, Sequelize) {

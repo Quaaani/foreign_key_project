@@ -34,7 +34,9 @@ module.exports = {
         references: {
           model: 'Topics',
           key: 'id'
-        }
+        }, 
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
