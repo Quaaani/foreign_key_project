@@ -7,7 +7,6 @@ const userPath = path.join(process.env.PWD, 'files', 'Users.txt')
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-
     const usersFs = await fs.readFile(userPath, 'utf-8')
     const usersArr = usersFs.split('\n')
     const userSeedArr = []
