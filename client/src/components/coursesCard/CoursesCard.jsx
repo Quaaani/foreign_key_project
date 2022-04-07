@@ -1,4 +1,4 @@
-import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 
 export function CoursesCard () {
 
@@ -16,14 +16,31 @@ export function CoursesCard () {
         item 
         xs={12}
         sm={4}
-        md={4}
+        md={6}
       >
-        <Card>
-          <CardContent>
-            <Typography
-
+        <Card 
+         sx={{
+          display: 'flex', justifyContent: 'space-around',
+        }}>
+          <CardMedia
+            component='img'
+            sx={{ width: 200}}
+            image='https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg'
+            alt='Course NAME'
+          >
+          </CardMedia>
+          <CardContent
+           
+          >
+            <Typography 
+              variant="h5"
             >
-                FIRST
+                Course Name
+            </Typography>
+            <Typography
+              variant='body'
+            >
+              Course Description
             </Typography>
           </CardContent>
         </Card>
@@ -32,34 +49,36 @@ export function CoursesCard () {
         item 
         xs={12}
         sm={4}
-        md={4}
+        md={6}
       >
-        <Card>
-          <CardContent>
-            <Typography
-
+        <Card 
+         sx={{
+          display: 'flex', justifyContent: 'space-around',
+        }}>
+          <CardMedia
+            component='img'
+            sx={{ width: 200}}
+            image='https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg'
+            alt='Course NAME'
+          >
+          </CardMedia>
+          <CardContent
+           
+          >
+            <Typography 
+              variant="h5"
             >
-                  SECOND
+                Course Name
+            </Typography>
+            <Typography
+              variant='body'
+            >
+              Course Description
             </Typography>
           </CardContent>
         </Card>
-      </Grid>
-      <Grid 
-        item 
-        xs={12}
-        sm={4}
-        md={4}
-      >
-        <Card>
-          <CardContent>
-            <Typography
-
-            >
-                  THIRD
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
+      </Grid> 
+      
     </Grid>
     </Container>
   )
