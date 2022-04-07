@@ -1,62 +1,104 @@
-import React from 'react';
-import{TextField, Button, Container, Box} from '@mui/material'
+import React, { useRef } from 'react';
+import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography} from '@mui/material'
 
 
 function Reg(props) {
+
+  const firstNameInput = useRef();
+  const lastNameInput = useRef();
+  const emailInput = useRef();
+  const passwordInput = useRef();
+  const roleInput = useRef();
+
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    const newUser = {
+      user_firstName: firstNameInput.current.value,
+      user_lastName: lastNameInput.current.value,
+      user_email: emailInput.current.value,
+      user_password: passwordInput.current.value,
+      user_role: roleInput.current.value,
+    }
+
+    
+    
+  }
+
+
   return (
     <Container
       maxWidth="sm"
     >
-      <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1 , justifyItems: "center"},
-      }}
+      <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, mx: "auto", textAlign: "center"}}>
+        Registration
+      </Typography>
+      <FormControl
+      onSubmit={onFormSubmit}
+        component="form"
+        fullWidth
+        sx={{
+          '& .MuiTextField-root': { m: 1 , justifyItems: "center"},
+        }}
       >
-        <div>
         <TextField
+          fullWidth
+          label="First Name"
           required
           id="outlined-required"
-          defaultValue="Hello World"
+          
+          ref={firstNameInput}
+          name="user_firstName"
         />
         <TextField
-          disabled
-          id="outlined-disabled"
-          defaultValue="Hello World"
+          fullWidth
+          label="Last Name"
+          required
+
+          ref={lastNameInput}
+          name="user_lastName"
         />
+          <TextField
+            fullWidth
+            id="outlined-read-only-input"
+            label="Email"
+            type="email"
+            required
+
+            ref={emailInput}
+            name="user_email"
+          />
         <TextField
+          fullWidth
+          required
           id="outlined-password-input"
           label="Password"
           type="password"
           autoComplete="current-password"
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField id="outlined-search" label="Search field" type="search" />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-        />
-      </div>
 
-        <Button>Hello</Button>
-      </Box>
+          ref={passwordInput}
+          name="user_password"
+        />
+        <FormControl fullWidth sx={{ m: 1}}>
+          <InputLabel id="demo-simple-select-helper-label">Role</InputLabel>
+          <Select
+            required
+            labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Age"
+            defaultValue="student"
+
+            ref={roleInput}
+            name="user_role"
+          >
+            <MenuItem selected value="student">Student</MenuItem>
+            <MenuItem value="teacher">Teacher</MenuItem>
+          </Select>
+        </FormControl>
+
+        <Button  sx={{ my: 7, mx: "auto", width: "200px"}} variant="contained" type="submit">Register</Button>
+      </FormControl>
 
     </Container>
     
