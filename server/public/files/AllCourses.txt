@@ -1,0 +1,13 @@
+Course A for Beginners
+Level A
+Description1 You'll like it!
+photo1.png
+Course B for Intermediate
+Level B
+Description2 Yeah you like it!
+photo2.png
+Course C for Advanced
+Level C
+Description3 That's a real love!
+photo3.png
+

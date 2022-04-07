@@ -1,0 +1,234 @@
+body
+['bɒdɪ]
+тело
+Tracy could feel his small body tremble.
+Трейси чувствовала, как дрожит его маленькое тело.
+1
+stomach
+['stʌmək]
+живот
+I lay on my stomach, reached down and poked him.
+Я растянулась на животе и ткнула в гусеницу пальцем.
+1
+chest
+[ʧest]
+грудь
+The bullet went through the shoulder, touched her chest.
+Пуля прошла через плечо, едва задев грудную клетку.
+1
+waist
+[weıst]
+талия
+She was more shaken than I, so I put one arm around her waist.
+Ее качало гораздо сильнее, чем меня, и я обнял ее за талию.
+1
+navel
+['neɪvl]
+пупок
+I have pain radiating from my navel to my lower right abdomen.
+У меня сильная боль, она идёт радиально от пупка в правую нижнюю часть живота.
+1
+back
+[bæk]
+спина
+Tim felt a pain in his back.
+Тим почуствовал боль в спине.
+1
+skeleton
+['skelɪtn]
+скелет
+Otherwise its outer skeleton would have collapsed under its own weight.
+В ином случае его внешний скелет просто разрушился бы.
+1
+bone
+[bəʊn]
+кость
+Something smashed into his leg, and he heard the crunch of bone.
+Что-то упало на ногу, кость треснула.
+1
+jaw
+[dʒɔ:]
+челюсть
+“Shove off, Malfoy,” said Ron, whose jaw was clenched.
+- Отвали, Малфой, - бросил Рон, сжав челюсти.
+1
+joint
+[dʒɔınt]
+сустав
+Any recent joint pain?
+Суставы в последнее время не болели?
+1
+rib
+[rɪb]
+ребро
+Muley took a bite of meat from the edge of a rib bone and chewed it.
+Мьюли откусил мясо с ребра и стал разжевывать его.
+1
+skull
+[skʌl]
+череп
+The skull means danger in your path, my dear.
+Череп обозначает опасность на твоём пути, дорогой.
+1
+spine
+[spaın]
+позвоночник
+Check his cervical spine.
+Проверьте шейный отдел позвоночника.
+1
+brain
+[breın]
+мозг
+It has been said that the great events of the world take place in the brain.
+Кто-то сказал, что величайшие события в мире -это те, которые происходят в мозгу у человека.
+1
+heart
+[hɑ:t]
+сердце
+I felt sick at heart and cold.
+Мне стало плохо на душе и холодно.
+1
+star
+[stɑ:]
+звезда
+You're a real star tonight, despite your screwup.
+Сегодня ты настоящая звезда, даже несмотря на промах.
+5
+spoon
+[spu:n]
+ложка
+She stood now by the table with the big spoon in her hand.
+Теперь она стояла у стола с большой ложкой в руках.
+5
+boy
+[bɔı]
+мальчик 
+The poor miserable, misunderstood boy killed himself.
+Бедный, несчастный, непонятый мальчик убил себя.
+5
+girl
+[ɡɜ:l]
+девочка
+The girl who did this must be punished so that it does not happen again.
+Девочку, которая сделала такое, нужно наказать.
+5
+stick
+[stɪk]
+палка
+His arm felt frail, no larger than a child's, dead and hard and light as a stick.
+Рука его казалась хилой, как у ребенка, мертвой, тонкой и легкой, словно палка.
+5
+pistol
+[pɪstl]
+пистолет
+Who has a big pistol?"
+У кого есть большой пистолет?
+5
+doll
+[dɒl]
+кукла
+She held the doll so her brothers could see.
+Мэгги подняла куклу, пускай братья полюбуются.
+5
+cake
+[keık]
+торт
+You'll ruin the cake.
+Ты испортишь торт.
+5
+car
+[kɑ:]
+машина
+Get a real car!
+Купи нормальную тачку!
+5
+ribbon
+[rɪbn]
+лента
+Her long, blond hair was tied back with a little blue ribbon.
+Длинные светлые волосы перехвачены на затылке голубой лентой.
+5
+umbrella
+[ʌm'brelə]
+зонт
+"Haven't you got an umbrella, sir?"
+У вас нет зонта, сэр?
+5
+flower
+[flaʊə]
+цветок
+She touched her chin with the flower, laughing.
+Смеясь, она провела цветком у себя под подбородком.
+5
+sharp
+[ʃɑ:p]
+острый
+I felt a sharp pain in my shoulder.
+Я почувствовал острую боль в плече.
+3
+clever
+['klevə]
+умный
+She is undoubtedly a very clever woman.
+Без сомнения, она очень умная женщина.
+3
+stupid
+['stju:pɪd]
+глупый
+"I'm not stupid, darling."
+- Я не так глуп, дорогая.
+3
+fast
+[fɑ:st]
+быстрый
+Cheap, fast, and not very good.
+Дешево, быстро и скверно.
+3
+slow
+[sləʊ]
+медленный
+Dr. Glasco gave Tracy a slow, cold smile.
+Доктор Гласко одарил Трейси медленной холодной улыбкой.
+3
+tall
+[tɔ:l]
+высокий
+The man who entered was tall and muscular.
+Вошедший мужчина оказался высоким и мускулистым.
+3
+heavy
+['hevɪ]
+тяжелый
+Zach Herney handed her a heavy pewter mug.
+Зак Харни передал гостье тяжелую горячую кружку.
+3
+happy
+['hæpɪ]
+счастливый
+"Then let me wish you a happy journey."
+- Тогда позвольте пожелать вам удачного путешествия.
+3
+sad
+[sæd]
+грустный
+Her face was sad.
+Лицо у нее стало грустное.
+3
+clean
+[kli:n]
+чистый
+Fire is bright and fire is clean."
+Огонь горит ярко, огонь очищает.
+3
+dirty
+['dɜ:tɪ]
+грязный
+He's got a dirty mind, ain't he?
+У него грязные мысли, ведь верно?
+3
+thick
+[θɪk]
+толстый
+My skull's too thick for them to hurt me.
+У меня череп толстый, им не прошибить.
+3
