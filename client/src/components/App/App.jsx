@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store';
- 
+
 // Компоненты
 import Home from '../Home/Home';
 import Header from '../Header/Header'
@@ -15,7 +15,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-        <Home />
+          <Home />
         <Routes>
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
@@ -26,5 +26,5 @@ function App() {
     </Provider>
  );
 }
- 
+
 export default App;
