@@ -27,6 +27,7 @@ const Header = () => {
   React.useEffect(async () => {
     try {
       await dispatch(axiosInitSessionAAC());
+      console.log('name =>', session.user_firstName)
       settings[0] = session.user_firstName
     } catch (error) {
       console.log('/session Error =>', { ...error });
