@@ -40,14 +40,12 @@ const Header = () => {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(null)
   };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null)
+  }
 
   return (
     <AppBar position="static">
@@ -169,4 +167,5 @@ const Header = () => {
     </AppBar>
   );
 };
+
 export default Header;

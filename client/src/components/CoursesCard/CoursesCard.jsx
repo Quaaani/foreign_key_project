@@ -1,17 +1,17 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 
-export function CoursesCard ({course}) {
+function CoursesCard ({course}) {
 
   console.log('CARD', course);
   return (
-      
-      <Grid 
-        item 
+
+      <Grid
+        item
         xs={12}
         sm={4}
         md={4}
       >
-        <Card 
+        <Card
           sx={{
             display: 'flex',
             height: 250
@@ -28,7 +28,7 @@ export function CoursesCard ({course}) {
               display: 'flex', flexDirection: 'column', position: 'relative',
             }}
           >
-            <Typography 
+            <Typography
               variant="h5"
             >
                 {course.course_name}
@@ -46,11 +46,11 @@ export function CoursesCard ({course}) {
             <CardActions
               sx={{
                 display: 'flex', justifyContent: 'center',alignItems: 'center', mt: 'auto',
-                
+
               }}
             >
               <Button variant="outlined" color="success" sx={{
-                flexGrow: '1', 
+                flexGrow: '1',
               }}>ГАЗУЙ</Button>
           </CardActions>
           </CardContent>
@@ -59,3 +59,4 @@ export function CoursesCard ({course}) {
       </Grid>
   )
 }
+export default CoursesCard
