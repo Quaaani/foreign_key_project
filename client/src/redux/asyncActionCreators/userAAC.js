@@ -34,3 +34,15 @@ export const axiosLoginUserAAC = (payload) => {
     }
   }
 }
+
+export const axiosLogoutUserAAC = (payload) => {
+  return async (dispatch) => {
+    try {
+      const resp = await axios.get('/logout')
+      console.log(resp);
+    } catch (error) {
+      throw error
+    }
+  }
+}
+

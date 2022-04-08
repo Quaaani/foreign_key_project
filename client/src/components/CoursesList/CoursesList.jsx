@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { axiosInitCards } from '../../redux/asyncActionCreators/coursesAAC'
-import CoursesCard from '../CoursesCard/CoursesCard'
+import CoursesCard from "../CoursesCard/CoursesCard"
 
 
 function CoursesList () {

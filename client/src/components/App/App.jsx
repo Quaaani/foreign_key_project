@@ -12,20 +12,19 @@ import Login from "../Login/Login";
 
 function App() {
  return (
-   <Provider store={store}>
-     <BrowserRouter>
-         <Header />
-        {/*<Reg />*/}
-        {/*<Login /> */}
-        <Home />
-        {/* <Routes> */}
-          {/* <Route path="/" element={<Home />} /> */}
-          {/* <Route path="*" element={<Error404 />} /> */}
-        {/* </Routes> */}
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
 
-        {/* <Footer /> */}
-     </BrowserRouter>
-   </Provider>
+          <Home />
+        <Routes>
+          <Route path="/registration" element={<Reg />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+
+        <Footer />
+      </BrowserRouter>
+    </Provider>
  );
 }
 

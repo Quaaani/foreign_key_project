@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import {axiosAddUserAAC} from '../../redux/asyncActionCreators/userAAC'
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 function Reg(props) {
 
   const dispatch = useDispatch();
+
+  const navToHome = useNavigate()
+
 
   const {register, handleSubmit} = useForm();
 
@@ -19,6 +23,7 @@ function Reg(props) {
   
     try {
       await dispatch(axiosAddUserAAC(data))
+      navToHome("/home")
 
     } catch (error) {
       setMsg(error.response.data.message)
@@ -100,7 +105,7 @@ function Reg(props) {
           </Select>
         </FormControl>
 
-        <Button  sx={{ my: 7, mx: "auto", width: "200px"}} variant="contained" type="submit">Register</Button>
+          <Button sx={{width: "150px", "margin": " 40px auto"}} variant="contained" type="submit">Registration</Button>
 
         {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
           <AlertTitle>Ошибка</AlertTitle>

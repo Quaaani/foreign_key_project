@@ -59,4 +59,5 @@ function CoursesCard ({course}) {
       </Grid>
   )
 }
+
 export default CoursesCard
