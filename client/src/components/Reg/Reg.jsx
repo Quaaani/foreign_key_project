@@ -16,8 +16,6 @@ function Reg(props) {
   const [toggle, setToggle] = useState(false)
 
   const onFormSubmit = async (data) => {
-    // console.log(data);
-
   
     try {
       await dispatch(axiosAddUserAAC(data))
@@ -31,9 +29,7 @@ function Reg(props) {
       }, 2000
       )
     }
-    
   }
-
 
   return (
     <Container

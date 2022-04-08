@@ -1,6 +1,4 @@
-import { addUserAC } from '../actionCreators/userAC'
 import axios from '../../axios/axios'
-import { ReactReduxContext } from 'react-redux'
 
 // export const axiosAddUser = (payload) => {
 //   return async (dispatch) => {
