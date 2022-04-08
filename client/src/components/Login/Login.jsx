@@ -4,11 +4,12 @@ import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import {axiosLoginUserAAC} from '../../redux/asyncActionCreators/userAAC';
 import { useDispatch } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 
 
 function Login(props) {
-
+  const navToHome = useNavigate();
   
   const dispatch = useDispatch()
   const {register, handleSubmit} = useForm();
@@ -20,6 +21,7 @@ function Login(props) {
     
     try {
       await dispatch(axiosLoginUserAAC(data))
+      navToHome("/home")
     } catch (error) {
       setMsg(error.response.data.message)
       setToggle(true)
@@ -66,8 +68,7 @@ function Login(props) {
           {...register("user_password")}
           name="user_password"
         />
-
-        <Button  sx={{ my: 7, mx: "auto", width: "200px"}} variant="contained" type="submit">Login</Button>
+          <Button sx={{width: "150px", "margin": " 40px auto"}} variant="contained" type="submit">Login</Button>
 
         {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
           <AlertTitle>Ошибка</AlertTitle>
