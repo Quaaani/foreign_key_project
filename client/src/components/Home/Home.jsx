@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { axiosAddUser } from '../../redux/asyncActionCreators/userAAC';
 import ImageButton from '../ImageButton/ImageButton'
-import { CoursesCard } from '../CoursesCard/CoursesCard';
+import CoursesCard from '../CoursesCard/CoursesCard';
 import CoursesList from '../CoursesList/CoursesList';
 
 
@@ -12,7 +12,7 @@ import style from './Home.module.css'
 
 function Home(props) {
   const dispatch = useDispatch()
-
+  
   const { session } = useSelector(state => state.sessionReducer)
 
   return (

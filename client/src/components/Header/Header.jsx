@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { axiosInitSessionAAC } from '../../redux/asyncActionCreators/sessionAAC';
 import { Link } from 'react-router-dom';
-import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC'
+import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -26,21 +26,21 @@ const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  React.useEffect( () => {
+  React.useEffect(() => {
     try {
       dispatch(axiosInitSessionAAC());
-      // console.log('name =>', session.user_firstName)
-      settings[0] = session.user_firstName
+      console.log('name =>', session.user_firstName)
+      settings[0] = session.user_firstName;
     } catch (error) {
-      // console.log('/session Error =>', { ...error });
+      console.log('/session Error =>', { ...error });
     }
   }, [dispatch]);
 
-  console.log('session state =>', session)
+  console.log('session state =>', session);
 
   const logoutClick = (event) => {
-    dispatch(axiosLogoutUserAAC())
-  }
+    dispatch(axiosLogoutUserAAC());
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -50,12 +50,12 @@ const Header = () => {
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
+    setAnchorElUser(null);
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   return (
     <AppBar position="static">
@@ -146,7 +146,7 @@ const Header = () => {
               </Tooltip>
               <div onClick={logoutClick}>Logout</div>
               <Menu
-                sx={{ "mt": '45px' }}
+                sx={{ mt: '45px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -161,40 +161,44 @@ const Header = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting, index) => 
-                    (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
-                      </MenuItem>
-                    )
-                  )}
+                {settings.map((setting, index) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
               </Menu>
             </Box>
           ) : (
             <>
-              <Link to="/registration" style={{
-                "text-decoration": "none",
-                "color": "inherit",
-                "font-weight": "bold",
-                "text-transform": "uppercase"}}>
+              <Link
+                to="/registration"
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                }}
+              >
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Registration</Typography>
                 </MenuItem>
               </Link>
 
-              <Link to="/login" style={{
-                "text-decoration": "none",
-                "color": "inherit",
-                "font-weight": "bold",
-                "text-transform": "uppercase"}}>
-              
+              <Link
+                to="/login"
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                }}
+              >
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Login</Typography>
                 </MenuItem>
               </Link>
-              
             </>
-            )}
+          )}
         </Toolbar>
       </Container>
     </AppBar>

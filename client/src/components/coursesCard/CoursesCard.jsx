@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 
-export function CoursesCard ({course}) {
+function CoursesCard ({course}) {
 
   console.log('CARD', course);
   return (
@@ -59,3 +59,5 @@ export function CoursesCard ({course}) {
       </Grid>
   )
 }
+
+export default CoursesCard
