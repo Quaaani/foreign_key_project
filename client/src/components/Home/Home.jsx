@@ -10,17 +10,17 @@ import style from './Home.module.css'
 
 function Home(props) {
   const dispatch = useDispatch()
-  
+
   const { session } = useSelector(state => state.sessionReducer)
 
   // Example for AXIOS REQUESTS
   // const toAxios = async (event) => {
   //   event.preventDefault()
-  
-  //   const payload = {
+
+  //   const payload = {git
   //     message: 'Hello'
   //   }
-  
+
   //   dispatch(axiosAddUser(payload))
   // }
 
