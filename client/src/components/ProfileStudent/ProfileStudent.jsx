@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material"
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux";
 
 function ProfileStudent () {
@@ -78,6 +78,7 @@ function ProfileStudent () {
         </Grid>
 
       </Grid>
+      <Divider variant="middle" />
     </Container>
   )
 }
