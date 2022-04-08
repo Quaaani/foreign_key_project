@@ -9,19 +9,22 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
+import ProfileStudent from "../ProfileStudent/ProfileStudent";
 
 function App() {
  return (
    <Provider store={store}>
      <BrowserRouter>
         <Header />
-        <Reg />
-        <Login /> 
-        <Home />
-        {/* <Routes> */}
-          {/* <Route path="/" element={<Home />} /> */}
+        {/* <Reg /> */}
+        {/* <Login />  */}
+        {/* <Home /> */}
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/profile' element={<ProfileStudent />} />
           {/* <Route path="*" element={<Error404 />} /> */}
-        {/* </Routes> */}
+        </Routes>
 
         {/* <Footer /> */}
      </BrowserRouter>
