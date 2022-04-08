@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 
-export function CoursesCard ({course}) {
+function CoursesCard ({course}) {
 
   console.log('CARD', course);
   return (
@@ -13,19 +13,19 @@ export function CoursesCard ({course}) {
       >
         <Card 
           sx={{
-            display: 'flex', 
-            height: 200,
+            display: 'flex',
+            height: 250
         }}>
           <CardMedia
             component='img'
             sx={{ width: 150}}
-            image='https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg'
+            image={`/img/courses/${course.course_img}`}
             alt='Course NAME'
           >
           </CardMedia>
           <CardContent
             sx={{
-              display: 'flex', flexDirection: 'column',
+              display: 'flex', flexDirection: 'column', position: 'relative',
             }}
           >
             <Typography 
@@ -45,11 +45,13 @@ export function CoursesCard ({course}) {
             </Typography>
             <CardActions
               sx={{
-                display: 'flex', justifyContent: 'center',alignItems: 'center'
+                display: 'flex', justifyContent: 'center',alignItems: 'center', mt: 'auto',
                 
               }}
             >
-              <Button variant="outlined" color="success">ГАЗУЙ</Button>
+              <Button variant="outlined" color="success" sx={{
+                flexGrow: '1', 
+              }}>ГАЗУЙ</Button>
           </CardActions>
           </CardContent>
 
@@ -57,3 +59,5 @@ export function CoursesCard ({course}) {
       </Grid>
   )
 }
+
+export default CoursesCard

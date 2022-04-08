@@ -6,7 +6,7 @@ export const axiosInitSessionAAC = () => {
     try {
       const response = await axios.get('/session')
       console.log('res =>', response)
-      // dispatch(initSessionAC(response))
+      dispatch(initSessionAC(response.data.data))
     } catch (error) {
       throw error
     }
