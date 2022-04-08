@@ -15,7 +15,6 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-
           <Home />
         <Routes>
           <Route path="/registration" element={<Reg />} />

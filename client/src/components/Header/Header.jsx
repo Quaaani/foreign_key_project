@@ -59,7 +59,8 @@ const Header = () => {
 
 
   return (
-    <AppBar position="static">
+    <AppBar style={{zIndex: '100',
+      position: 'relative'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
