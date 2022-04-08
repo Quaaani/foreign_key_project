@@ -49,13 +49,13 @@ const Header = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null)
+  }
 
   return (
     <AppBar position="static">
