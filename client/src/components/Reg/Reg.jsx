@@ -28,9 +28,7 @@ function Reg(props) {
       }, 2000
       )
     }
-    
   }
-
 
   return (
     <Container
