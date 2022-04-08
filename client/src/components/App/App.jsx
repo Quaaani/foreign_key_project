@@ -7,19 +7,21 @@ import { store } from '../../redux/store';
 import Home from '../Home/Home';
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import Reg from "../Reg/Reg";
 
 function App() {
  return (
    <Provider store={store}>
      <BrowserRouter>
         <Header />
+        <Reg />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
+        {/* <Routes> */}
+          {/* <Route path="/" element={<Home />} /> */}
           {/* <Route path="*" element={<Error404 />} /> */}
-        </Routes>
+        {/* </Routes> */}
 
-        <Footer />
+        {/* <Footer /> */}
      </BrowserRouter>
    </Provider>
  );
