@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Reg />
         <Login /> 
-
+        <Home />
         {/* <Routes> */}
           {/* <Route path="/" element={<Home />} /> */}
           {/* <Route path="*" element={<Error404 />} /> */}
