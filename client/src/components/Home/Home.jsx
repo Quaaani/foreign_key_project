@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import ImageButton from '../ImageButton/ImageButton'
 import CoursesList from '../CoursesList/CoursesList';
-
+import StatisticList from '../StatisticList/StatisticList'
 
 // Стили
 import style from './Home.module.css'
@@ -19,14 +19,15 @@ function Home(props) {
 
           <ImageButton />
 
-          <CoursesList />
+          <Container  sx={{width: "70vw"}}>
+              <div  sx={{my: "auto"}}>
+
+                  <StatisticList />
+                  <CoursesList />
 
 
-          {/*<Container  sx={{width: "70vw"}}>*/}
-          {/*    <div  sx={{my: "auto"}}>*/}
-
-          {/*    </div>*/}
-          {/*</Container>*/}
+              </div>
+          </Container>
 
       </>
 
