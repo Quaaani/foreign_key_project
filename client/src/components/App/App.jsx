@@ -14,7 +14,7 @@ function App() {
  return (
    <Provider store={store}>
      <BrowserRouter>
-        {/* <Header /> */}
+        <Header />
         {/* <Reg /> */}
         <Login /> 
 
