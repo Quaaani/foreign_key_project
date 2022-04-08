@@ -35,7 +35,8 @@ const Header = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{"position": "relative",
+            "z-index": 2}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography

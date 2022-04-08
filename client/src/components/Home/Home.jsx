@@ -25,11 +25,17 @@ function Home(props) {
   // }
 
   return (
-      <Container  sx={{width: "70vw"}}>
-          <div  sx={{my: "auto"}}>
-              <ImageButton />
-          </div>
-      </Container>
+      <>
+
+          <ImageButton />
+          <Container  sx={{width: "70vw"}}>
+              <div  sx={{my: "auto"}}>
+
+              </div>
+          </Container>
+
+      </>
+
 
   );
 }
