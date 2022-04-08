@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { axiosAddUser } from '../../redux/asyncActionCreators/userAAC';
@@ -10,7 +11,7 @@ import style from './Home.module.css'
 function Home(props) {
   const dispatch = useDispatch()
   
-  const { user } = useSelector(state => state.userReducer)
+  const { session } = useSelector(state => state.sessionReducer)
 
   // Example for AXIOS REQUESTS
   // const toAxios = async (event) => {
@@ -25,13 +26,12 @@ function Home(props) {
 
   return (
 
-    <div>
-      Home page
+    <Container>
       {/* <button onClick={toAxios}>Axios</button>
       {user ? <div>{user.message}</div> : <div>No DATA</div>} */}
       <CoursesList />
       {/* <CoursesCard /> */}
-    </div>
+    </Container>
   );
 }
 
