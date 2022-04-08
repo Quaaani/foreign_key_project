@@ -19,11 +19,20 @@ export const axiosAddUserAAC = (payload) => {
   return async (dispatch) => {
     try {
       const response = await axios.post('/registration', payload)
-
+      console.log(response);
     } catch (error) {
       throw error
     }
-    
-    
+  }
+}
+
+export const axiosLoginUserAAC = (payload) => {
+  return async (dispatch) => {
+    try {
+      const resp = await axios.post('/login', payload)
+      console.log(resp);
+    } catch (error) {
+      throw error
+    }
   }
 }

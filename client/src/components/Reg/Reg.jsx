@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography} from '@mui/material'
+import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography, Alert, AlertTitle} from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import {axiosAddUserAAC} from '../../redux/asyncActionCreators/userAAC'
 import { useForm } from "react-hook-form";
@@ -16,14 +16,11 @@ function Reg(props) {
   const [toggle, setToggle] = useState(false)
 
   const onFormSubmit = async (data) => {
-    // console.log(data);
-
   
     try {
       await dispatch(axiosAddUserAAC(data))
-      
+
     } catch (error) {
-      console.log({...error});
       setMsg(error.response.data.message)
       setToggle(true)
       setTimeout(() => {
@@ -107,7 +104,10 @@ function Reg(props) {
 
         <Button  sx={{ my: 7, mx: "auto", width: "200px"}} variant="contained" type="submit">Register</Button>
 
-        {toggle && <div>{msg}</div>}
+        {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
+          <AlertTitle>Ошибка</AlertTitle>
+          {msg}
+        </Alert>}
       </FormControl>
 
     </Container>

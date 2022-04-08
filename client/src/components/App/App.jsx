@@ -8,13 +8,15 @@ import Home from '../Home/Home';
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
+import Login from "../Login/Login";
 
 function App() {
  return (
    <Provider store={store}>
      <BrowserRouter>
         {/* <Header /> */}
-        <Reg />
+        {/* <Reg /> */}
+        <Login /> 
 
         {/* <Routes> */}
           {/* <Route path="/" element={<Home />} /> */}
