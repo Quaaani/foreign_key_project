@@ -1,9 +1,26 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Typography } from "@mui/material"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+
+const favorites = [
+  {
+    course_name : 'Course A',
+    course_img : '/img/courses/photo1.png',
+    teacher_name : 'Anna',
+    teacher_tel : '+79997654598',
+    teacher_mail : 'anna@mail.kz',
+  },
+  {
+    course_name : 'Course B',
+    course_img : '/img/courses/photo2.png',
+    teacher_name : 'Galina',
+    teacher_tel : '+79215437786',
+    teacher_mail : 'galina@ya.ua',
+  }
+]
 
 function ProfileStudent () {
-  
-  const { session } = useSelector((state) => state.sessionReducer);
+  const { session } = useSelector((state) => state.sessionReducer)
+
   console.log('SESSION PROFILE', session);
 
   return (
@@ -11,7 +28,7 @@ function ProfileStudent () {
       <Grid container
         columns={{ xs: 4, sm: 8, md: 12 }}
         spacing={{ xs: 2, md: 3 }}
-        marginTop={{xs: 7, sm: 6, md: 4}}
+        marginY={{xs: 4, sm: 6, md: 4}}
         
       >
         <Grid item
@@ -79,7 +96,22 @@ function ProfileStudent () {
 
       </Grid>
       <Divider variant="middle" />
+      <Grid container
+          columns={{ xs: 4, sm: 8, md: 6 }}
+          spacing={{ xs: 2, md: 3 }}
+          marginY={{xs: 4, sm: 6, md: 4}}
+        >
+        <Grid item
+           sx={{ maxWidth: 345 }}
+           xs={2}
+           sm={2}
+           md={6}
+        >
+
+        </Grid>
+        </Grid>
     </Container>
+
   )
 }
 
