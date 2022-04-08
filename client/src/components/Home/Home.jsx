@@ -25,8 +25,8 @@ function Home(props) {
   // }
 
   return (
-      <Container>
-          <div>
+      <Container  sx={{width: "70vw"}}>
+          <div  sx={{my: "auto"}}>
               <ImageButton />
           </div>
       </Container>
