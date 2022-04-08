@@ -24,7 +24,7 @@ router.route('/')
   if (!emailCheck) return res.status(400).json({ message: 'Неверно указан почтовый адрес' })
   if (!passwordCheck) return res.status(400).json({ message: 'Пароль должен быть не менее 8 символо и состоять из спец. символов и цифр' })
 
-  req.body.user_password = await bcrypt.hash(user_passowrd, 10);
+  req.body.user_password = await bcrypt.hash(user_password, 10);
   const data = await User.create(req.body)
   console.log('/registration data =>', data)
 
