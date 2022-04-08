@@ -4,14 +4,14 @@ function CoursesCard ({course}) {
 
   console.log('CARD', course);
   return (
-      
-      <Grid 
-        item 
+
+      <Grid
+        item
         xs={12}
         sm={4}
         md={4}
       >
-        <Card 
+        <Card
           sx={{
             display: 'flex',
             height: 250
@@ -28,7 +28,7 @@ function CoursesCard ({course}) {
               display: 'flex', flexDirection: 'column', position: 'relative',
             }}
           >
-            <Typography 
+            <Typography
               variant="h5"
             >
                 {course.course_name}
@@ -46,11 +46,11 @@ function CoursesCard ({course}) {
             <CardActions
               sx={{
                 display: 'flex', justifyContent: 'center',alignItems: 'center', mt: 'auto',
-                
+
               }}
             >
               <Button variant="outlined" color="success" sx={{
-                flexGrow: '1', 
+                flexGrow: '1',
               }}>ГАЗУЙ</Button>
           </CardActions>
           </CardContent>
