@@ -7,20 +7,20 @@ import { CoursesCard } from '../coursesCard/CoursesCard';
 import style from './Home.module.css'
 
 function Home(props) {
-  const dispatch = useDispatch()
-
-  const { user } = useSelector(state => state.userReducer)
+  // const dispatch = useDispatch()
+  //
+  // const { user } = useSelector(state => state.userReducer)
 
   // Example for AXIOS REQUESTS
-  const toAxios = async (event) => {
-    event.preventDefault()
-
-    const payload = {
-      message: 'Hello'
-    }
-
-    dispatch(axiosAddUser(payload))
-  }
+  // const toAxios = async (event) => {
+  //   event.preventDefault()
+  //
+  //   const payload = {
+  //     message: 'Hello'
+  //   }
+  //
+  //   dispatch(axiosAddUser(payload))
+  // }
 
   return (
 
