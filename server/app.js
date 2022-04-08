@@ -8,6 +8,7 @@ const exampleRouter = require('./routes/exampleRouter.route')
 const registrationRouter = require('./routes/registrationRouter.route')
 const loginRouter = require('./routes/loginRouter.route')
 const sessionRouter = require('./routes/sessionRouter.route')
+const coursesRouter = require('./routes/coursesRouter.route')
  
 // app && PORT
 const app = express()
@@ -21,6 +22,7 @@ app.use('/example', exampleRouter)
 app.use('/registration', registrationRouter)
 app.use('/login', loginRouter)
 app.use('/session', sessionRouter)
+app.use('/courses', coursesRouter)
 
 // listen
 app.listen(PORT, () => { console.log(`*** Working at PORT: ${PORT} ***`) })
