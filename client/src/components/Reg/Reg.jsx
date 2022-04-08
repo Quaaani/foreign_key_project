@@ -1,28 +1,36 @@
 import React, { useRef } from 'react';
 import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography} from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux';
+import {axiosAddUserAAC} from '../../redux/asyncActionCreators/userAAC'
+import { useForm } from "react-hook-form";
+import { useState } from 'react';
 
 
 function Reg(props) {
 
-  const firstNameInput = useRef();
-  const lastNameInput = useRef();
-  const emailInput = useRef();
-  const passwordInput = useRef();
-  const roleInput = useRef();
+  const dispatch = useDispatch();
 
+  const {register, handleSubmit} = useForm();
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const [msg, setMsg] = useState('')
+  const [toggle, setToggle] = useState(false)
 
-    const newUser = {
-      user_firstName: firstNameInput.current.value,
-      user_lastName: lastNameInput.current.value,
-      user_email: emailInput.current.value,
-      user_password: passwordInput.current.value,
-      user_role: roleInput.current.value,
+  const onFormSubmit = async (data) => {
+    // console.log(data);
+
+  
+    try {
+      await dispatch(axiosAddUserAAC(data))
+      
+    } catch (error) {
+      console.log({...error});
+      setMsg(error.response.data.message)
+      setToggle(true)
+      setTimeout(() => {
+        setToggle(false)
+      }, 2000
+      )
     }
-
-    
     
   }
 
@@ -35,7 +43,7 @@ function Reg(props) {
         Registration
       </Typography>
       <FormControl
-      onSubmit={onFormSubmit}
+      onSubmit={handleSubmit(onFormSubmit)}
         component="form"
         fullWidth
         sx={{
@@ -48,7 +56,7 @@ function Reg(props) {
           required
           id="outlined-required"
           
-          ref={firstNameInput}
+          {...register("user_firstName")}
           name="user_firstName"
         />
         <TextField
@@ -56,7 +64,7 @@ function Reg(props) {
           label="Last Name"
           required
 
-          ref={lastNameInput}
+          {...register("user_lastName")}
           name="user_lastName"
         />
           <TextField
@@ -66,7 +74,7 @@ function Reg(props) {
             type="email"
             required
 
-            ref={emailInput}
+            {...register("user_email")}
             name="user_email"
           />
         <TextField
@@ -77,7 +85,7 @@ function Reg(props) {
           type="password"
           autoComplete="current-password"
 
-          ref={passwordInput}
+          {...register("user_password")}
           name="user_password"
         />
         <FormControl fullWidth sx={{ m: 1}}>
@@ -89,7 +97,7 @@ function Reg(props) {
             label="Age"
             defaultValue="student"
 
-            ref={roleInput}
+            {...register("user_role")}
             name="user_role"
           >
             <MenuItem selected value="student">Student</MenuItem>
@@ -98,6 +106,8 @@ function Reg(props) {
         </FormControl>
 
         <Button  sx={{ my: 7, mx: "auto", width: "200px"}} variant="contained" type="submit">Register</Button>
+
+        {toggle && <div>{msg}</div>}
       </FormControl>
 
     </Container>
