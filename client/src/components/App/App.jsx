@@ -10,6 +10,7 @@ import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
 import Feedback from "../Feedback/Feedback";
+import ImgBlock from "../ImgBlock/ImgBlock";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Header />
           <Home />
           <Feedback />
+          <ImgBlock />
 
         <Routes>
           <Route path="/registration" element={<Reg />} />
