@@ -5,11 +5,17 @@ import { Button, Card, CardActions, CardMedia, Grid } from "@mui/material";
 function ProfileStudentCourse ({favorite}) {
 
   return(
-    <Grid item xs={3}>
+    <Grid item 
+      xs={6}
+      sm={6}
+      md={5}
+      marginY={{xs: 2, sm: 2, md: 4}}
+      marginLeft={{xs: 1, sm: 1, md: 1}}
+    >
 
       <Card
         sx={{ maxWidth: 345 }}
-        marginY={{xs: 4, sm: 6, md: 4}}
+        
     >
         <CardMedia
           component='img'
@@ -19,7 +25,7 @@ function ProfileStudentCourse ({favorite}) {
         >
         </CardMedia>
         <CardActions centered>
-          <Button color="secondary" variant="outlined" >Начать обучение</Button>
+          <Button color="success" variant="outlined" >Начать обучение</Button>
         </CardActions>
       </Card>
   </Grid>

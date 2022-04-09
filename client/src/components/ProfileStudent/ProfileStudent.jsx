@@ -99,19 +99,46 @@ function ProfileStudent () {
       </Grid>
 
       <Divider variant="middle" />
-      
-       <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <Typography variant='h2'>
-            Мои курсы
-          </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant='h2'>
-            Мой словарь
-          </Typography>
-        </Grid>
-        {favorites ? favorites.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
+
+       <Grid container 
+          spacing={{ xs: 2, md: 3 }}
+          marginY={{xs: 4, sm: 6, md: 4}}
+       >
+         
+         <Grid container 
+             xs={6}
+             sm={6}
+             md={6}
+          >
+            <Typography variant='h6'>
+              Мои курсы
+            </Typography>
+            <Grid container 
+            >
+              {favorites ? favorites.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
+            </Grid>
+          </Grid>
+
+          <Grid container 
+             xs={6}
+             sm={6}
+             md={6}
+          >
+            <Typography variant='h6'>
+              Мой словарь
+            </Typography>
+            <Grid container>
+              <Grid item 
+                xs={6}
+                sm={6}
+                md={5}
+                marginY={{xs: 2, sm: 2, md: 4}}
+                marginLeft={{xs: 1, sm: 1, md: 1}}
+              >
+              </Grid>
+            </Grid>
+          </Grid>
+
       </Grid>
 
     </Container>
