@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import ImageButton from '../ImageButton/ImageButton'
 import CoursesCard from '../CoursesCard/CoursesCard';
 import CoursesList from '../CoursesList/CoursesList';
-import StatisticList from '../StatisticList/StatisticList';
+
 import TestLevel from '../TestLevel/TestLevel'
+
+import StatisticList from '../StatisticList/StatisticList'
+
 
 // Стили
 import style from './Home.module.css'
@@ -13,6 +16,8 @@ import style from './Home.module.css'
 function Home(props) {
   const dispatch = useDispatch()
   const { session } = useSelector(state => state.sessionReducer)
+
+
 
   return (
       <>
@@ -25,7 +30,7 @@ function Home(props) {
                   <StatisticList />
                   <CoursesList />
 
-              
+
               </div>
           </Container>
       </>
