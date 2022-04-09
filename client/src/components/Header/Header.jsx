@@ -12,39 +12,40 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { axiosInitSessionAAC } from '../../redux/asyncActionCreators/sessionAAC';
+import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
 import { Link } from 'react-router-dom';
 import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC';
+import axios from '../../axios/axios'
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
-  const { session } = useSelector((state) => state.sessionReducer);
   const dispatch = useDispatch();
+  const { useEffect } = React
+  
+  const { session } = useSelector((state) => state.sessionReducer);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  React.useEffect(() => {
+  useEffect(async () => {
     try {
-      dispatch(axiosInitSessionAAC());
-      console.log('name =>', session.user_firstName)
-      settings[0] = session.user_firstName;
+      await dispatch(axiosInitSession());
     } catch (error) {
       console.log('/session Error =>', { ...error });
     }
   }, [dispatch]);
-
-  console.log('session state =>', session);
-
-  const logoutClick = (event) => {
-    dispatch(axiosLogoutUserAAC());
+  
+  // Logout Функция
+  const logoutClick = async (event) => {
+    await dispatch(axiosLogoutUserAAC());
   };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -59,6 +60,7 @@ const Header = () => {
 
 
   return (
+    <>
     <AppBar style={{zIndex: '100',
       position: 'relative'}}>
       <Container maxWidth="xl">
@@ -143,7 +145,7 @@ const Header = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src={`/img/avatars/${session.user_avatar}`} />
                 </IconButton>
               </Tooltip>
               <div onClick={logoutClick}>Logout</div>
@@ -204,6 +206,7 @@ const Header = () => {
         </Toolbar>
       </Container>
     </AppBar>
+    </>
   );
 };
 

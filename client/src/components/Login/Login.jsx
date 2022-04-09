@@ -5,6 +5,9 @@ import { useState } from 'react';
 import {axiosLoginUserAAC} from '../../redux/asyncActionCreators/userAAC';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import axios from '../../axios/axios'
+import { initSessionAC } from '../../redux/actionCreators/sessionAC'
+import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC'
 
 
 
@@ -21,6 +24,7 @@ function Login(props) {
     
     try {
       await dispatch(axiosLoginUserAAC(data))
+      await dispatch(axiosInitSession())
       navToHome("/home")
     } catch (error) {
       setMsg(error.response.data.message)

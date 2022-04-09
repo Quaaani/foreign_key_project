@@ -16,7 +16,6 @@ function CoursesList () {
 
   }, [dispatch])
 
-  console.log('=>', courses);
   return (
     <Grid
       container

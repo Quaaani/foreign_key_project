@@ -2,7 +2,6 @@ import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typ
 
 function CoursesCard ({course}) {
 
-  console.log('CARD', course);
   return (
 
       <Grid
