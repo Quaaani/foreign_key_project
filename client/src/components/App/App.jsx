@@ -11,16 +11,17 @@ import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
 
 function App() {
+
  return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header />
-          <Home />
+
         <Routes>
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-
+        <Header />
+          <Home />
         <Footer />
       </BrowserRouter>
     </Provider>
