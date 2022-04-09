@@ -5,14 +5,13 @@ import {axiosAddUserAAC} from '../../redux/asyncActionCreators/userAAC'
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC'
 
 
 function Reg(props) {
 
   const dispatch = useDispatch();
-
   const navToHome = useNavigate()
-
 
   const {register, handleSubmit} = useForm();
 
@@ -23,6 +22,7 @@ function Reg(props) {
   
     try {
       await dispatch(axiosAddUserAAC(data))
+      await dispatch(axiosInitSession())
       navToHome("/home")
 
     } catch (error) {
