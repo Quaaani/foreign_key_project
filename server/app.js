@@ -10,6 +10,8 @@ const sessionRouter = require('./routes/sessionRouter.route')
 const logoutRouter = require('./routes/logoutRouter.route')
 const coursesRouter = require('./routes/coursesRouter.route')
 const tlevelRouter = require('./routes/tlevelRouter.route')
+const favoritesRouter = require('./routes/favoritesRouter.route')
+const dictionariesRouter = require('./routes/dictionariesRouter.route')
  
 // app && PORT
 const app = express()
@@ -26,6 +28,8 @@ app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/courses', coursesRouter)
 app.use('/tlevel', tlevelRouter)
+app.use('/favorites', favoritesRouter)
+app.use('/dictionaries', dictionariesRouter)
 
 // listen
 app.listen(PORT, () => { console.log(`*** Working at PORT: ${PORT} ***`) })
