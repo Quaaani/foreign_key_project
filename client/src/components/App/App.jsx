@@ -12,17 +12,20 @@ import Login from "../Login/Login";
 import Feedback from "../Feedback/Feedback";
 
 function App() {
+
  return (
     <Provider store={store}>
       <BrowserRouter>
         <Header />
           <Home />
           <Feedback />
+
         <Routes>
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-
+        <Header />
+          <Home />
         <Footer />
       </BrowserRouter>
     </Provider>

@@ -24,10 +24,9 @@ function Home(props) {
                   <StatisticList />
                   <CoursesList />
 
-
+              
               </div>
           </Container>
-
       </>
 
   );
