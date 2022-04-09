@@ -5,6 +5,7 @@ import ImageButton from '../ImageButton/ImageButton'
 import CoursesCard from '../CoursesCard/CoursesCard';
 import CoursesList from '../CoursesList/CoursesList';
 import StatisticList from '../StatisticList/StatisticList'
+import axios from '../../axios/axios'
 
 // Стили
 import style from './Home.module.css'
@@ -12,6 +13,8 @@ import style from './Home.module.css'
 function Home(props) {
   const dispatch = useDispatch()
   const { session } = useSelector(state => state.sessionReducer)
+
+
 
   return (
       <>

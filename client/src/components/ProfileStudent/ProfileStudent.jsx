@@ -2,27 +2,30 @@ import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, 
 import { useSelector } from "react-redux";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 
-const favorites = [
-  {
-    id: 1,
-    course_name : 'Course A',
-    course_img : 'photo1.png',
-    teacher_name : 'Anna',
-    teacher_tel : '+79997654598',
-    teacher_mail : 'anna@mail.kz',
-  },
-  {
-    id: 2,
-    course_name : 'Course B',
-    course_img : 'photo2.png',
-    teacher_name : 'Galina',
-    teacher_tel : '+79215437786',
-    teacher_mail : 'galina@ya.ua',
-  }
-]
+// const favorites = [
+//   {
+//     id: 1,
+//     course_name : 'Course A',
+//     course_img : 'photo1.png',
+//     teacher_name : 'Anna',
+//     teacher_tel : '+79997654598',
+//     teacher_mail : 'anna@mail.kz',
+//   },
+//   {
+//     id: 2,
+//     course_name : 'Course B',
+//     course_img : 'photo2.png',
+//     teacher_name : 'Galina',
+//     teacher_tel : '+79215437786',
+//     teacher_mail : 'galina@ya.ua',
+//   }
+// ]
 
 function ProfileStudent () {
   const { session } = useSelector((state) => state.sessionReducer)
+  const { favorites } = useSelector((state) => state.favoritesReducer)
+
+  console.log('FAVORITES => ', favorites)
 
   console.log('SESSION PROFILE', session);
 

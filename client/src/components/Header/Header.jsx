@@ -16,6 +16,7 @@ import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
 import { Link } from 'react-router-dom';
 import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC';
 import axios from '../../axios/axios'
+import { axiosInitFavoritesAAC } from '../../redux/asyncActionCreators/favoritesAAC';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -40,6 +41,11 @@ const Header = () => {
   // Logout Функция
   const logoutClick = async (event) => {
     await dispatch(axiosLogoutUserAAC());
+  };
+
+  // Profile Функция
+  const profileClick = async (event) => {
+    await dispatch(axiosInitFavoritesAAC())
   };
 
   const handleOpenNavMenu = (event) => {
@@ -73,6 +79,10 @@ const Header = () => {
           >
             LOGO
           </Typography>
+
+          <Link to={'/profile'} onClick={profileClick}>
+            Profile
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
