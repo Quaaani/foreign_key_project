@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton, CardHeader } from "@mui/material";
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
@@ -34,6 +34,15 @@ function ProfileStudentCourse ({favorite}) {
         sx={{ maxWidth: 345 }}
         
     >
+      <CardHeader
+        sx={{mx: 'auto'}}
+        title={favorite.course_name}
+        
+      >
+
+        
+      </CardHeader>
+
         <CardMedia
           component='img'
           height="194"
@@ -45,13 +54,7 @@ function ProfileStudentCourse ({favorite}) {
           <Typography>
             {favorite.course_name}
           </Typography>
-          <Typography
-            // sx={{
-            //   cursor: 'pointer',
-            //   textDecoration: 'none',
-            //   color: 'inherit',
-              
-            // }}  
+          <Typography 
             >
             Преподаватель: {favorite.teacher_name}
             <IconButton

@@ -1,13 +1,92 @@
 import React from 'react';
+import {Box, Container, Grid, Link} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 // Стили
 import style from './Footer.module.css'
 
+const useStyles = makeStyles(() => ({
+  myLink: {
+    marginBottom: "8px",
+    fontFamily: "Roboto"
+  },
+  curLink: {
+    fontFamily: "Roboto",
+    textDecoration: "none"
+  }
+
+}))
+
 function Footer(props) {
+
+  const styles = useStyles()
+
   return (
-    <div>
-      Footer
-    </div>
+    <footer>
+      <Box
+        px={{ xs: 3, sm: 3 }}
+        py={{ xs: 3, sm: 5 }}
+        bgcolor="#1876D1"
+        color="white"
+      >
+        <Container maxWidth="lg">
+          <Grid container spacing={5}>
+            <Grid item xs={12} sm={4}>
+              <Box className={styles.myLink} borderBottom={1}>Help</Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Contact
+                </Link>
+              </Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Support
+                </Link>
+              </Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Privacy
+                </Link>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box className={styles.myLink} borderBottom={1}>Account</Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Login
+                </Link>
+              </Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Register
+                </Link>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box className={styles.myLink} borderBottom={1}>Messages</Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Backup
+                </Link>
+              </Box>
+              <Box className={styles.myLink}>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  History
+                </Link>
+              </Box>
+              <Box>
+                <Link className={styles.curLink} href="/" color="inherit">
+                  Roll
+                </Link>
+              </Box>
+            </Grid>
+          </Grid>
+          <Box className={styles.curLink} textAlign="center" pt={{ xs: 2, sm: 2 }} pb={{ xs: 2, sm: 0 }}>
+            ForeingKey &reg; {new Date().getFullYear()}
+          </Box>
+        </Container>
+      </Box>
+    </footer>
   );
 }
 
