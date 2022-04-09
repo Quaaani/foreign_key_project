@@ -1,21 +1,32 @@
-import { Card, Grid } from "@mui/material";
-
+import { Button, Card, Grid, IconButton} from "@mui/material";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import * as React from 'react';
 
 function Dictionary ({dictionary}) {
   
   return (
-    <Grid item 
-      xs={6}
-      sm={6}
-      md={12}
-      marginY={{xs: 2, sm: 2, md: 4}}
-      sx={{ mx: 'auto'}} 
-    >
-      {dictionary?.word_name}
-      {dictionary?.word_transcription}
-      {dictionary?.word_translate}
-      </Grid>
 
+    <Grid container
+    >
+      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
+        {dictionary?.word_name}
+      </Grid>
+      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
+        {dictionary?.word_transcription}
+      </Grid>
+      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
+        {dictionary?.word_translate}
+      </Grid>
+      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
+      <IconButton
+               
+               
+               
+            >
+              <DeleteForeverIcon />
+            </IconButton>
+      </Grid>
+    </Grid>
  
 
     

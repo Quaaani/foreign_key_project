@@ -110,26 +110,28 @@ function ProfileStudent () {
        >
          
          <Grid item 
-             xs={6}
+             xs={12}
              sm={6}
              md={6}
-             
+             sx={{ mx: 'auto'}}
           >
             <Typography variant='h6'
               sx={{ mx: 'auto'}}
             >
               Мои курсы
             </Typography>
-            <Grid container 
+            <Grid container
+               
             >
               {favorites ? favorites.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
             </Grid>
           </Grid>
 
           <Grid item 
-             xs={6}
+             xs={12}
              sm={6}
              md={6}
+             sx={{ mx: 'auto'}}
           >
             <Typography variant='h6'
               sx={{ mx: 'auto'}}
