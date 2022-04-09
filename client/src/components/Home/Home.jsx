@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import ImageButton from '../ImageButton/ImageButton'
 import CoursesCard from '../CoursesCard/CoursesCard';
 import CoursesList from '../CoursesList/CoursesList';
+
+import TestLevel from '../TestLevel/TestLevel'
+
 import StatisticList from '../StatisticList/StatisticList'
-import axios from '../../axios/axios'
+
 
 // Стили
 import style from './Home.module.css'
@@ -23,11 +26,11 @@ function Home(props) {
 
           <Container  sx={{width: "70vw"}}>
               <div  sx={{my: "auto"}}>
-
+                    <TestLevel />
                   <StatisticList />
                   <CoursesList />
 
-              
+
               </div>
           </Container>
       </>

@@ -24,8 +24,6 @@ function App() {
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-        <Header />
-          <Home />
         <Footer />
       </BrowserRouter>
     </Provider>

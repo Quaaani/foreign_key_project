@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button, Paper,Container, Grid, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import {axiosInitTLevels} from "../../redux/asyncActionCreators/tlevelsAAC";
+import {useDispatch, useSelector} from "react-redux";
+import {tLevelsReducer} from "../../redux/reducers/tlevelsReducer";
 
 const useStyles = makeStyles(() => ({
 
@@ -32,8 +35,19 @@ const useStyles = makeStyles(() => ({
 }))
 
 function ImageButton(props) {
-
+    const dispatch = useDispatch()
     const classes = useStyles()
+    const {tLevels} = useSelector((state) => state.tLevelsReducer)
+   async function handleChange (event) {
+        event.preventDefault()
+       try {
+         await dispatch(axiosInitTLevels())
+       } catch (error){
+            console.log('tlevels error ====>', {...error})
+       }
+
+    }
+
 
     return (
         <Paper className={classes.mainFeaturesPost}
@@ -64,7 +78,7 @@ function ImageButton(props) {
                         </div>
                     </Grid>
                     <Grid item className={classes.ourBtn}>
-                        <Button variant="contained" color="secondary" className={classes.btn}>
+                        <Button onClick={handleChange} variant="contained" color="secondary" className={classes.btn}>
                             Начать обучение
                         </Button>
                     </Grid>
