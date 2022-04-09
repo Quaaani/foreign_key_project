@@ -14,11 +14,8 @@ function Home(props) {
   const dispatch = useDispatch()
   const { session } = useSelector(state => state.sessionReducer)
 
-
-
   return (
       <>
-
           <ImageButton />
 
           <Container  sx={{width: "70vw"}}>
@@ -26,7 +23,6 @@ function Home(props) {
 
                   <StatisticList />
                   <CoursesList />
-
               
               </div>
           </Container>
