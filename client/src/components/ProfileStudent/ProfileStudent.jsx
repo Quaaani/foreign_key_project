@@ -39,7 +39,6 @@ function ProfileStudent () {
           sm={4}
           md={4}
         >
-          <Link to={`tel:${favorites[0].teacher_tel}`}>{favorites[0].teacher_tel}</Link>
           <Card
             sx={{ maxWidth: 345 }}
           >

@@ -1,4 +1,7 @@
-import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton } from "@mui/material";
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import * as React from 'react';
 
 
@@ -42,18 +45,38 @@ function ProfileStudentCourse ({favorite}) {
           <Typography>
             {favorite.course_name}
           </Typography>
-          <Typography  
-            onClick={handleClick}>
+          <Typography
+            // sx={{
+            //   cursor: 'pointer',
+            //   textDecoration: 'none',
+            //   color: 'inherit',
+              
+            // }}  
+            >
             Преподаватель: {favorite.teacher_name}
+            <IconButton
+               
+               onClick={handleClick}
+               
+            >
+              <ContactPhoneIcon />
+            </IconButton>
           </Typography>
+          
           {open ? 
-          <div>
+          <div style={{'text-align' : 'center'}}>
             <div>
-              <a href={`tel:${favorite.teacher_tel}`}>{favorite.teacher_tel}</a>
+
+                <a href={`tel:${favorite.teacher_tel}`}>
+                <PhoneIphoneIcon />
+                </a> 
+                <a href={`mailto:${favorite.teacher_mail}`}><EmailIcon />
+                </a>
+
             </div>
-            <div>
-              <a href={`mailto:${favorite.teacher_mail}`}>{favorite.teacher_mail}</a>
-            </div>
+            {/* <div>
+              <a href={`mailto:${favorite.teacher_mail}`}><EmailIcon /></a>
+            </div> */}
           </div>: null}
         </CardContent>
         <CardActions centered>
