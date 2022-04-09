@@ -6,7 +6,6 @@ router.route('/')
 
     if (!req.session.user_data) return res.status(400).json({ message: 'No session!' })
 
-    console.log('session =>', req.session.user_data)
     return res.status(200).json({ data: req.session.user_data })
   })
 
