@@ -1,16 +1,30 @@
-import { Button, Card, CardActions, CardMedia, Grid } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography } from "@mui/material";
+import * as React from 'react';
 
 
 
 function ProfileStudentCourse ({favorite}) {
 
+  const [open, setOpen] = React.useState(false)
+
+  const handleClick = () => {
+    setOpen((prev) => !prev)
+  }
+
+  const handleClickAway = () => {
+    setOpen(false)
+  }
+
   return(
+
+    <ClickAwayListener onClickAway={handleClickAway}>
     <Grid item 
-      xs={6}
-      sm={6}
+      xs={10}
+      sm={10}
       md={5}
+      sx={{ mx: 'auto'}}
       marginY={{xs: 2, sm: 2, md: 4}}
-      marginLeft={{xs: 1, sm: 1, md: 1}}
+      
     >
 
       <Card
@@ -24,11 +38,37 @@ function ProfileStudentCourse ({favorite}) {
           alt="avatar"
         >
         </CardMedia>
+        <CardContent>
+          <Typography>
+            {favorite.course_name}
+          </Typography>
+          <Typography  
+            onClick={handleClick}>
+            Преподаватель: {favorite.teacher_name}
+          </Typography>
+          {open ? 
+          <div>
+            <div>
+              <a href={`tel:${favorite.teacher_tel}`}>{favorite.teacher_tel}</a>
+            </div>
+            <div>
+              <a href={`mailto:${favorite.teacher_mail}`}>{favorite.teacher_mail}</a>
+            </div>
+          </div>: null}
+        </CardContent>
         <CardActions centered>
-          <Button color="success" variant="outlined" >Начать обучение</Button>
+          <Button 
+          color="success" 
+          variant="outlined" 
+          sx={{ mx: 'auto'}}
+         
+          >
+            Начать обучение
+          </Button>
         </CardActions>
       </Card>
   </Grid>
+  </ClickAwayListener>
   )
 }
 

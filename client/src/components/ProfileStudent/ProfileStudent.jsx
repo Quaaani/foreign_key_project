@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Typography } from "@mui/material"
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Link, Typography } from "@mui/material"
 import { useSelector } from "react-redux";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 
@@ -39,6 +39,7 @@ function ProfileStudent () {
           sm={4}
           md={4}
         >
+          <Link to={`tel:${favorites[0].teacher_tel}`}>{favorites[0].teacher_tel}</Link>
           <Card
             sx={{ maxWidth: 345 }}
           >
@@ -50,7 +51,7 @@ function ProfileStudent () {
             >
             </CardMedia>
             <CardActions centered>
-              <Button color="secondary" variant="outlined" >Редактировать профиль</Button>
+              <Button color="secondary" variant="outlined" sx={{ mx: 'auto'}}>Редактировать профиль</Button>
             </CardActions>
           </Card>
         </Grid>
@@ -99,7 +100,6 @@ function ProfileStudent () {
       </Grid>
 
       <Divider variant="middle" />
-
        <Grid container 
           spacing={{ xs: 2, md: 3 }}
           marginY={{xs: 4, sm: 6, md: 4}}
@@ -109,8 +109,11 @@ function ProfileStudent () {
              xs={6}
              sm={6}
              md={6}
+             
           >
-            <Typography variant='h6'>
+            <Typography variant='h6'
+              sx={{ mx: 'auto'}}
+            >
               Мои курсы
             </Typography>
             <Grid container 
@@ -124,7 +127,9 @@ function ProfileStudent () {
              sm={6}
              md={6}
           >
-            <Typography variant='h6'>
+            <Typography variant='h6'
+              sx={{ mx: 'auto'}}
+            >
               Мой словарь
             </Typography>
             <Grid container>
@@ -133,7 +138,7 @@ function ProfileStudent () {
                 sm={6}
                 md={5}
                 marginY={{xs: 2, sm: 2, md: 4}}
-                marginLeft={{xs: 1, sm: 1, md: 1}}
+                sx={{ mx: 'auto'}}
               >
               </Grid>
             </Grid>
