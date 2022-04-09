@@ -1,5 +1,6 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Link, Typography } from "@mui/material"
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Typography } from "@mui/material"
 import { useSelector } from "react-redux";
+import Dictionary from "../Dictionary/Dictionary";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 
 // const favorites = [
@@ -24,10 +25,11 @@ import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 function ProfileStudent () {
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
+  const { dictionary } = useSelector((state) => state.dictionariesReducer)
 
   console.log('FAVORITES => ', favorites)
-
-  console.log('SESSION PROFILE', session);
+  console.log('Dictionary JSX =>', dictionary);
+  console.log('SESSION PROFILE =>', session);
 
   return (
     <Container>
@@ -107,7 +109,7 @@ function ProfileStudent () {
           marginY={{xs: 4, sm: 6, md: 4}}
        >
          
-         <Grid container 
+         <Grid item 
              xs={6}
              sm={6}
              md={6}
@@ -124,7 +126,7 @@ function ProfileStudent () {
             </Grid>
           </Grid>
 
-          <Grid container 
+          <Grid item 
              xs={6}
              sm={6}
              md={6}
@@ -135,14 +137,9 @@ function ProfileStudent () {
               Мой словарь
             </Typography>
             <Grid container>
-              <Grid item 
-                xs={6}
-                sm={6}
-                md={5}
-                marginY={{xs: 2, sm: 2, md: 4}}
-                sx={{ mx: 'auto'}}
-              >
-              </Grid>
+
+                {dictionary ? dictionary.map(dictionary => <Dictionary key={dictionary.id} dictionary={dictionary} />) : 'NO WORDS'}
+
             </Grid>
           </Grid>
 
