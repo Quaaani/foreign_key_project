@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
         height: "260px",
         width: "290px",
         display: "flex",
+        margin: "2vw",
         flexDirection: "column",
         justifyContent: "space-around",
         alignItems: "center",
@@ -23,7 +24,9 @@ function StatisticCard({stat}) {
     const classes = useStyles()
 
     return (
-        <Paper elevation={10} className={classes.statCard}>
+        <Paper elevation={10} className={classes.statCard}
+          md={{width: "200px"}}
+        >
                 <Typography>
                     {stat.stat_title}
                 </Typography>

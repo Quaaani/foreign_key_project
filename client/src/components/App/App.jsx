@@ -19,11 +19,9 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-          <Home />
-          <Feedback />
-          <ImgBlock />
-
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<ProfileStudent />} />

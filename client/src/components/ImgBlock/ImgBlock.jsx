@@ -43,8 +43,9 @@ function ImgBlock(props) {
     slidesToScroll: 1,
     autoplay: true,
     speed: 800,
-    autoplaySpeed: 4000,
-    cssEase: "linear"
+    autoplaySpeed: 3000,
+    cssEase: "linear",
+    pauseOnHover: false
   };
 
   return (
