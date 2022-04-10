@@ -9,8 +9,6 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
-import Feedback from "../Feedback/Feedback";
-import ImgBlock from "../ImgBlock/ImgBlock";
 
 function App() {
 
@@ -18,11 +16,9 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-          <Home />
-          <Feedback />
-          <ImgBlock />
-
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
         </Routes>

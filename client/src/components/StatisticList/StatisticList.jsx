@@ -6,9 +6,10 @@ const stat = [{id: 1, stat_title: "Преподаватели", stat_value: 30},
 
 const useStyles = makeStyles(() => ({
     statList: {
-        marginTop: "80px",
-        marginBottom: "80px",
+        marginTop: "8vw",
+        marginBottom: "8vw",
         display: "flex",
+        flexWrap: "wrap",
         flexDirection: "row",
         justifyContent: "space-around"
     }
@@ -19,10 +20,10 @@ const useStyles = makeStyles(() => ({
 
 function StatisticList(props) {
 
- const classes = useStyles()
+  const classes = useStyles()
 
     return (
-        <div className={classes.statList}>
+        <div className={classes.statList} sx={{}}>
             {stat ? stat.map(stat => <StatisticCard key={stat.id} stat={stat} />) : <div>No data</div>}
         </div>
     );

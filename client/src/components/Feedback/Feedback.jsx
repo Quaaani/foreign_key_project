@@ -123,7 +123,7 @@ function Feedback(props) {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.textHeader}>Feedback</h2>
-      <Box className={styles.carouselBox} sx={{ maxWidth: "45vw", flexGrow: 1 }}>
+      <Box className={styles.carouselBox} sx={{ maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
@@ -138,7 +138,7 @@ function Feedback(props) {
         > <Avatar className={styles.ava} src="/broken-image.jpg" />
           <Typography className={styles.authorName}>{steps[activeStep].label}</Typography>
         </Paper>
-        <Box sx={{ height: 255, maxWidth: "45vw", p: 2 }} className={styles.feedText}>
+        <Box sx={{ height: 255, maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, p: 2 }} className={styles.feedText}>
           {steps[activeStep].description}
           
         </Box>
