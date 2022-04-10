@@ -1,4 +1,4 @@
-import { Button, Card, Grid, IconButton} from "@mui/material";
+import { Button, Card, Grid, IconButton, Tooltip} from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import * as React from 'react';
 
@@ -8,24 +8,25 @@ function Dictionary ({dictionary}) {
 
     <Grid container
     >
-      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
-        {dictionary?.word_name}
-      </Grid>
+       <Tooltip title={dictionary?.word_example}>
+        <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
+          {dictionary?.word_name}
+        </Grid>
+      </Tooltip>
       <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
         {dictionary?.word_transcription}
       </Grid>
-      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
-        {dictionary?.word_translate}
-      </Grid>
-      <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
-      <IconButton
-               
-               
-               
-            >
-              <DeleteForeverIcon />
-            </IconButton>
-      </Grid>
+      <Tooltip title={dictionary?.word_transExample}>
+        <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
+          {dictionary?.word_translate}
+        </Grid>
+      </Tooltip>
+      <Grid item xs={1} sx={{ mx: 'auto', my: 'auto'}}>
+      <IconButton >
+        <DeleteForeverIcon />
+      </IconButton>
+    </Grid>
+
     </Grid>
  
 

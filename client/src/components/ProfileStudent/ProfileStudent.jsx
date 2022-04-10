@@ -14,6 +14,8 @@ function ProfileStudent () {
   const { favorites } = useSelector((state) => state.favoritesReducer)
   const { dictionary } = useSelector((state) => state.dictionariesReducer)
 
+
+  console.log('favorites', dictionary);
     
   return (
     <Container>
@@ -96,8 +98,8 @@ function ProfileStudent () {
               
               {Number(session?.user_level) < 400 ? 
                 <Grid >
-                  <Typography>
-                    На пути к гуру ЛИНГВИСТИКИ 
+                  <Typography align="center">
+                    Твой прогресс 
                   </Typography> 
                   <LinearProgress sx={{height: 15}} variant="determinate" color="secondary" value={Number(session?.user_level)/4} />
                   <Typography variant="caption" color="text.secondary">
@@ -131,8 +133,9 @@ function ProfileStudent () {
              md={6}
              sx={{ mx: 'auto'}}
           >
-            <Typography variant='h6'
-              sx={{ mx: 'auto'}}
+            <Typography 
+              variant='h6'
+              align="center"
             >
               Мои курсы
             </Typography>
@@ -149,8 +152,9 @@ function ProfileStudent () {
              md={6}
              sx={{ mx: 'auto'}}
           >
-            <Typography variant='h6'
-              sx={{ mx: 'auto'}}
+            <Typography 
+              variant='h6'
+              align="center"
             >
               Мой словарь
             </Typography>

@@ -2,6 +2,7 @@ import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, G
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
 
 
@@ -38,6 +39,7 @@ function ProfileStudentCourse ({favorite}) {
         sx={{mx: 'auto'}}
         title={favorite.course_name}
         
+        
       >
 
         
@@ -48,26 +50,31 @@ function ProfileStudentCourse ({favorite}) {
           height="194"
           image={`/img/courses/${favorite?.course_img}`}
           alt="avatar"
+          
         >
+        
         </CardMedia>
         <CardContent>
-          <Typography>
-            {favorite.course_name}
-          </Typography>
-          <Typography 
-            >
-            Преподаватель: {favorite.teacher_name}
-            <IconButton
+
+        <IconButton
                
                onClick={handleClick}
                
             >
-              <ContactPhoneIcon />
+              <ExpandMoreIcon />
             </IconButton>
-          </Typography>
-          
+
           {open ? 
-          <div style={{'text-align' : 'center'}}>
+          <div>
+
+            <Typography >
+            {favorite.teacher_name}
+           
+            </Typography>
+            <Typography >
+            {favorite.course_description}
+           
+            </Typography>
             <div>
 
                 <a href={`tel:${favorite.teacher_tel}`}>
@@ -77,12 +84,9 @@ function ProfileStudentCourse ({favorite}) {
                 </a>
 
             </div>
-            {/* <div>
-              <a href={`mailto:${favorite.teacher_mail}`}><EmailIcon /></a>
-            </div> */}
           </div>: null}
         </CardContent>
-        <CardActions centered>
+        <CardActions>
           <Button 
           color="success" 
           variant="outlined" 
