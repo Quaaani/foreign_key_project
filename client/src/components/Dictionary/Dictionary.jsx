@@ -8,7 +8,7 @@ function Dictionary ({dictionary}) {
 
     <Grid container
     >
-       <Tooltip title={dictionary?.word_example}>
+       <Tooltip enterDelay={500} leaveDelay={200} title={dictionary?.word_example}>
         <Grid item xs={3} sx={{ mx: 'auto', my: 'auto'}}>
           {dictionary?.word_name}
         </Grid>
@@ -21,7 +21,7 @@ function Dictionary ({dictionary}) {
           {dictionary?.word_translate}
         </Grid>
       </Tooltip>
-      <Grid item xs={1} sx={{ mx: 'auto', my: 'auto'}}>
+      <Grid enterDelay={500} leaveDelay={200} item xs={1} sx={{ mx: 'auto', my: 'auto'}}>
       <IconButton >
         <DeleteForeverIcon />
       </IconButton>
