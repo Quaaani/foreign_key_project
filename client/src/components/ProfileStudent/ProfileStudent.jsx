@@ -1,36 +1,24 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, Typography } from "@mui/material"
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, LinearProgress, Typography } from "@mui/material"
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import Dictionary from "../Dictionary/Dictionary";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 
-// const favorites = [
-//   {
-//     id: 1,
-//     course_name : 'Course A',
-//     course_img : 'photo1.png',
-//     teacher_name : 'Anna',
-//     teacher_tel : '+79997654598',
-//     teacher_mail : 'anna@mail.kz',
-//   },
-//   {
-//     id: 2,
-//     course_name : 'Course B',
-//     course_img : 'photo2.png',
-//     teacher_name : 'Galina',
-//     teacher_tel : '+79215437786',
-//     teacher_mail : 'galina@ya.ua',
-//   }
-// ]
+const progress = [{
+  scores: 170,
+  next_level: 'B'
+  }, 
+  {
+  scores: 50,
+  next_level: 'C'  
+  }]
 
 function ProfileStudent () {
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
   const { dictionary } = useSelector((state) => state.dictionariesReducer)
 
-  console.log('FAVORITES => ', favorites)
-  console.log('Dictionary JSX =>', dictionary);
-  console.log('SESSION PROFILE =>', session);
-
+    
   return (
     <Container>
       <Grid container
@@ -101,8 +89,37 @@ function ProfileStudent () {
             </Typography>
           </CardContent>
         </Grid>
-      </Grid>
+        <Grid item
+          xs={4}
+          md={4}>
+            
+             
+              
+              {progress[1].scores > 200 ? 
+                <Grid >
+                  <Typography>
+                    Следующий уровень '{progress[1].next_level}'
+                  </Typography> 
+                  <LinearProgress sx={{height: 10}} variant="determinate" color="secondary" value={progress[1].scores/4} />
+                  <Typography variant="caption" color="text.secondary">
+                   {progress[1].scores/4}%
+                  </Typography> 
+                </Grid>: 
+                <Grid > 
+                  <Typography>
+                    Следующий уровень '{progress[0].next_level}'
+                  </Typography> 
+                  <LinearProgress sx={{height: 10}} variant="determinate" color="secondary" value={progress[0].scores/2} />
+                  <Typography variant="caption" color="text.secondary">
+                    {progress[0].scores/2}%
+                  </Typography> 
+                </Grid> }
+             
+              
 
+        </Grid>
+      </Grid>
+    
       <Divider variant="middle" />
        <Grid container 
           spacing={{ xs: 2, md: 3 }}
