@@ -9,6 +9,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
+import ProfileStudent from "../ProfileStudent/ProfileStudent";
 import Feedback from "../Feedback/Feedback";
 import ImgBlock from "../ImgBlock/ImgBlock";
 
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<ProfileStudent />} />
         </Routes>
         <Footer />
       </BrowserRouter>
