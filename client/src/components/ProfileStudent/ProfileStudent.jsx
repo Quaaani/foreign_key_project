@@ -5,12 +5,8 @@ import Dictionary from "../Dictionary/Dictionary";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 
 const progress = [{
-  scores: 170,
+  scores: 17,
   next_level: 'B'
-  }, 
-  {
-  scores: 50,
-  next_level: 'C'  
   }]
 
 function ProfileStudent () {
@@ -25,7 +21,7 @@ function ProfileStudent () {
         columns={{ xs: 4, sm: 8, md: 12 }}
         spacing={{ xs: 2, md: 3 }}
         marginY={{xs: 4, sm: 6, md: 4}}
-        
+        sx={{ mx: 'auto', my: 'auto'}}
       >
         <Grid item
           xs={4}
@@ -52,6 +48,7 @@ function ProfileStudent () {
           xs={2}
           sm={2}
           md={2}
+          sx={{ mx: 'auto', my: 'auto'}}
         >
           <CardContent>
             <Typography variant="h6">
@@ -73,6 +70,7 @@ function ProfileStudent () {
           xs={2}
           sm={2}
           md={2}
+          sx={{ mx: 'auto', my: 'auto'}}
         >
           <CardContent>
             <Typography variant="h6">
@@ -91,27 +89,28 @@ function ProfileStudent () {
         </Grid>
         <Grid item
           xs={4}
-          md={4}>
-            
-             
+          md={4}
+          sm={4}
+          sx={{ mx: 'auto', my: 'auto'}}
+        >     
               
-              {progress[1].scores > 200 ? 
+              {Number(session?.user_level) < 400 ? 
                 <Grid >
                   <Typography>
-                    Следующий уровень '{progress[1].next_level}'
+                    На пути к гуру ЛИНГВИСТИКИ 
                   </Typography> 
-                  <LinearProgress sx={{height: 10}} variant="determinate" color="secondary" value={progress[1].scores/4} />
+                  <LinearProgress sx={{height: 15}} variant="determinate" color="secondary" value={Number(session?.user_level)/4} />
                   <Typography variant="caption" color="text.secondary">
-                   {progress[1].scores/4}%
+                   {Number(session?.user_level)/4}%
                   </Typography> 
                 </Grid>: 
                 <Grid > 
                   <Typography>
-                    Следующий уровень '{progress[0].next_level}'
+                    Поздравляю! ТЫ стал Гуру ЛИНГВИСТИКИ 
                   </Typography> 
-                  <LinearProgress sx={{height: 10}} variant="determinate" color="secondary" value={progress[0].scores/2} />
+                  <LinearProgress sx={{height: 15}} variant="determinate" color="secondary" value={100} />
                   <Typography variant="caption" color="text.secondary">
-                    {progress[0].scores/2}%
+                    {100}%
                   </Typography> 
                 </Grid> }
              
