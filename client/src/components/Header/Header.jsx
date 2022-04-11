@@ -51,8 +51,6 @@ const Header = () => {
   };
 
 
-
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -163,7 +161,9 @@ const Header = () => {
                   <Avatar alt="Remy Sharp" src={`/img/avatars/${session.user_avatar}`} />
                 </IconButton>
               </Tooltip>
-              <div onClick={logoutClick}>Logout</div>
+              <Button variant="contained" color="error" size="small" onClick={logoutClick}
+                sx={{margin: "1vw"}}
+              >Logout</Button>
               <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar"

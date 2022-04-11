@@ -34,7 +34,8 @@ function Footer(props) {
             <Grid item xs={12} sm={4}>
               <Box className={styles.myLink} borderBottom={1}>Help</Box>
               <Box className={styles.myLink}>
-                <Link className={styles.curLink} href="/" color="inherit">
+                <Link className={styles.curLink} href="/" color="inherit"
+                >
                   Contact
                 </Link>
               </Box>

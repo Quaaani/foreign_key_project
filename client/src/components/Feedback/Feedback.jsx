@@ -7,6 +7,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { Link } from "react-router-dom";
+
+import { useSelector } from 'react-redux';
 
 import { makeStyles } from "@mui/styles";
 
@@ -108,6 +111,9 @@ const steps = [
 function Feedback(props) {
   const styles = useStyles()
 
+
+  const { session } = useSelector((state) => state.sessionReducer);
+
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = steps.length;
@@ -180,6 +186,13 @@ function Feedback(props) {
           }
         />
       </Box>
+      {session && (
+        <Link to="/feedback">
+          <Button variant="contained" sx={{marginTop: "3vw"}}>Оставить отзыв</Button>
+        </Link>
+      ) }
+        
+        
     </div>
   );
 }
