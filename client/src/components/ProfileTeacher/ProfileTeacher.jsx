@@ -14,7 +14,7 @@ function ProfileTeacher () {
         <Grid item
           xs={6}
           sm={2}
-          md={5}
+          md={6}
           sx={{ mx: 'auto', my: 'auto'}}
         >
           

@@ -68,7 +68,7 @@ function ProfileStudentCourse ({favorite}) {
           <div>
 
             <Typography >
-            {favorite.teacher_name}
+            {favorite.course_teacher}
            
             </Typography>
             <Typography >
@@ -77,10 +77,10 @@ function ProfileStudentCourse ({favorite}) {
             </Typography>
             <div>
 
-                <a href={`tel:${favorite.teacher_tel}`}>
+                <a href={`tel:${favorite.course_phone}`}>
                 <PhoneIphoneIcon />
                 </a> 
-                <a href={`mailto:${favorite.teacher_mail}`}><EmailIcon />
+                <a href={`mailto:${favorite.course_email}`}><EmailIcon />
                 </a>
 
             </div>
