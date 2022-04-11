@@ -6,16 +6,15 @@ import CoursesCard from '../CoursesCard/CoursesCard';
 import CoursesList from '../CoursesList/CoursesList';
 import Feedback from '../Feedback/Feedback';
 import ImgBlock from "../ImgBlock/ImgBlock";
-
 import TestLevel from '../TestLevel/TestLevel'
-
 import StatisticList from '../StatisticList/StatisticList'
 import Translator from '../Translator/Translator';
 
 
 // Стили
 import style from './Home.module.css'
-import Example from '../Example/Example';
+import StudyList from "../StudyList/StudyList";
+
 
 function Home(props) {
   const dispatch = useDispatch()
@@ -26,18 +25,36 @@ function Home(props) {
     <div>
       <ImageButton />
 
+
+      <div>
+        {/* <TestLevel /> */}
+
       <div id='TestingComponents'>
         <Translator />
       </div>
 
       <div>
+
         <StatisticList />
         <CoursesList />
+          <StudyList />
         <Feedback />
         <ImgBlock />
+
+
+
+
+          {/*<Container  sx={{width: "70vw"}}>*/}
+
+
       </div>
 
+
     </div>
+
+    </div>
+
+
   );
 }
 

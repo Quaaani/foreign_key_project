@@ -51,7 +51,7 @@ function ImageButton(props) {
 
     return (
         <Paper className={classes.mainFeaturesPost}
-        sx={{ "background-image": `url(/img/HomePhoto/temp.jpg)`}}>
+        sx={{ "background-image": `url(/img/HomePhoto/test.gif)`}}>
             <Container fixed>
                 <Grid container className={classes.buttonCenter}>
                     <Grid item md={8}>
@@ -62,18 +62,12 @@ function ImageButton(props) {
                             color="inherit"
                             gutterBottom
                             >
-                                Key to your successful communication
                             </Typography>
                             <Typography
                                 component="h5"
                                 color="inherit"
                                 paragraph
                             >
-                                <ul>
-                                    <li>Избранные курсы</li>
-                                    <li>Квалифицированные специалисты</li>
-                                    <li>Эффективные задания</li>
-                                </ul>
                             </Typography>
                         </div>
                     </Grid>
