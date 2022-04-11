@@ -51,7 +51,7 @@ function ImageButton(props) {
 
     return (
         <Paper className={classes.mainFeaturesPost}
-        sx={{ "background-image": `url(/img/HomePhoto/temp.jpg)`}}>
+        sx={{ "background-image": `url(/img/HomePhoto/test.gif)`}}>
             <Container fixed>
                 <Grid container className={classes.buttonCenter}>
                     <Grid item md={8}>

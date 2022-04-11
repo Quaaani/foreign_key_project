@@ -12,6 +12,7 @@ import StatisticList from '../StatisticList/StatisticList'
 
 // Стили
 import style from './Home.module.css'
+import StudyList from "../StudyList/StudyList";
 
 function Home(props) {
   const dispatch = useDispatch()
@@ -26,7 +27,8 @@ function Home(props) {
 
           <Container  sx={{width: "70vw"}}>
               <div  sx={{my: "auto"}}>
-                    <TestLevel />
+                    {/*<TestLevel />*/}
+                  <StudyList />
                   <StatisticList />
                   <CoursesList />
 
