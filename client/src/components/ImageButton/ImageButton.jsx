@@ -77,6 +77,14 @@ function ImageButton(props) {
                             </Typography>
                         </div>
                     </Grid>
+
+                    {/* <div sx={{"z-index": "2000"}}>
+                      <video controls muted="muted" autoplay="autoplay" loop width="920px">
+                        <source src="/img/video.site.mp4"
+                          type="video/mp4"/>
+                      </video>
+                    </div>
+                     */}
                     <Grid item className={classes.ourBtn}>
                         <Button onClick={handleChange} variant="contained" color="secondary" className={classes.btn}>
                             Начать обучение

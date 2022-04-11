@@ -13,18 +13,18 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC';
 import axios from '../../axios/axios'
 import { axiosInitFavoritesAAC } from '../../redux/asyncActionCreators/favoritesAAC';
 import { axiosInitDictionaryAAC } from '../../redux/asyncActionCreators/dictionariesAAC';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
   const dispatch = useDispatch();
   const { useEffect } = React
+  const navigate = useNavigate();
   
   const { session } = useSelector((state) => state.sessionReducer);
 
@@ -42,10 +42,13 @@ const Header = () => {
   // Logout Функция
   const logoutClick = async (event) => {
     await dispatch(axiosLogoutUserAAC());
+    handleCloseUserMenu()
+    navigate('/home')
   };
 
   // Profile Функция
   const profileClick = async (event) => {
+    window.scrollTo(0, 0);
     await dispatch(axiosInitFavoritesAAC())
     await dispatch(axiosInitDictionaryAAC())
   };
@@ -71,20 +74,18 @@ const Header = () => {
   return (
     <>
     <AppBar style={{zIndex: '100',
-      position: 'relative'}}>
+      position: 'sticky', backgroundColor: "rgba(0,0,0, .55)"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            LOGO
-          </Typography>
-
-          <Link to={'/profile'} onClick={profileClick}>
-            Profile
+          <Link to="/home" style={{textDecoration: "none", color: "inherit"}}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            >
+              LOGO
+            </Typography>
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -116,11 +117,30 @@ const Header = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              <a href='#stat' style={{"textDecoration": "none", "color": "inherit"}}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Статистика</Typography>
                 </MenuItem>
-              ))}
+              </a>
+              
+              <a href='#courses' style={{"textDecoration": "none", "color": "inherit"}}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Курсы</Typography>
+                </MenuItem>
+              </a>
+
+              <a href='#feedback' style={{"textDecoration": "none", "color": "inherit"}}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Отзывы</Typography>
+                </MenuItem>
+              </a>
+
+              <a href='#gallery' style={{"textDecoration": "none", "color": "inherit"}}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Галерея</Typography>
+                </MenuItem>
+              </a>
+
             </Menu>
           </Box>
           <Typography
@@ -142,15 +162,42 @@ const Header = () => {
                 },
               }}
             >
-              {pages.map((page) => (
+
+              <a href='#stat' style={{"textDecoration": "none", "color": "inherit"}}>
                 <Button
-                  key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                  {page}
+                  Статистика
                 </Button>
-              ))}
+              </a>
+
+              <a href='#courses' style={{"textDecoration": "none", "color": "inherit"}}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Курсы
+                </Button>
+              </a>
+
+              <a href='#feedback' style={{"textDecoration": "none", "color": "inherit"}}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Отзывы
+                </Button>
+              </a>
+
+              <a href='#gallery' style={{"textDecoration": "none", "color": "inherit"}}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Галерея
+                </Button>
+              </a>
             </Box>
           </Container>
 
@@ -161,9 +208,6 @@ const Header = () => {
                   <Avatar alt="Remy Sharp" src={`/img/avatars/${session.user_avatar}`} />
                 </IconButton>
               </Tooltip>
-              <Button variant="contained" color="error" size="small" onClick={logoutClick}
-                sx={{margin: "1vw"}}
-              >Logout</Button>
               <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar"
@@ -180,11 +224,14 @@ const Header = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting, index) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Link to={'/profile'} onClick={profileClick}  style={{textDecoration: "none", color: "inherit"}}>
+                    <Typography textAlign="center">Профиль</Typography>
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={logoutClick}>
+                  <Typography textAlign="center">Выйти</Typography>
+                </MenuItem>
               </Menu>
             </Box>
           ) : (
@@ -199,7 +246,7 @@ const Header = () => {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Registration</Typography>
+                  <Typography textAlign="center">Регистрация</Typography>
                 </MenuItem>
               </Link>
 
@@ -213,7 +260,7 @@ const Header = () => {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Login</Typography>
+                  <Typography textAlign="center">Вход</Typography>
                 </MenuItem>
               </Link>
             </>

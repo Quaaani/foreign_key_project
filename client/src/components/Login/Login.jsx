@@ -75,7 +75,7 @@ function Login(props) {
       onClick={(event) => event.stopPropagation()}
     >
         <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, mx: "auto", textAlign: "center"}}>
-          Login
+          Вход
         </Typography>
         <FormControl
         onSubmit={handleSubmit(onFormSubmit)}
@@ -107,8 +107,8 @@ function Login(props) {
             name="user_password"
           />
           <div className={styles.btnWrapper}>
-            <Button sx={{width: "150px"}} variant="contained" type="submit">Login</Button>
-            <Button sx={{width: "150px"}} variant="contained" color="error" onClick={()=> navToHome("/")}>Cancel</Button>
+            <Button sx={{width: "150px"}} variant="contained" type="submit">Войти</Button>
+            <Button sx={{width: "150px"}} variant="contained" color="error" onClick={()=> navToHome("/")}>Отмена</Button>
           </div>
           {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
             <AlertTitle>Ошибка</AlertTitle>

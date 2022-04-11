@@ -72,7 +72,7 @@ function FeedbackForm(props) {
       sx={{ maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, flexGrow: 1 }}
       onClick={(event) => event.stopPropagation()}
     >
-        <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, mx: "auto", textAlign: "center"}}>
+        <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, marginBottom: 0, mx: "auto", textAlign: "center"}}>
           Отзыв
         </Typography>
         <FormControl

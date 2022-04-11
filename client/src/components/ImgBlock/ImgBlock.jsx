@@ -49,7 +49,7 @@ function ImgBlock(props) {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id="gallery">
       <Slider {...settings}>
 
         {images.length > 0 ? images.map(el => (

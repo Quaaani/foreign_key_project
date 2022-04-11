@@ -18,6 +18,7 @@ function CoursesList () {
 
   return (
     <Grid
+      id='courses'
       sx={{padding: "4vw"}}
       container
       // direction="row"

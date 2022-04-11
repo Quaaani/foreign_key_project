@@ -127,7 +127,7 @@ function Feedback(props) {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='feedback'>
       <h2 className={styles.textHeader}>Feedback</h2>
       <Box className={styles.carouselBox} sx={{ maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, flexGrow: 1 }}>
         <Paper

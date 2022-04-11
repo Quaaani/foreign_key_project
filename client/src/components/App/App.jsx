@@ -20,6 +20,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
