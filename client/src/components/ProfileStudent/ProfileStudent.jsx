@@ -4,11 +4,6 @@ import { useSelector } from "react-redux";
 import Dictionary from "../Dictionary/Dictionary";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
 
-const progress = [{
-  scores: 17,
-  next_level: 'B'
-  }]
-
 function ProfileStudent () {
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
