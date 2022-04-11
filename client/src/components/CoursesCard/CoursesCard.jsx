@@ -1,6 +1,21 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
+import {useDispatch, useSelector} from "react-redux";
+import {axiosInitStudylistAAC} from "../../redux/asyncActionCreators/studylistAAC";
+
 
 function CoursesCard ({course}) {
+  const dispatch = useDispatch()
+  const { studylist } = useSelector((state) => state.studylistReducer)
+
+  const startCourse = async () => {
+    try{
+      await dispatch(axiosInitStudylistAAC(course.id))
+    } catch (error){
+      console.log('Studylist error', {...error})
+    }
+
+  }
+  console.log('Это стадилист', studylist)
 
   return (
 
@@ -48,7 +63,7 @@ function CoursesCard ({course}) {
 
               }}
             >
-              <Button variant="outlined" color="success" sx={{
+              <Button onClick={startCourse} variant="outlined" color="success" sx={{
                 flexGrow: '1',
               }}>ГАЗУЙ</Button>
           </CardActions>
