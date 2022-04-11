@@ -3,68 +3,98 @@ drank
 drink
 is drinking
 drinks
-is drinking
+no
+no
+yes
+no
 10
 There are ______ magazines on the shelf.
 any
 some
 a
 the
-some
+no
+yes
+no
+no
 10
 No news ______ good news.
 is
 are
 —
 am
-is
+yes
+no
+no
+no
 10
 He could open the lock ______.
 easy
 most easy
 easily
 easiest
-easily
+no
+no
+yes
+no
 10
 Their house is ______ than ours.
 much more smaller
 the smallest
 much smallest
 much smaller
-much smaller
+no
+no
+no
+yes
 10
 If you don't know the meaning of this word, _____ in the dictionary.
 chase it up
 search it out
 look it up
 find it out
-look it up
+no
+no
+yes
+no
 20
 This time tomorrow our family ______ on the beach of the Mediterranean sea.
 will lie
 is lying
 will be lying
 will have lain
-will be lying
+no
+no
+yes
+no
 20
 I ______ him since we ______ school.
 haven`t seen / left
 didn`t see / left
 didn`t see / have left
 haven`t seen / have left
-haven`t seen / left
+yes
+no
+no
+no
 20
 I don`t feel like _____ this article today.
 to read and translate
 for reading and translating
 read and translate
 reading and translating
-reading and translating
+no
+no
+no
+yes
 30
 You _____ me a postcard, but you didn`t.
 could send
 could be sent
 could have sent
 could had sent
-could have sent
+no
+no
+yes
+no
 30

@@ -14,6 +14,7 @@ import StatisticList from '../StatisticList/StatisticList'
 
 // Стили
 import style from './Home.module.css'
+import Example from '../Example/Example';
 
 function Home(props) {
   const dispatch = useDispatch()

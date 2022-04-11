@@ -10,13 +10,14 @@ module.exports = {
     const coursesArr = coursesFs.split('\n')
     const coursesSeedArr = []
 
-    for (let i = 0; i < coursesArr.length; i += 4) {
+    for (let i = 0; i < coursesArr.length; i += 5) {
       const coursesSeed = {}
       if (coursesArr[i] !== '') {
         coursesSeed.course_name = coursesArr[i]
         coursesSeed.course_level = coursesArr[i + 1]
         coursesSeed.course_description = coursesArr[i + 2]
-        coursesSeed.course_img = coursesArr[i + 3]
+        coursesSeed.user_id = coursesArr[i + 3]
+        coursesSeed.course_img = coursesArr[i + 4]
         coursesSeed.createdAt = new Date()
         coursesSeed.updatedAt = new Date()
 

@@ -1,12 +1,15 @@
 Course A for Beginners
 Level A
 Description1 You'll like it!
+4
 photo1.png
 Course B for Intermediate
 Level B
 Description2 Yeah you like it!
+5
 photo2.png
 Course C for Advanced
 Level C
 Description3 That's a real love!
+6
 photo3.png

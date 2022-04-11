@@ -10,7 +10,7 @@ module.exports = {
     const tlevelArr = tlevelFs.split('\n')
     const tlevelSeedArr = []
 
-    for (let i = 0; i < tlevelArr.length; i += 7) {
+    for (let i = 0; i < tlevelArr.length; i += 10) {
       const tlevelSeed = {}
       if (tlevelArr[i] !== '') {
         tlevelSeed.tlevel_question = tlevelArr[i]
@@ -18,8 +18,11 @@ module.exports = {
         tlevelSeed.tlevel_option2 = tlevelArr[i + 2]
         tlevelSeed.tlevel_option3 = tlevelArr[i + 3]
         tlevelSeed.tlevel_option4 = tlevelArr[i + 4]
-        tlevelSeed.tlevel_answer = tlevelArr[i + 5]
-        tlevelSeed.tlevel_price = +tlevelArr[i + 6]
+        tlevelSeed.tlevel_answer1 = tlevelArr[i + 5]
+        tlevelSeed.tlevel_answer2 = tlevelArr[i + 6]
+        tlevelSeed.tlevel_answer3 = tlevelArr[i + 7]
+        tlevelSeed.tlevel_answer4 = tlevelArr[i + 8]
+        tlevelSeed.tlevel_price = +tlevelArr[i + 9]
         tlevelSeed.createdAt = new Date()
         tlevelSeed.updatedAt = new Date()
 
