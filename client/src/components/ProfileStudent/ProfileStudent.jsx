@@ -1,5 +1,4 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, LinearProgress, Typography } from "@mui/material"
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import Dictionary from "../Dictionary/Dictionary";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
@@ -8,9 +7,6 @@ function ProfileStudent () {
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
   const { dictionary } = useSelector((state) => state.dictionariesReducer)
-
-
-  console.log('favorites', favorites);
     
   return (
     <Container>
@@ -91,14 +87,14 @@ function ProfileStudent () {
           sx={{ mx: 'auto', my: 'auto'}}
         >     
               
-              {Number(session?.user_level) < 400 ? 
+              {session?.user_level < 400 ? 
                 <Grid >
                   <Typography align="center">
                     Твой прогресс 
                   </Typography> 
                   <LinearProgress sx={{height: 15}} variant="determinate" color="secondary" value={Number(session?.user_level)/4} />
                   <Typography variant="caption" color="text.secondary">
-                   {Number(session?.user_level)/4}%
+                   {(session?.user_level)/4}%
                   </Typography> 
                 </Grid>: 
                 <Grid > 
