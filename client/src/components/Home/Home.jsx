@@ -8,6 +8,7 @@ import Feedback from '../Feedback/Feedback';
 import ImgBlock from "../ImgBlock/ImgBlock";
 import TestLevel from '../TestLevel/TestLevel'
 import StatisticList from '../StatisticList/StatisticList'
+import Translator from '../Translator/Translator';
 
 
 // Стили
@@ -24,13 +25,22 @@ function Home(props) {
     <div>
       <ImageButton />
 
+
       <div>
         {/* <TestLevel /> */}
+
+      <div id='TestingComponents'>
+        <Translator />
+      </div>
+
+      <div>
+
         <StatisticList />
         <CoursesList />
           <StudyList />
         <Feedback />
         <ImgBlock />
+
 
 
 
@@ -42,7 +52,7 @@ function Home(props) {
 
     </div>
 
-
+    </div>
 
 
   );

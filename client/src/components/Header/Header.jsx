@@ -51,8 +51,6 @@ const Header = () => {
   };
 
 
-
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -85,9 +83,13 @@ const Header = () => {
             LOGO
           </Typography>
 
+        {session?.user_email ?
           <Link to={'/profile'} onClick={profileClick}>
             Profile
           </Link>
+          : null 
+        }
+
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
