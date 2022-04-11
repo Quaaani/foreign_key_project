@@ -19,7 +19,7 @@ router.route('/')
     for (let i = 0; i < courses.length; i++) {
       for (let j = 0; j < users.length; j++) {
         if (courses[i].user_id === users[j].id) {
-          courses[i].course_teacher = users[j].user_firstName
+          courses[i].course_teacher = users[j].user_firstName + ' ' + users[j].user_lastName
           courses[i].course_email = users[j].user_email
           courses[i].course_phone = users[j].user_phone
         }

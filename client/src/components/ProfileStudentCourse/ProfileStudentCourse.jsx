@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton, CardHeader } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton, CardHeader, Divider } from "@mui/material";
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
@@ -66,24 +66,34 @@ function ProfileStudentCourse ({favorite}) {
 
           {open ? 
           <div>
-
-            <Typography >
-            {favorite.course_teacher}
-           
+            <Typography align="center">
+              {favorite.course_description}
             </Typography>
-            <Typography >
-            {favorite.course_description}
-           
-            </Typography>
-            <div>
 
-                <a href={`tel:${favorite.course_phone}`}>
+            <Divider variant="middle" />
+
+            <Typography variant="body2" align="center">
+              Автор курса:
+            </Typography>
+
+            <Typography align="center">
+              {favorite.course_teacher}
+            </Typography>
+            
+            <Typography align="center">
+                  
+              <a href={`tel:${favorite.course_phone}`}>
                 <PhoneIphoneIcon />
-                </a> 
-                <a href={`mailto:${favorite.course_email}`}><EmailIcon />
-                </a>
+              </a>
 
-            </div>
+              <a href={`mailto:${favorite.course_email}`}>
+                <EmailIcon />
+              </a>
+
+            </Typography>
+
+
+
           </div>: null}
         </CardContent>
         <CardActions>
