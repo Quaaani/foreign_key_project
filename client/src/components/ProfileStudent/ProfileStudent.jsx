@@ -113,6 +113,7 @@ function ProfileStudent () {
       </Grid>
     
       <Divider variant="middle" />
+      
        <Grid container 
           spacing={{ xs: 2, md: 3 }}
           marginY={{xs: 4, sm: 6, md: 4}}

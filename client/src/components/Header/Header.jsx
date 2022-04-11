@@ -87,7 +87,7 @@ const Header = () => {
           <Link to={'/profile'} onClick={profileClick}>
             Profile
           </Link>
-          : null  
+          : null 
         }
 
 
