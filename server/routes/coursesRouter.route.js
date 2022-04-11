@@ -55,8 +55,6 @@ router.route('/:course_id')
     course.first_lesson_data = lesson[0]
     course.second_lesson_data = lesson[1]
 
-    console.log('course =>', course)
-
     res.status(200).json(course)
   })
 
