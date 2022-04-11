@@ -10,7 +10,7 @@ function ProfileStudent () {
   const { dictionary } = useSelector((state) => state.dictionariesReducer)
 
 
-  console.log('favorites', dictionary);
+  console.log('favorites', favorites);
     
   return (
     <Container>
@@ -77,7 +77,7 @@ function ProfileStudent () {
               {session?.user_lastName[0].toUpperCase() + session?.user_lastName.slice(1)}
             </Typography>
             <Typography variant="h6">
-              {session?.user_role}
+              Студент
             </Typography>
             <Typography variant="h6">
               {session?.user_level}

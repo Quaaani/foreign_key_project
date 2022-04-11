@@ -20,6 +20,16 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
+      user_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      },
       course_img: {
         type: Sequelize.TEXT
       },
