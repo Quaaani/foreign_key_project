@@ -23,7 +23,7 @@ function StatisticList(props) {
   const classes = useStyles()
 
     return (
-        <div className={classes.statList} sx={{}}>
+        <div id='stat' className={classes.statList} sx={{}}>
             {stat ? stat.map(stat => <StatisticCard key={stat.id} stat={stat} />) : <div>No data</div>}
         </div>
     );

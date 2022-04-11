@@ -31,13 +31,13 @@ function Home(props) {
 
       <div id='TestingComponents'>
         <Translator />
+          <StudyList />
       </div>
 
       <div>
 
         <StatisticList />
         <CoursesList />
-          <StudyList />
         <Feedback />
         <ImgBlock />
 

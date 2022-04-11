@@ -77,7 +77,7 @@ function Reg(props) {
       
     >
         <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, mx: "auto", textAlign: "center"}}>
-          Registration
+          Регистрация
         </Typography>
         <FormControl
         onSubmit={handleSubmit(onFormSubmit)}
@@ -143,8 +143,8 @@ function Reg(props) {
           </FormControl>
 
             <div className={styles.btnWrapper}>
-              <Button sx={{width: "150px"}} variant="contained" type="submit">Registration</Button>
-              <Button sx={{width: "150px"}} variant="contained" color="error" onClick={() => navigate('/')}>Cancel</Button>
+              <Button sx={{width: "150px"}} variant="contained" type="submit">Регистрация</Button>
+              <Button sx={{width: "150px"}} variant="contained" color="error" onClick={() => navigate('/')}>Отмена</Button>
             </div>
 
             
