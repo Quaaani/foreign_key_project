@@ -26,6 +26,7 @@ function Home(props) {
       <ImageButton />
 
       <div >
+        <Example />
         {/* <TestLevel /> */}
         <StatisticList />
         <CoursesList />
