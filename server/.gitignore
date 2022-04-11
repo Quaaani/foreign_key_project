@@ -1,7 +1,7 @@
 # Sessions
 sessions/
 .idea/
-
+.DS_Store
 
 # Logs
 logs
