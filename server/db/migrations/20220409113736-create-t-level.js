@@ -28,7 +28,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      tlevel_answer: {
+      tlevel_answer1: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      tlevel_answer2: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      tlevel_answer3: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      tlevel_answer4: {
         allowNull: false,
         type: Sequelize.TEXT
       },

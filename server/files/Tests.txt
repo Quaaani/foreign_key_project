@@ -1,0 +1,330 @@
+1
+1
+1. Как переводится broom?
+туча
+метла
+блокнот
+ручка
+no
+yes
+no
+no
+1
+1
+2. Как переводится magician?
+ворон
+демон
+сумерки
+волшебник
+no
+no
+no
+yes
+1
+1
+3. Как переводится witchcraft?
+колдовство
+зельеварение
+ремесло
+тёмные силы
+yes
+no
+no
+no
+1
+1
+4. Как переводится owl?
+кошка
+сова
+змея
+жаба
+no
+yes
+no
+no
+1
+1
+5. Как переводится potion?
+зелье
+настойка
+вода
+порция
+yes
+no
+no
+no
+1
+2
+1. `Harry Potter` is a series of seven fantasy novels written by the British author J.K. Rowling. The main storyline ____________ Harry`s quest to overcome the evil dark wizard Lord Voldemort.
+concerning
+has been concerned
+concerns
+is concerned
+no
+no
+yes
+no
+1
+2
+2. Since the release of the first novel `Harry Potter and Philosopher`s Stone`, the books ____________ immense popularity and commercial success worldwide.
+gaining
+have gained
+gains
+is gained
+no
+yes
+no
+no
+1
+2
+3. The series ____________ into 67 languages, including Russian.
+translation
+translates
+translator
+has been translated
+no
+no
+no
+yes
+1
+2
+4. By 2010, the first six books ____________ into films by Warner Bros.
+had been made
+make
+is making
+make up
+yes
+no
+no
+no
+1
+2
+5. The films are popular among people of all ages. It is the ____________ grossing film series of all time.
+high
+higher
+height
+highest
+no
+no
+no
+yes
+2
+3
+1. Вставьте артикль. Once there lived __ man who was very fond of gold.
+a
+an
+the
+-
+yes
+no
+no
+no
+2
+3
+2. Вставьте артикль. He used to say, "While I have my gold, I am __ happiest man in the world."
+a
+an
+the
+-
+no
+no
+yes
+no
+2
+3
+3. Вставьте артикль. And so all his life he saved __ money.
+a
+an
+the
+-
+no
+no
+no
+yes
+2
+3
+4. Вставьте артикль. One day he was travelling in __ desert of North Africa.
+a
+an
+the
+-
+no
+no
+yes
+no
+2
+3
+5. Вставьте артикль. He had no __ food or __ water.
+a
+an
+the
+-
+no
+no
+no
+yes
+2
+4
+1. Как переводится statue?
+яблоко
+статуя
+статистика
+ковш
+no
+yes
+no
+no
+2
+4
+2. Как переводится fairy?
+эльф
+киборг
+фея
+гном
+no
+no
+yes
+no
+2
+4
+3. Как переводится gold?
+бронза
+серебро
+медь
+золото
+no
+no
+no
+yes
+2
+4
+4. Как переводится touch?
+прикосновение
+заседание
+собеседование
+написание
+yes
+no
+no
+no
+2
+4
+5. Как переводится magician?
+ворон
+демон
+сумерки
+волшебник
+no
+no
+no
+yes
+3
+5
+1. What is React?
+React is a front-end JavaScript library
+React is framework
+React is Programm language
+React is a philsophy
+yes
+no
+no
+no
+3
+5
+2. What is JSX?
+Nissan JSX
+Jordan Sexy Xxxtentacion
+JSX is a shorthand for JavaScript XML
+JSX is a library for React
+no
+no
+yes
+no
+3
+5
+3. What is Props?
+Props stands for propeller
+Props is the shorthand for Properties in React 
+Props is special trait of programmer`s character
+Props is group of professional programmers in Google
+no
+yes
+no
+no
+3
+5
+4. What is a state in React?
+State Texas
+Seperated groups of Props
+States are the source of data and must be kept as simple as possible
+Reactive propeller by Elon Musk
+no
+no
+yes
+no
+3
+5
+5. What is HOC?
+High Open Community
+Heroes of Costa-Rica
+Higher Order Compitents
+Higher Order Component
+no
+no
+no
+yes
+3
+6
+1. Excessive computer use can become really ______________.
+addict
+addictive
+addiction
+addictively
+no
+yes
+no
+no
+3
+6
+2. Wireless connection to the Internet has brought the world closer to people making them to ______________ withdraw into an artificial world of communication.
+gradual
+gradually
+grade
+graduation
+no
+yes
+no
+no
+3
+6
+3. Lots of young people find virtual reality more attractive than their everyday ______________.
+life
+lifes
+lives
+live
+no
+no
+yes
+no
+3
+6
+4. This of course leads to ______________ effects.
+desirable
+desire
+indesirable
+undesirable
+no
+no
+no
+yes
+3
+6
+5. Teenagers become ______________ in their everyday lives.
+irresponsible
+unresponsible
+responsive
+response
+yes
+no
+no
+no

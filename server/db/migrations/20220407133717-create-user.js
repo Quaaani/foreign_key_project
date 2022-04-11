@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       user_level: {
-        type: Sequelize.TEXT
+        type: Sequelize.INTEGER
       },
       user_lexicon: {
         type: Sequelize.TEXT

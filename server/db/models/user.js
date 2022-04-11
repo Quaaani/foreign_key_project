@@ -9,9 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Favorite, Dictionary }) {
+    static associate({ Favorite, Dictionary, Course }) {
       User.hasMany(Favorite, { foreignKey: 'user_id' })
       User.hasMany(Dictionary, { foreignKey: 'user_id' })
+      User.hasMany(Course, { foreignKey: 'user_id' })
     }
   }
   User.init({
@@ -57,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
     user_level: {
-      type: DataTypes.TEXT
+      type: DataTypes.INTEGER
     },
     user_lexicon: {
       type: DataTypes.TEXT

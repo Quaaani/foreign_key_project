@@ -1,12 +1,15 @@
-Course A for Beginners
+Harry Potter
 Level A
-Description1 You'll like it!
+Окунитесь в атмосферу волшебства с любимыми героями из детства!
+4
 photo1.png
-Course B for Intermediate
+Articles
 Level B
-Description2 Yeah you like it!
+Закрепите важную тему "Артикли" на примере известных притч!
+5
 photo2.png
-Course C for Advanced
+React interview
 Level C
-Description3 That's a real love!
+Подготовьтесь перед реальным собеседованием в Google!
+6
 photo3.png

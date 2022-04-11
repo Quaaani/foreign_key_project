@@ -1,13 +1,13 @@
 import React from 'react';
 import {TextField, Button} from "@mui/material";
 
+const taskRefer = {refer: "LessonID1.png"}
 
-
-function StudyListTaskForm(props) {
+function StudyListTaskForm({lesson_img}) {
     return (
         <div>
             <div>
-               <img src="/img/lessons/LessonID1.png" width="750px"/>
+               <img src={`/img/lessons/${lesson_img}`} width="750px"/>
             </div>
             <div>
                 <TextField

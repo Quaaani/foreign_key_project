@@ -62,18 +62,12 @@ function ImageButton(props) {
                             color="inherit"
                             gutterBottom
                             >
-                                Key to your successful communication
                             </Typography>
                             <Typography
                                 component="h5"
                                 color="inherit"
                                 paragraph
                             >
-                                <ul>
-                                    <li>Избранные курсы</li>
-                                    <li>Квалифицированные специалисты</li>
-                                    <li>Эффективные задания</li>
-                                </ul>
                             </Typography>
                         </div>
                     </Grid>

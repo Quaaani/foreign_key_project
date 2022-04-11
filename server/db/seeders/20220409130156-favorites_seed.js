@@ -33,6 +33,36 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        user_id: 7,
+        course_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 7,
+        course_id: 3,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 8,
+        course_id: 3,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 9,
+        course_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 10,
+        course_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {})
   },
 
