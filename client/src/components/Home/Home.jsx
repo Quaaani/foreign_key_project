@@ -14,6 +14,7 @@ import Translator from '../Translator/Translator';
 // Стили
 import style from './Home.module.css'
 import StudyList from "../StudyList/StudyList";
+import MapList from "../MapList/MapList";
 
 
 function Home(props) {
@@ -27,11 +28,10 @@ function Home(props) {
 
 
       <div>
-        {/* <TestLevel /> */}
+         <TestLevel />
 
       <div id='TestingComponents'>
-        <Translator />
-          <StudyList />
+
       </div>
 
       <div>
