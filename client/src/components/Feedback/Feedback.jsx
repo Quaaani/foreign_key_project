@@ -1,17 +1,10 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import { useTheme } from "@mui/material/styles";
-import MobileStepper from "@mui/material/MobileStepper";
-import { Paper, Avatar } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import React, { useEffect, useState } from "react";
+import { Box,  useTheme, MobileStepper, Paper, Avatar, Typography, Button } from "@mui/material";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from "@mui/styles";
+import { axiosInitFeedback } from "../../redux/asyncActionCreators/feedbackAAC";
 
 
 const useStyles = makeStyles(() => ({
@@ -109,14 +102,26 @@ const steps = [
 ];
 
 function Feedback(props) {
-  const styles = useStyles()
-
 
   const { session } = useSelector((state) => state.sessionReducer);
+  const { feedbacks } = useSelector((state) => state.feedbackReducer);
 
+  console.log(feedbacks);
+
+  const styles = useStyles()
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = steps.length;
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(axiosInitFeedback())
+  },
+  [dispatch])
+
+
+
+  const [activeStep, setActiveStep] = useState(0);
+  const maxSteps = feedbacks?.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -141,11 +146,11 @@ function Feedback(props) {
             bgcolor: "background.default",
           }}
           className={styles.authorBox} 
-        > <Avatar className={styles.ava} src="/broken-image.jpg" />
-          <Typography className={styles.authorName}>{steps[activeStep].label}</Typography>
+        > <Avatar className={styles.ava} src={ feedbacks && `./img/avatars/${feedbacks[activeStep].user_avatar}`} />
+          <Typography className={styles.authorName}>{feedbacks && feedbacks[activeStep]?.user_firstName}</Typography>
         </Paper>
         <Box sx={{ height: 255, maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, p: 2 }} className={styles.feedText}>
-          {steps[activeStep].description}
+          {feedbacks && feedbacks[activeStep].comment}
           
         </Box>
         <MobileStepper

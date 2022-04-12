@@ -52,6 +52,8 @@ function ImageButton(props) {
     return (
         <Paper className={classes.mainFeaturesPost}
         sx={{ "background-image": `url(/img/HomePhoto/test.gif)`}}>
+
+
             <Container fixed>
                 <Grid container className={classes.buttonCenter}>
                     <Grid item md={8}>
@@ -71,14 +73,6 @@ function ImageButton(props) {
                             </Typography>
                         </div>
                     </Grid>
-
-                    {/* <div sx={{"z-index": "2000"}}>
-                      <video controls muted="muted" autoplay="autoplay" loop width="920px">
-                        <source src="/img/video.site.mp4"
-                          type="video/mp4"/>
-                      </video>
-                    </div>
-                     */}
                     <Grid item className={classes.ourBtn}>
                         <Button onClick={handleChange} variant="contained" color="secondary" className={classes.btn}>
                             Начать обучение
@@ -86,6 +80,7 @@ function ImageButton(props) {
                     </Grid>
                 </Grid>
             </Container>
+            
         </Paper>
     );
 }
