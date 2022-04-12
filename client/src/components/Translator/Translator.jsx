@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import axios from 'axios'
+import { Button, Container, FormControl, InputLabel, Input, FormHelperText, Grid, TextareaAutosize, TextField } from '@mui/material';
 
 function Translator(props) {
 
@@ -43,13 +44,55 @@ function Translator(props) {
   };
 
   return (
-    <div>
-      <button onClick={toChangeEN}>С английского на русский</button>
-      <button onClick={toChangeRU}>С русского на английский</button>
+    <Container>
+      
+      <FormControl>
+        <Grid container>
+
+
+        <Grid item>
+          <Button onClick={toChangeEN}>
+          EN -> RU
+          </Button>
+          <Button onClick={toChangeRU}>
+          RU -> EN
+          </Button>
+        </Grid>
+        <Grid item>
+        <TextareaAutosize
+          maxRows={4}
+          minRows={3}
+          aria-label="maximum height"
+          placeholder="Написать текст"
+         
+          style={{ width: 200 }}
+        />
+
+        </Grid>
+        <Grid item>
+        <TextareaAutosize
+          maxRows={4}
+          minRows={3}
+          aria-label="maximum height"
+          
+          defaultValue={word && {word}}
+         
+          style={{ width: 200 }}
+        />
+
+        
+
+        </Grid>
+
+      </Grid>
+
+      </FormControl>
+    
       <button onClick={toTranslate}>Переводчик</button>
+
       <input ref={translate} placeholder="Впишите слово" />
-      {word && <div>{word}</div>}
-    </div>
+
+      </Container>
   );
 }
 

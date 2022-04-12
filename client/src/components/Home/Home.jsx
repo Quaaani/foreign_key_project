@@ -31,7 +31,7 @@ function Home(props) {
 
       <div id='TestingComponents'>
         <Translator />
-          <StudyList />
+        <StudyList />
       </div>
 
       <div>
