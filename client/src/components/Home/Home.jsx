@@ -24,13 +24,9 @@ function Home(props) {
   return (
     <div>
       <ImageButton />
-
-
-      <div>
-        {/* <TestLevel /> */}
-
+      
       <div id='TestingComponents'>
-        <StudyList />
+        
       </div>
 
       <div>
@@ -40,20 +36,9 @@ function Home(props) {
         <Feedback />
         <ImgBlock />
 
-
-
-
           {/*<Container  sx={{width: "70vw"}}>*/}
-
-
       </div>
-
-
     </div>
-
-    </div>
-
-
   );
 }
 
