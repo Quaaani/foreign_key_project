@@ -34,6 +34,7 @@ const Header = () => {
   useEffect(async () => {
     try {
       await dispatch(axiosInitSession());
+      localStorage.clear()
     } catch (error) {
       console.log('/session Error =>', { ...error });
     }
@@ -43,6 +44,7 @@ const Header = () => {
   const logoutClick = async (event) => {
     await dispatch(axiosLogoutUserAAC());
     handleCloseUserMenu()
+    localStorage.clear()
     navigate('/home')
   };
 

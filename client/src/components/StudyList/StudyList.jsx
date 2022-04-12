@@ -5,6 +5,7 @@ import {Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import StudyListTaskForm from "../StudyListTaskForm/StudyListTaskForm";
 import {useSelector} from "react-redux";
+import Translator from '../Translator/Translator';
 
 
 const useStyles = makeStyles(() => ({
@@ -53,7 +54,10 @@ function StudyList(props) {
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
                     <StudyListVideo lesson_video={studylist?.first_lesson_data.lesson_video}/>
-                    <div>Translator</div>
+                    <div>Translator
+                      <Translator />
+                    </div>
+
                 </div>
                 <div className={classes.tasks}>
                     <Typography className={classes.taskText} id="task2">

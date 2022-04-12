@@ -17,44 +17,29 @@ import StudyList from "../StudyList/StudyList";
 import MapList from "../MapList/MapList";
 
 
+
+
 function Home(props) {
   const dispatch = useDispatch()
   const { session } = useSelector(state => state.sessionReducer)
 
 
   return (
-    <div>
+    <>
       <ImageButton />
-
-
-      <div>
-         <TestLevel />
 
       <div id='TestingComponents'>
 
       </div>
 
       <div>
-
         <StatisticList />
         <CoursesList />
         <Feedback />
         <ImgBlock />
-
-
-
-
-          {/*<Container  sx={{width: "70vw"}}>*/}
-
-
+        {/*<Container  sx={{width: "70vw"}}>*/}
       </div>
-
-
-    </div>
-
-    </div>
-
-
+    </>
   );
 }
 

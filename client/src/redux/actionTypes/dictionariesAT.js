@@ -1,1 +1,2 @@
 export const INIT_DICTIONARY = 'INIT_DICTIONARY';
+export const DELETE_WORD = 'DELETE_WORD';
