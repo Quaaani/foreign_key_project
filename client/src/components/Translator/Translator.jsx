@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 
 import axios from 'axios'
-import { Button, Container, FormControl, InputLabel, Input, FormHelperText, Grid, TextareaAutosize, TextField } from '@mui/material';
+import { Button, Container, FormControl, InputLabel, Input, FormHelperText, Grid, TextareaAutosize, TextField, Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function Translator(props) {
 
@@ -48,47 +49,109 @@ function Translator(props) {
       
       <FormControl>
         <Grid container>
-        <Grid item>
-          <Button onClick={toChangeEN}>
-          EN -> RU
-          </Button>
-          <Button onClick={toChangeRU}>
-          RU -> EN
-          </Button>
-        </Grid>
-        <Grid item>
+
+
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header">              
+                <Typography>
+                  Выберите язык
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Button size="small" variant="outlined" onClick={toChangeEN}>
+                EN -> RU
+              </Button>
+
+              <Button size="small" variant="outlined" onClick={toChangeRU}>
+                RU -> EN
+              </Button>
+
+            </AccordionDetails>
+
+          </Accordion>
+
+            <Grid item
+              xs={12}
+              sm={6}
+              md={3}
+              sx={{ mx: 'auto'}}
+            >
+              {/* <Button size="small" variant="outlined" onClick={toChangeEN}>
+                EN -> RU
+              </Button> */}
+            </Grid>
+            <Grid item
+              xs={12}
+              sm={6}
+              md={3}
+              sx={{ mx: 'auto'}}
+            >
+              {/* <Button size="small" variant="outlined" onClick={toChangeRU}>
+                RU -> EN
+              </Button> */}
+            </Grid>  
+
+           </Grid>
+          {/* </Grid> */}
+      <Grid container
+      >
+        <Grid item
+          xs={12}
+          sm={6}
+          md={4}
+          sx={{ mx: 'auto'}}
+          marginY={{xs: 1, sm: 1, md: 1}}
+        >
         <TextareaAutosize
-          maxRows={4}
-          minRows={3}
+          maxRows={10}
+          minRows={6}
           aria-label="maximum height"
           placeholder="Написать текст"
           ref={translate} 
           style={{ width: 200 }}
         />
-
+          <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
+          Перевести
+        </Button>
         </Grid>
-        <Grid item>
+        <Grid item
+          xs={12}
+          sm={6}
+          md={4}
+          sx={{ mx: 'auto'}}
+          marginY={{xs: 1, sm: 1, md: 1}}          
+        >
         <TextareaAutosize
-          maxRows={4}
-          minRows={3}
+          maxRows={10}
+          minRows={6}
           aria-label="maximum height"
-          
+          placeholder='Перевод'
+          sx={{ mx: 'auto', backgroundColor: 'red',}}
           defaultValue={word}
          
           style={{ width: 200 }}
         />
-
-        {/* {word && <div>{word}</div>} */}
-
         </Grid>
 
       </Grid>
-
+      {/* <Grid item
+        xs={6}
+        sm={6}
+        md={8}
+        sx={{ mx: 'auto'}}
+      >
+        <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
+          Перевести
+        </Button>
+      </Grid> */}
       </FormControl>
     
-      <button onClick={toTranslate}>Переводчик</button>
 
-      
+
+
 
       </Container>
   );
