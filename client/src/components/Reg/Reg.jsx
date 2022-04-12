@@ -2,73 +2,79 @@ import React from 'react';
 import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography, Alert, AlertTitle, Accordion, AccordionSummary, AccordionDetails} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
-import {axiosAddUserAAC} from '../../redux/asyncActionCreators/userAAC'
-import { useForm } from "react-hook-form";
+import { axiosAddUserAAC } from '../../redux/asyncActionCreators/userAAC';
+import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
 import { makeStyles } from '@mui/styles';
 
-
 const useStyles = makeStyles(() => ({
   overlay: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    zIndex:200
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    zIndex: 200,
   },
   form: {
-    position: "relative",
-    top:"5vw",
-    backgroundColor: "white",
-    "box-shadow": "0px 10px 28px 12px rgba(34, 60, 80, 0.28)",
-    borderRadius: "20px"
+    backgroundColor: 'white',
+    'box-shadow': '0px 10px 28px 12px rgba(34, 60, 80, 0.28)',
+    borderRadius: '20px',
   },
   btnWrapper: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    margin: "40px 0 40px"
-  }
-
-}))
-
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    margin: '40px 0 40px',
+  },
+}));
 
 function Reg(props) {
-
-  const styles = useStyles()
+  const styles = useStyles();
 
   const dispatch = useDispatch();
-  const navToHome = useNavigate()
+  const navToHome = useNavigate();
 
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const [msg, setMsg] = useState('')
-  const [toggle, setToggle] = useState(false)
+  const [msg, setMsg] = useState('');
+  const [toggle, setToggle] = useState(false);
 
 
   const onFormSubmit = async (data) => {
-  
-    try {
-      await dispatch(axiosAddUserAAC(data))
-      await dispatch(axiosInitSession())
-      navToHome("/home")
-
-    } catch (error) {
-      setMsg(error.response.data.message)
-      setToggle(true)
-      setTimeout(() => {
-        setToggle(false)
-      }, 2000
-      )
+    if (localStorage.getItem('user_level')) {
+      data.user_level = localStorage.getItem('user_level');
+      try {
+        await dispatch(axiosAddUserAAC(data));
+        await dispatch(axiosInitSession());
+        navToHome('/home');
+      } catch (error) {
+        setMsg(error.response.data.message);
+        setToggle(true);
+        setTimeout(() => {
+          setToggle(false);
+        }, 2000);
+      }
+    } else {
+      try {
+        await dispatch(axiosAddUserAAC(data));
+        await dispatch(axiosInitSession());
+        navToHome('/home');
+      } catch (error) {
+        setMsg(error.response.data.message);
+        setToggle(true);
+        setTimeout(() => {
+          setToggle(false);
+        }, 2000);
+      }
     }
-  }
+  };
 
   const navigate = useNavigate();
 
@@ -84,27 +90,25 @@ function Reg(props) {
           Регистрация
         </Typography>
         <FormControl
-        onSubmit={handleSubmit(onFormSubmit)}
+          onSubmit={handleSubmit(onFormSubmit)}
           component="form"
           fullWidth
           sx={{
-            '& .MuiTextField-root': { m: 1 , justifyItems: "center"},
+            '& .MuiTextField-root': { m: 1, justifyItems: 'center' },
           }}
         >
           <TextField
             label="Имя"
             required
             id="outlined-required"
-            
-            {...register("user_firstName")}
+            {...register('user_firstName')}
             name="user_firstName"
           />
           <TextField
             
             label="Фамилия"
             required
-
-            {...register("user_lastName")}
+            {...register('user_lastName')}
             name="user_lastName"
           />
           <TextField
@@ -124,8 +128,7 @@ function Reg(props) {
             label="Пароль"
             type="password"
             autoComplete="current-password"
-
-            {...register("user_password")}
+            {...register('user_password')}
             name="user_password"
           />
           <FormControl sx={{ m: 1}}>
@@ -136,8 +139,7 @@ function Reg(props) {
               id="demo-simple-select-helper"
               label="Age"
               defaultValue="student"
-
-              {...register("user_role")}
+              {...register('user_role')}
               name="user_role"
             >
               <MenuItem selected value="student">Студент</MenuItem>
@@ -224,11 +226,8 @@ function Reg(props) {
             {msg}
           </Alert>}
         </FormControl>
-
       </Container>
-
     </div>
-  
   );
 }
 

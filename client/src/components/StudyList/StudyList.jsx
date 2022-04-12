@@ -5,6 +5,7 @@ import {Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import StudyListTaskForm from "../StudyListTaskForm/StudyListTaskForm";
 import {useSelector} from "react-redux";
+import Translator from '../Translator/Translator';
 
 
 const useStyles = makeStyles(() => ({
@@ -12,7 +13,7 @@ const useStyles = makeStyles(() => ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: "50px",
+        marginTop: "20px",
     },
     tasks: {
         display: "flex",
@@ -21,6 +22,13 @@ const useStyles = makeStyles(() => ({
     },
     taskText: {
         marginBottom: "20px",
+        fontWeight: "bold",
+    },
+    cont: {
+        display: "flex",
+        flexDirection: 'column',
+        alignItems: "center",
+        justifyContent: 'center',
     }
 
 }))
@@ -31,9 +39,10 @@ function StudyList(props) {
     const { studylist } = useSelector(state => state.studylistReducer)
 
     return (
-    <div>
+    <div className={classes.cont}>
         <Typography
-            variant="h3"
+            variant="h4"
+            mt={4}
         >
             {studylist?.first_lesson_data.lesson_name}
         </Typography>
@@ -45,7 +54,10 @@ function StudyList(props) {
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
                     <StudyListVideo lesson_video={studylist?.first_lesson_data.lesson_video}/>
-                    <div>Translator</div>
+                    <div>Translator
+                      <Translator />
+                    </div>
+
                 </div>
                 <div className={classes.tasks}>
                     <Typography className={classes.taskText} id="task2">
@@ -61,7 +73,7 @@ function StudyList(props) {
                 </div>
             </div>
             <div>
-                <StudyListMenu />
+                {/*<StudyListMenu />*/}
             </div>
         </div>
     </div>

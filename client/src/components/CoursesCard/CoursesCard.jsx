@@ -15,7 +15,6 @@ function CoursesCard ({course}) {
     }
 
   }
-  console.log('Это стадилист', studylist)
 
   return (
 

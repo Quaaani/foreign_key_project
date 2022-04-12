@@ -14,6 +14,9 @@ import Translator from '../Translator/Translator';
 // Стили
 import style from './Home.module.css'
 import StudyList from "../StudyList/StudyList";
+import MapList from "../MapList/MapList";
+
+
 
 
 function Home(props) {
@@ -22,37 +25,21 @@ function Home(props) {
 
 
   return (
-    <div>
+    <>
       <ImageButton />
 
-
-      <div>
-
       <div id='TestingComponents'>
-        
+
       </div>
 
       <div>
-
         <StatisticList />
         <CoursesList />
         <Feedback />
         <ImgBlock />
-
-
-
-
-          {/*<Container  sx={{width: "70vw"}}>*/}
-
-
+        {/*<Container  sx={{width: "70vw"}}>*/}
       </div>
-
-
-    </div>
-
-    </div>
-
-
+    </>
   );
 }
 

@@ -1,95 +1,154 @@
-import React, { useState, useRef } from 'react';
-
-import style from './Example.module.css';
-
-import { axiosInitTLevels } from '../../redux/asyncActionCreators/tlevelsAAC';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ExampleQuestion from './ExampleQuestion';
-
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+import { tLevelsReducer } from '../../redux/reducers/tlevelsReducer';
+import { axiosInitTLevels } from '../../redux/asyncActionCreators/tlevelsAAC';
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
+import {
+  Card,
+  CardContent,
+  Typography,
+  List,
+  ListItemButton,
+  CardHeader,
+  Box,
+  LinearProgress
+} from '@mui/material';
 
 function Example(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const [qnIndex, setQnIndex] = useState(0);
+  const [price, setPrice] = useState(0)
+
   const { tLevels } = useSelector((state) => state.tLevelsReducer);
-  const [count, setCount] = useState(0);
-  const [choice, setChoice] = useState('no');
-  const [score, setScore] = useState(0);
-  const [button, setButton] = useState('Следующий вопрос');
+  const { studylist } = useSelector((state) => state.studylistReducer)
 
-  const pick1 = useRef();
-  const pick2 = useRef();
-  const pick3 = useRef();
-  const pick4 = useRef();
+  const toInitTest = async (event) => {
+    event.preventDefault()
 
-  const toClick = async (event) => {
+    try {
+      await dispatch(axiosInitStudylistAAC(1))
+    } catch (error) {
+      console.log('studylist Error =>', { ...error })
+    }
+  }
+
+  const toInit = async (event) => {
     event.preventDefault();
 
     try {
       await dispatch(axiosInitTLevels());
     } catch (error) {
-      console.log('tlevels Error =>', { ...error });
+      console.log('tLevels Error =>', { ...error });
     }
   };
+  
+  // tLevels
+  // const updateAnswer = (id, optionIdx) => {
 
-  const toNext = (event) => {
-    event.preventDefault();
-    if (count < 9) {
-      setCount(count + 1);
-      if (count === 8) {
-        setButton('Завершить тест');
+  //   if (qnIndex < tLevels.length - 1) {
+  //     if (tLevels[qnIndex].answers[optionIdx] === 'yes') {
+  //       setPrice(prev => prev + tLevels[qnIndex].tlevel_price)
+  //     }
+  //     setQnIndex(prev => prev + 1)
+  //   } else {
+  //     if (tLevels[qnIndex].answers[optionIdx] === 'yes') {
+  //       setPrice(prev => prev + tLevels[qnIndex].tlevel_price)
+  //     }
+  //     localStorage.clear()
+  //     localStorage.setItem('user_level', price)
+  //     navigate('/registration')
+  //   }
+  // }
+
+  console.log('studylist =>', studylist)
+
+  // Tests
+  const updateAnswer = (id, optionIdx) => {
+
+    if (qnIndex < studylist.first_lesson_tests.length - 1) {
+      if (studylist.first_lesson_tests[qnIndex].answers[optionIdx] === 'yes') {
+        setPrice(prev => prev + studylist.first_lesson_data.lesson_price)
       }
-      if (choice === 'yes') {
-        setScore((score) => score + tLevels[count].tlevel_price);
+      setQnIndex(prev => prev + 1)
+    } else {
+      if (studylist.first_lesson_tests[qnIndex].answers[optionIdx] === 'yes') {
+        setPrice(prev => prev + studylist.first_lesson_data.lesson_price)
       }
+      localStorage.clear()
+      localStorage.setItem('user_level', price)
+      navigate('/registration')
     }
-  };
+  }
 
-  const toPrevious = (event) => {
-    event.preventDefault();
-    if (count > 0) {
-      setCount(count - 1);
-      setButton('Следующий вопрос');
-    }
-    // console.log('pick =>', pick.current.value)
-  };
-
-  const toPick1 = () => {
-    // console.log('picked =>', pick1.current.value)
-    setChoice(pick1.current.value);
-    // console.log('choice =>', choice)
-  };
-
-  const toPick2 = () => {
-    // console.log('picked =>', pick2.current.value)
-    setChoice(pick2.current.value);
-    // console.log('choice =>', choice)
-  };
-
-  const toPick3 = () => {
-    // console.log('picked =>', pick3.current.value)
-    setChoice(pick3.current.value);
-    // console.log('choice =>', choice)
-  };
-
-  const toPick4 = () => {
-    // console.log('picked =>', pick4.current.value)
-    setChoice(pick4.current.value);
-    // console.log('choice =>', choice)
-  };
-
+  console.log('price =>', price)
 
   return (
     <>
-      {tLevels ? (
-        <div className={style.exampleContainer}>
-          <div className={style.formContainer}>
-            <ExampleQuestion />
-          </div>
-        </div>
-      ) : (
-        <div className={style.exampleContainer}>No data</div>
-      )}
-      <button onClick={toClick}>Загрузить вопросы</button>
+      <button onClick={toInit}>Init tLevels</button>
+      <button onClick={toInitTest}>Init Tests</button>
+      {/* <div>
+        {tLevels ? (
+          <Card
+            sx={{maxWidth: 640, mx: 'auto', mt: 5}}>
+              <CardHeader 
+                title={'Вопрос ' + (qnIndex + 1) + ' из 10'}
+              />
+              <Box>
+                <LinearProgress 
+                  variant='determinate'
+                  value={(qnIndex + 1) * 100 / tLevels.length}
+                />
+              </Box>
+            <CardContent>
+              <Typography variant="h6">
+                {tLevels[qnIndex].tlevel_question}
+              </Typography>
+              <List>
+                {tLevels[qnIndex].options.map((item, idx) => <ListItemButton key={idx} onClick={() => updateAnswer(tLevels[qnIndex].id, idx)}>
+                  <div>
+                    <b>{item}</b>
+                  </div>
+                </ListItemButton>)}
+              </List>
+            </CardContent>
+          </Card>
+        ) : (
+          <div>No Data</div>
+        )}
+      </div> */}
+            <div>
+        {studylist ? (
+          <Card
+            sx={{maxWidth: 640, mx: 'auto', mt: 5}}>
+              <CardHeader 
+                title={'Вопрос ' + (qnIndex + 1) + ' из ' + studylist.first_lesson_tests.length}
+              />
+              <Box>
+                <LinearProgress 
+                  variant='determinate'
+                  value={(qnIndex + 1) * 100 / studylist.first_lesson_tests.length}
+                />
+              </Box>
+            <CardContent>
+              <Typography variant="h6">
+                {studylist.first_lesson_tests[qnIndex].test_question}
+              </Typography>
+              <List>
+                {studylist.first_lesson_tests[qnIndex].options.map((item, idx) => <ListItemButton key={idx} onClick={() => updateAnswer(studylist.first_lesson_tests[qnIndex].id, idx)}>
+                  <div>
+                    <b>{item}</b>
+                  </div>
+                </ListItemButton>)}
+              </List>
+            </CardContent>
+          </Card>
+        ) : (
+          <div>No Data</div>
+        )}
+      </div>
     </>
   );
 }

@@ -16,7 +16,24 @@ router.route('/:course_id')
     const { course_id } = req.params
 
     const course = await Course.findByPk(course_id, { raw: true })
-    const tests = await Test.findAll({ raw: true, where: { course_id } })
+    const tempTests = await Test.findAll({ raw: true, where: { course_id } })
+
+    
+    const tests = tempTests.map((el) => {
+      el.options = [
+        el.test_option1,
+        el.test_option2,
+        el.test_option3,
+        el.test_option4,
+      ]
+      el.answers = [
+        el.test_answer1,
+        el.test_answer2,
+        el.test_answer3,
+        el.test_answer4,
+      ]
+      return el
+    })
 
     let first_lesson_id = 0
     let second_lesson_id = 0
