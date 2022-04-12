@@ -51,14 +51,23 @@ function Translator(props) {
   };
 
   return (
-    <Container>
+    <Container
+      spacing={{ xs: 2, md: 3 }}
+    >
       
-      <FormControl>
+      <FormControl
+        sx={{border: 'solid', borderRadius: '10px'}}
+      >
 
         <Grid container>
-            <Typography align='center'>
-              Мой словарь
+          <Grid
+          sx={{ mx: 'auto', my: 'auto'}}
+          >
+            <Typography align="center">
+              Мой Переводчик
             </Typography>
+          </Grid>
+
         </Grid>
 
         <Grid container
@@ -66,9 +75,10 @@ function Translator(props) {
 
           <Grid item
             xs={12}
-            sm={4}
+            sm={12}
             md={4}
             sx={{ mx: 'auto'}}
+            style={{textAlign: 'center' }}
             marginY={{xs: 1, sm: 1, md: 1}}
           >
             <TextareaAutosize
@@ -77,31 +87,31 @@ function Translator(props) {
               aria-label="maximum height"
               placeholder="Написать текст"
               ref={translate} 
-              style={{ width: 200 }}
+              style={{ width: 200, borderRadius: '10px' }}
             />
         </Grid>
 
         <Grid item
-              xs={12}
-              sm={1}
-              md={1}
-              sx={{ mx: 'auto', my: 'auto'}}
-            >
-              <Button size="small" onClick={toChangeEN} variant = {btnEnColor ? "contained" : "outlined"}>
-                <Typography variant='body'>
-                  EN-RU
-                </Typography> 
-              </Button>
-              <Button size="small" variant = {btnRuColor ? "contained" : "outlined"} onClick={toChangeRU}>
+          xs={12}
+          sm={12}
+          md={1}
+          sx={{ mx: 'auto', my: 'auto'}}
+          style={{textAlign: 'center' }}
+        >
+          <Button size="small" onClick={toChangeEN} variant = {btnEnColor ? "contained" : "outlined"}>
+              EN-RU
+          </Button>
+          <Button size="small" variant = {btnRuColor ? "contained" : "outlined"} onClick={toChangeRU}>
                 RU-EN
-              </Button>
+          </Button>
         </Grid>
             
         <Grid item
           xs={12}
-          sm={4}
+          sm={12}
           md={4}
           sx={{ mx: 'auto'}}
+          style={{textAlign: 'center' }}
           marginY={{xs: 1, sm: 1, md: 1}}          
         >
           <TextareaAutosize
@@ -111,24 +121,27 @@ function Translator(props) {
             placeholder='Перевод'
             sx={{ mx: 'auto', backgroundColor: 'red',}}
             defaultValue={word}
-          
-            style={{ width: 200 }}
+            style={{ width: 200, borderRadius: '10px' }}
           />
         </Grid>
         {/* <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
           Перевести
         </Button>
       </Grid> */}
-      {/* <Grid item
-        xs={6}
-        sm={6}
-        md={8}
-        sx={{ mx: 'auto'}}
-      >
-        <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
-          Перевести
-        </Button>
-      </Grid> */}
+      <Grid container>
+        <Grid item
+          xs={12}
+          sm={12}
+          md={2}
+          sx={{ mx: 'auto'}}
+          style={{textAlign: 'center' }}
+          marginY={{xs: 1, sm: 1, md: 3}}
+        >
+          <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
+            Перевести
+          </Button>
+        </Grid>
+      </Grid>
       </Grid>
       </FormControl>
     
