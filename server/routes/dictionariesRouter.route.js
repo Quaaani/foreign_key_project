@@ -5,16 +5,21 @@ const { Op } = Sequelize
 
 router.route('/')
   .get(async (req, res) => {
-    console.log('*** GET REQUEST /dictionaries ****')
+    try {
+      console.log('*** GET REQUEST /dictionaries ****')
 
-    if (!req.session.user_data) return res.status(400).json({ message: 'No session!' })
-    const user_id = req.session.user_data.id
+      if (!req.session.user_data) return res.status(400).json({ message: 'No session!' })
+      const user_id = req.session.user_data.id
+  
+      const dictionaries = await Dictionary.findAll({ raw: true, where: { user_id } })
+      const words_id = dictionaries.map(el => el.word_id)
+      const words = await Word.findAll({ raw: true, where: { id: { [Op.or]: words_id } } })
+  
+      res.status(200).json(words)
+    } catch(error) {
+        throw error
+    }
 
-    const dictionaries = await Dictionary.findAll({ raw: true, where: { user_id } })
-    const words_id = dictionaries.map(el => el.word_id)
-    const words = await Word.findAll({ raw: true, where: { id: { [Op.or]: words_id } } })
-
-    res.status(200).json(words)
   })
 
   .post( async (req, res) => {
@@ -41,6 +46,19 @@ router.route('/')
       res.status(200).json({message: 'Успешное добавление слова'})
     } catch (error) {
       throw error
+    }
+  })
+router.route('/:id')
+  .delete( async (req, res) => {
+    try {
+      const { id } = req.params
+      console.log('IDDDD', id)
+      await Word.destroy({
+        where: {id}
+      })
+      res.status(200).json({message: 'Успешное удаление слова'})
+    } catch(error) {
+        throw error
     }
   })
 

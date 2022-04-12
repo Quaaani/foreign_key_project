@@ -30,8 +30,7 @@ function Home(props) {
         {/* <TestLevel /> */}
 
       <div id='TestingComponents'>
-        <Translator />
-        {/* <StudyList /> */}
+        <StudyList />
       </div>
 
       <div>

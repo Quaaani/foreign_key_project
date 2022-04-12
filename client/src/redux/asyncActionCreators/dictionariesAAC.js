@@ -1,5 +1,5 @@
 import axios from '../../axios/axios'
-import { initDictionaryAC } from '../actionCreators/dictionariesAC'
+import { deleteWordAC, initDictionaryAC } from '../actionCreators/dictionariesAC'
 
 export const axiosInitDictionaryAAC = () => {
   return async (dispatch) => {
@@ -16,8 +16,20 @@ export const axiosAddNewWord = (payload) => {
   return async (dispatch) => {
     try {
       const response = await axios.post('/dictionaries', payload)
-      console.log('ADD NEW WORD',response)
     } catch(error) {
+        throw error
+    }
+  }
+}
+
+export const axiosDeleteWord = (payload) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`/dictionaries/${payload}`)
+
+      console.log(response)
+      dispatch(deleteWordAC(response.data))
+    } catch (error) {
         throw error
     }
   }
