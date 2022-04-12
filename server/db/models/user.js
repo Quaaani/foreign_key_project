@@ -58,7 +58,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
     user_level: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     },
     user_lexicon: {
       type: DataTypes.TEXT
