@@ -52,7 +52,7 @@ function Translator(props) {
 
   return (
     <Container
-      spacing={{ xs: 2, md: 3 }}
+        sx={{mt: 2}}
     >
       
       <FormControl
