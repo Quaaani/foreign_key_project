@@ -87,7 +87,7 @@ function Translator(props) {
               aria-label="maximum height"
               placeholder="Написать текст"
               ref={translate} 
-              style={{ width: 200, borderRadius: '10px' }}
+              style={{ width: 300, borderRadius: '10px' }}
             />
         </Grid>
 
@@ -102,7 +102,7 @@ function Translator(props) {
               EN-RU
           </Button>
           <Button size="small" variant = {btnRuColor ? "contained" : "outlined"} onClick={toChangeRU}>
-                RU-EN
+              RU-EN
           </Button>
         </Grid>
             
@@ -121,24 +121,31 @@ function Translator(props) {
             placeholder='Перевод'
             sx={{ mx: 'auto', backgroundColor: 'red',}}
             defaultValue={word}
-            style={{ width: 200, borderRadius: '10px' }}
+            style={{ width: 300, borderRadius: '10px' }}
           />
         </Grid>
-        {/* <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
-          Перевести
-        </Button>
-      </Grid> */}
+
       <Grid container>
         <Grid item
           xs={12}
           sm={12}
-          md={2}
-          sx={{ mx: 'auto'}}
-          style={{textAlign: 'center' }}
-          marginY={{xs: 1, sm: 1, md: 3}}
+          md={4}
+          sx={{ mx: 'auto', textAlign: {xs: 'center', sm: 'center', md: 'left'}}}
+          marginBottom={{xs: 1, sm: 1, md: 3}}
         >
-          <Button color="success" variant="outlined" size="small" onClick={toTranslate} sx={{ mx: 'auto'}}>
+          <Button color="success" variant="outlined" size="small" onClick={toTranslate}>
             Перевести
+          </Button>
+        </Grid>
+        <Grid item
+          xs={12}
+          sm={12}
+          md={5}
+          sx={{ mx: 'auto', textAlign: {xs: 'center', sm: 'center', md: 'right'}}}
+          marginBottom={{xs: 1, sm: 1, md: 3}}
+        >
+          <Button color="success" variant="outlined" size="small" onClick={toTranslate}>
+            Добавить к себе
           </Button>
         </Grid>
       </Grid>
