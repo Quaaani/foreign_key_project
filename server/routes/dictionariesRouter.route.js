@@ -17,4 +17,31 @@ router.route('/')
     res.status(200).json(words)
   })
 
+  .post( async (req, res) => {
+    try {
+      if(!req.session.user_data) return res.status(400).json({ message: 'No session!'})
+      const user_id = req.session.user_data.id
+      
+      const { word_name, word_translate } = req.body
+      
+      const newWord = await Word.create({ 
+        word_name,
+        word_translate,
+        word_transcription: '',
+        word_example: '...',
+        word_transExample: '...',
+        topic_id: 5,
+      })
+      
+      await Dictionary.create({
+        user_id,
+        word_id: newWord.id,
+      })
+
+      res.status(200).json({message: 'Успешное добавление слова'})
+    } catch (error) {
+      throw error
+    }
+  })
+
 module.exports = router

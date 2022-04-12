@@ -3,15 +3,18 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios'
 import { Button, Container, FormControl, InputLabel, Input, FormHelperText, Grid, TextareaAutosize, TextField, Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useDispatch } from 'react-redux';
+import { axiosAddNewWord } from '../../redux/asyncActionCreators/dictionariesAAC';
 
-function Translator(props) {
+function Translator() {
 
-
-  const translate = useRef();
-  const [word, setWord] = useState('');
-  const [btnEnColor, setEnBtnColor] = useState(false);
+  const dispatch = useDispatch();
+  const word_name = useRef();
+  const [word_translate, setWord] = useState('');
+  const [btnEnColor, setEnBtnColor] = useState(true);
   const [btnRuColor, setRuBtnColor] = useState(false);
   const [langpair, setLangpair] = useState('en|ru');
+
 
   const toChangeRU = (event) => {
     event.preventDefault();
@@ -29,7 +32,7 @@ function Translator(props) {
 
   const toTranslate = async (event) => {
     event.preventDefault();
-    const q = translate.current.value;
+    const q = word_name.current.value;
 
     const options = {
       method: 'GET',
@@ -49,6 +52,21 @@ function Translator(props) {
       console.log('error =>', { ...error });
     }
   };
+
+
+  const addNewWord = async (event) => {
+    event.preventDefault();
+    const newWord = {
+      word_name: word_name.current.value.toLowerCase(),
+      word_translate: word_translate.toLowerCase(),
+    }
+    console.log(newWord)
+    try {
+      await dispatch(axiosAddNewWord(newWord))
+    } catch(error) {
+      console.log('Error ADD WORD', {...error})
+    }
+  }
 
   return (
     <Container
@@ -86,7 +104,7 @@ function Translator(props) {
               minRows={6}
               aria-label="maximum height"
               placeholder="Написать текст"
-              ref={translate} 
+              ref={word_name} 
               style={{ width: 300, borderRadius: '10px' }}
             />
         </Grid>
@@ -120,7 +138,7 @@ function Translator(props) {
             aria-label="maximum height"
             placeholder='Перевод'
             sx={{ mx: 'auto', backgroundColor: 'red',}}
-            defaultValue={word}
+            defaultValue={word_translate}
             style={{ width: 300, borderRadius: '10px' }}
           />
         </Grid>
@@ -144,7 +162,7 @@ function Translator(props) {
           sx={{ mx: 'auto', textAlign: {xs: 'center', sm: 'center', md: 'right'}}}
           marginBottom={{xs: 1, sm: 1, md: 3}}
         >
-          <Button color="success" variant="outlined" size="small" onClick={toTranslate}>
+          <Button color="success" type='submit' variant="outlined" size="small" onClick={addNewWord}>
             Добавить к себе
           </Button>
         </Grid>

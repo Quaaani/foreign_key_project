@@ -11,3 +11,15 @@ export const axiosInitDictionaryAAC = () => {
     }
   }
 }
+
+export const axiosAddNewWord = (payload) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post('/dictionaries', payload)
+      console.log('ADD NEW WORD',response)
+    } catch(error) {
+        throw error
+    }
+  }
+}
+
