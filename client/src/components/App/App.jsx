@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store';
+import style from "./App.module.css"
 
 // Компоненты
 import Home from '../Home/Home';
@@ -21,7 +22,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-        
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -30,7 +31,7 @@ function App() {
           <Route path="/feedback" element={<FeedbackForm />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
-        
+
         <Footer />
       </BrowserRouter>
     </Provider>

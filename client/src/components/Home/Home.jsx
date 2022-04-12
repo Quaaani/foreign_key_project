@@ -14,7 +14,9 @@ import Translator from '../Translator/Translator';
 // Стили
 import style from './Home.module.css'
 import StudyList from "../StudyList/StudyList";
-import Example from '../Example/Example';
+import MapList from "../MapList/MapList";
+
+
 
 
 function Home(props) {
@@ -25,7 +27,9 @@ function Home(props) {
   return (
     <>
       <ImageButton />
+
       <div id='TestingComponents'>
+
       </div>
 
       <div>
