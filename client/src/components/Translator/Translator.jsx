@@ -48,8 +48,6 @@ function Translator(props) {
       
       <FormControl>
         <Grid container>
-
-
         <Grid item>
           <Button onClick={toChangeEN}>
           EN -> RU
@@ -64,7 +62,7 @@ function Translator(props) {
           minRows={3}
           aria-label="maximum height"
           placeholder="Написать текст"
-         
+          ref={translate} 
           style={{ width: 200 }}
         />
 
@@ -75,12 +73,12 @@ function Translator(props) {
           minRows={3}
           aria-label="maximum height"
           
-          defaultValue={word && {word}}
+          defaultValue={word}
          
           style={{ width: 200 }}
         />
 
-        
+        {/* {word && <div>{word}</div>} */}
 
         </Grid>
 
@@ -90,7 +88,7 @@ function Translator(props) {
     
       <button onClick={toTranslate}>Переводчик</button>
 
-      <input ref={translate} placeholder="Впишите слово" />
+      
 
       </Container>
   );
