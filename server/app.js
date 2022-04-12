@@ -12,6 +12,7 @@ const coursesRouter = require('./routes/coursesRouter.route')
 const tlevelRouter = require('./routes/tlevelRouter.route')
 const favoritesRouter = require('./routes/favoritesRouter.route')
 const dictionariesRouter = require('./routes/dictionariesRouter.route')
+const feedbackRouter = require('./routes/feedbackRouter.route')
  
 // app && PORT
 const app = express()
@@ -30,6 +31,8 @@ app.use('/courses', coursesRouter)
 app.use('/tlevel', tlevelRouter)
 app.use('/favorites', favoritesRouter)
 app.use('/dictionaries', dictionariesRouter)
+app.use('/feedback', feedbackRouter)
+
 
 // listen
 app.listen(PORT, () => { console.log(`*** Working at PORT: ${PORT} ***`) })

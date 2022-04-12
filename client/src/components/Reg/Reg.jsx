@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography, Alert, AlertTitle} from '@mui/material'
+import React from 'react';
+import{TextField, Button, Container, Select, MenuItem, InputLabel, FormControl, Typography, Alert, AlertTitle, Accordion, AccordionSummary, AccordionDetails} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import {axiosAddUserAAC} from '../../redux/asyncActionCreators/userAAC'
 import { useForm } from "react-hook-form";
@@ -23,6 +24,8 @@ const useStyles = makeStyles(() => ({
     zIndex:200
   },
   form: {
+    position: "relative",
+    top:"5vw",
     backgroundColor: "white",
     "box-shadow": "0px 10px 28px 12px rgba(34, 60, 80, 0.28)",
     borderRadius: "20px"
@@ -48,6 +51,7 @@ function Reg(props) {
 
   const [msg, setMsg] = useState('')
   const [toggle, setToggle] = useState(false)
+
 
   const onFormSubmit = async (data) => {
   
@@ -76,7 +80,7 @@ function Reg(props) {
       onClick={(event) => event.stopPropagation()}
       
     >
-        <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, mx: "auto", textAlign: "center"}}>
+        <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, textAlign: "center"}}>
           Регистрация
         </Typography>
         <FormControl
@@ -88,8 +92,7 @@ function Reg(props) {
           }}
         >
           <TextField
-            fullWidth
-            label="First Name"
+            label="Имя"
             required
             id="outlined-required"
             
@@ -97,36 +100,36 @@ function Reg(props) {
             name="user_firstName"
           />
           <TextField
-            fullWidth
-            label="Last Name"
+            
+            label="Фамилия"
             required
 
             {...register("user_lastName")}
             name="user_lastName"
           />
-            <TextField
-              fullWidth
-              id="outlined-read-only-input"
-              label="Email"
-              type="email"
-              required
-
-              {...register("user_email")}
-              name="user_email"
-            />
           <TextField
-            fullWidth
+            
+            id="outlined-read-only-input"
+            label="Email"
+            type="email"
+            required
+
+            {...register("user_email")}
+            name="user_email"
+          />
+          <TextField
+            
             required
             id="outlined-password-input"
-            label="Password"
+            label="Пароль"
             type="password"
             autoComplete="current-password"
 
             {...register("user_password")}
             name="user_password"
           />
-          <FormControl fullWidth sx={{ m: 1}}>
-            <InputLabel id="demo-simple-select-helper-label">Role</InputLabel>
+          <FormControl sx={{ m: 1}}>
+            <InputLabel id="demo-simple-select-helper-label">Роль</InputLabel>
             <Select
               required
               labelId="demo-simple-select-helper-label"
@@ -137,10 +140,77 @@ function Reg(props) {
               {...register("user_role")}
               name="user_role"
             >
-              <MenuItem selected value="student">Student</MenuItem>
-              <MenuItem value="teacher">Teacher</MenuItem>
+              <MenuItem selected value="student">Студент</MenuItem>
+              <MenuItem value="teacher">Преподаватель</MenuItem>
             </Select>
           </FormControl>
+
+          <Accordion sx={{m: 1}}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              
+            >
+              <Typography >Дополнительные поля...</Typography>
+            </AccordionSummary>
+            <AccordionDetails >
+
+              <TextField
+                
+                label="Возраст"
+                type="number"
+                InputProps={{ inputProps: { min: 1} }}
+                
+                {...register("user_age")}
+                name="user_age"
+              />
+
+              <TextField
+                
+                label="Страна"
+                
+                {...register("user_country")}
+                name="user_country"
+              />
+
+              <TextField
+                
+                label="Город"
+                
+                {...register("user_city")}
+                name="user_city"
+              />
+
+              <TextField
+                
+                label="Телефон"
+                type="number"
+                placeholder='89995554433'
+                sx={{appearance: "textfield"}}
+                
+                {...register("user_phone")}
+                name="user_phone"
+              />
+
+              <Button
+                variant="outlined"
+                component="label"
+                sx={{m: 1}}
+              >
+                Загрузить аватар
+                <input
+                  type="file"
+                  id="ava-photo"
+                  hidden
+                  {...register("user_avatar")}
+                  name="user_avatar"
+                />
+              </Button>
+            
+
+            </AccordionDetails>
+          </Accordion>
 
             <div className={styles.btnWrapper}>
               <Button sx={{width: "150px"}} variant="contained" type="submit">Регистрация</Button>

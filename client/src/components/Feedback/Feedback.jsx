@@ -1,17 +1,10 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import { useTheme } from "@mui/material/styles";
-import MobileStepper from "@mui/material/MobileStepper";
-import { Paper, Avatar } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import React, { useEffect, useState } from "react";
+import { Box,  useTheme, MobileStepper, Paper, Avatar, Typography, Button } from "@mui/material";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from "@mui/styles";
+import { axiosInitFeedback } from "../../redux/asyncActionCreators/feedbackAAC";
 
 
 const useStyles = makeStyles(() => ({
@@ -109,13 +102,25 @@ const steps = [
 ];
 
 function Feedback(props) {
-  const styles = useStyles()
-
 
   const { session } = useSelector((state) => state.sessionReducer);
+  const { feedback } = useSelector((state) => state.feedbackReducer);
 
+  console.log(feedback);
+
+  const styles = useStyles()
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(axiosInitFeedback())
+  },
+  [dispatch])
+
+
+
+  const [activeStep, setActiveStep] = useState(0);
   const maxSteps = steps.length;
 
   const handleNext = () => {

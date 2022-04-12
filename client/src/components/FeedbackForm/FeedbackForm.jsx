@@ -5,7 +5,7 @@ import {AccountCircle} from '@mui/icons-material';
 import {useNavigate} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { useForm } from "react-hook-form";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const useStyles = makeStyles(() => ({
@@ -45,19 +45,20 @@ const useStyles = makeStyles(() => ({
 
 function FeedbackForm(props) {
   const styles = useStyles();
+  // const dispatch = useDispatch();
 
   const navToHome = useNavigate();
 
   const {register, handleSubmit} = useForm();
 
   const { session } = useSelector((state) => state.sessionReducer);
+  // console.log(session);
 
   const [msg, setMsg] = useState('')
 
 
   const onFormSubmit = async(data) => {
-    
-
+    data.user_id = session.id
     navToHome("/home")
   }
 
@@ -94,7 +95,7 @@ function FeedbackForm(props) {
               bgcolor: "background.default",
             }}
             className={styles.authorBox} 
-          > <Avatar className={styles.ava} src="/broken-image.jpg" />
+          > <Avatar className={styles.ava} src={`./img/${session.avatar}`} />
             <Typography sx={{marginLeft: "1vw"}}>{`${session.user_firstName} ${session.user_lastName}`}</Typography>
           </Paper>
 
