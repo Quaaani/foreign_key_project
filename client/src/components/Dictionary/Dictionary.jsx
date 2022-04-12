@@ -1,8 +1,27 @@
 import { Button, Card, Grid, IconButton, Tooltip} from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import * as React from 'react';
+import { useDispatch } from "react-redux";
+import { axiosInitDictionaryAAC, axiosDeleteWord } from "../../redux/asyncActionCreators/dictionariesAAC";
 
 function Dictionary ({dictionary}) {
+  console.log(dictionary.id)
+  const dispatch = useDispatch()
+
+  const deleteWord = async (event) => {
+    event.preventDefault();
+    try {
+      await dispatch(axiosDeleteWord(event.target.dataset.id))
+      await dispatch(axiosInitDictionaryAAC())
+    } catch(error) {
+      console.log('Error DELETE WORD', {...error})
+    }
+  }
+
+  const initId = (event) => {
+    event.preventDefault();
+    console.log(event.target.dataset.id)
+  }
   
   return (
 
@@ -22,9 +41,13 @@ function Dictionary ({dictionary}) {
         </Grid>
       </Tooltip>
       <Grid enterDelay={500} leaveDelay={200} item xs={1} sx={{ mx: 'auto', my: 'auto'}}>
-      <IconButton >
-        <DeleteForeverIcon />
-      </IconButton>
+        <Button onClick={deleteWord} color="error" data-id={dictionary.id}>
+          Удалить
+          {/* <IconButton >
+          <DeleteForeverIcon />
+          </IconButton> */}
+        </Button>
+      
     </Grid>
 
     </Grid>

@@ -27,19 +27,14 @@ function ProfileStudentCourse ({favorite}) {
       sm={10}
       md={5}
       sx={{ mx: 'auto'}}
-      marginY={{xs: 2, sm: 2, md: 4}}
-      
+      marginY={{xs: 2, sm: 2, md: 4}} 
     >
-
       <Card
-        sx={{ maxWidth: 345 }}
-        
+        sx={{ maxWidth: 345 }}  
     >
       <CardHeader
         sx={{mx: 'auto'}}
         title={favorite.course_name}
-        
-        
       >
 
         

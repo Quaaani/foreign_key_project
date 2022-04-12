@@ -3,39 +3,52 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Lesson extends Model {
+  class Homework extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Test, Homework }) {
-      Lesson.hasMany(Test, { foreignKey: 'lesson_id' })
-      Lesson.hasOne(Homework, {foreignKey: 'lesson_id'})
+    static associate({User, Lesson}) {
+      Homework.belongsTo(User, {foreignKey: 'from_user_id'})
+      Homework.belongsTo(User, {foreignKey: 'to_user_id'})
+      Homework.belongsTo(Lesson, {foreignKey: 'lesson_id'})
     }
   }
-  Lesson.init({
+  Homework.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    lesson_name: {
+    from_user_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
+      }
+    },
+    to_user_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
+      }
+    },
+    lesson_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Lessons',
+        key: 'id',
+      }
+    },
+    homework: {
       allowNull: false,
       type: DataTypes.TEXT
-    },
-    lesson_video: {
-      allowNull: false,
-      type: DataTypes.TEXT
-    },
-    lesson_img: {
-      allowNull: false,
-      type: DataTypes.TEXT
-    },
-    lesson_price: {
-      allowNull: false,
-      type: DataTypes.INTEGER
     },
     createdAt: {
       allowNull: false,
@@ -47,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Lesson',
+    modelName: 'Homework',
   });
-  return Lesson;
+  return Homework;
 };
