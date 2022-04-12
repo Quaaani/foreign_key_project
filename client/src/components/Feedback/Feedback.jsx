@@ -104,9 +104,9 @@ const steps = [
 function Feedback(props) {
 
   const { session } = useSelector((state) => state.sessionReducer);
-  const { feedback } = useSelector((state) => state.feedbackReducer);
+  const { feedbacks } = useSelector((state) => state.feedbackReducer);
 
-  console.log(feedback);
+  console.log(feedbacks);
 
   const styles = useStyles()
   const theme = useTheme();
@@ -121,7 +121,7 @@ function Feedback(props) {
 
 
   const [activeStep, setActiveStep] = useState(0);
-  const maxSteps = steps.length;
+  const maxSteps = feedbacks?.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -146,11 +146,11 @@ function Feedback(props) {
             bgcolor: "background.default",
           }}
           className={styles.authorBox} 
-        > <Avatar className={styles.ava} src="/broken-image.jpg" />
-          <Typography className={styles.authorName}>{steps[activeStep].label}</Typography>
+        > <Avatar className={styles.ava} src={ feedbacks && `./img/avatars/${feedbacks[activeStep].user_avatar}`} />
+          <Typography className={styles.authorName}>{feedbacks && feedbacks[activeStep]?.user_firstName}</Typography>
         </Paper>
         <Box sx={{ height: 255, maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, p: 2 }} className={styles.feedText}>
-          {steps[activeStep].description}
+          {feedbacks && feedbacks[activeStep].comment}
           
         </Box>
         <MobileStepper

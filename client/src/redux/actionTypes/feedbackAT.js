@@ -1,2 +1,2 @@
-export const SEND_FEEDBACK = 'SEND_FEEDBACK';
+export const ADD_FEEDBACK = 'ADD_FEEDBACK';
 export const INIT_FEEDBACK = 'INIT_FEEDBACK';

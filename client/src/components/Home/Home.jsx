@@ -27,11 +27,9 @@ function Home(props) {
 
 
       <div>
-        {/* <TestLevel /> */}
 
       <div id='TestingComponents'>
-        <Translator />
-          <StudyList />
+        
       </div>
 
       <div>

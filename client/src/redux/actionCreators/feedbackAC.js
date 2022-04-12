@@ -1,8 +1,8 @@
-import {SEND_FEEDBACK, INIT_FEEDBACK} from '../actionTypes/feedbackAT';
+import {ADD_FEEDBACK, INIT_FEEDBACK} from '../actionTypes/feedbackAT';
 
 export const sendFeedbackAC = (payload) => {
   return {
-    type: SEND_FEEDBACK,
+    type: ADD_FEEDBACK,
     payload
   }
 }

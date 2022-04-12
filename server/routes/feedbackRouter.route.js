@@ -7,11 +7,9 @@ router.get('/', async (req, res) => {
   const feedbacks = await Feedback.findAll({raw: true})
   
   const users_id = feedbacks.map(el => el.user_id);
-  console.log(users_id);
+
 
   const users = await User.findAll({ raw: true, where: { id: { [Op.or]: users_id } } })
-
-  console.log(users);
 
   for (let i = 0; i < feedbacks.length; i++) {
     for (let k = 0; k < users.length; k++) {
@@ -26,6 +24,11 @@ router.get('/', async (req, res) => {
   console.log(feedbacks);
 
   res.status(200).json(feedbacks)
+})
+
+router.post('/', async (req, res) => {
+  await Feedback.create(req.body)
+  res.status(200)
 })
 
 module.exports = router

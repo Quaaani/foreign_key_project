@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
-
+import { axiosAddFeedback, axiosInitFeedback } from '../../redux/asyncActionCreators/feedbackAAC';
 
 const useStyles = makeStyles(() => ({
   overlay: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles(() => ({
 
 function FeedbackForm(props) {
   const styles = useStyles();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const navToHome = useNavigate();
 
@@ -59,7 +59,10 @@ function FeedbackForm(props) {
 
   const onFormSubmit = async(data) => {
     data.user_id = session.id
+    console.log(data);
+    dispatch(axiosAddFeedback(data))
     navToHome("/home")
+    dispatch(axiosInitFeedback())
   }
 
   return (
@@ -95,15 +98,15 @@ function FeedbackForm(props) {
               bgcolor: "background.default",
             }}
             className={styles.authorBox} 
-          > <Avatar className={styles.ava} src={`./img/${session.avatar}`} />
-            <Typography sx={{marginLeft: "1vw"}}>{`${session.user_firstName} ${session.user_lastName}`}</Typography>
+          > <Avatar className={styles.ava} src={session && `./img/${session.avatar}`} />
+            <Typography sx={{marginLeft: "1vw"}}>{session && `${session.user_firstName} ${session.user_lastName}`}</Typography>
           </Paper>
 
           <TextareaAutosize
             required
             placeholder="Оставить отзыв..."
 
-            {...register("feedback")}
+            {...register("comment")}
             className={styles.textField}
           />
 

@@ -14,10 +14,11 @@ export const axiosInitFeedback = () => {
 }
 
 
-export const axiosSendFeedback = (payload) => {
+export const axiosAddFeedback = (payload) => {
   return async (dispatch) => {
     try {
       await axios.post('/feedback', payload)
+
     } catch (error) {
       throw error
     }
