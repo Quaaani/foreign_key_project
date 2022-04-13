@@ -19,10 +19,7 @@ const Homework = ({homework}) => {
     } catch (error) {
         console.log('ERROR HOMEWORK', { ...error})
     }
-    
-
     setStatus(true)
-
   }
 
   console.log(homework)

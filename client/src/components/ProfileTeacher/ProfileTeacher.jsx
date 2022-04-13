@@ -121,7 +121,7 @@ function ProfileTeacher () {
           sx={{ mx: 'auto'}}
           // sx={{ md: {'mx' : 'auto'}}}        
         >
-        <IconButton onClick={handleClick}  >
+        <IconButton onClick={handleClick} >
         <Typography style={{fontWeight: 'bold'}} >
           ДОМАШНИЕ ЗАДАНИЯ УЧЕНИКОВ
         </Typography>

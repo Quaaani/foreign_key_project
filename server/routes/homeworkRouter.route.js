@@ -87,18 +87,22 @@ router.route('/')
 
 router.route('/:id')
     .post(async (req, res) => {
-      const {id} = req.params
-      const { user_level } = req.body
+      try {
+        const {id} = req.params
+        const { user_level } = req.body
 
-      console.log('id', id)
-      console.log('req.body', req.body)
+        console.log('id', id)
+        console.log('req.body', req.body)
 
-      const user = await User.findByPk(id)
+        const user = await User.findByPk(id)
 
-      user.user_level += Number(user_level)
-      user.save()
+        user.user_level += Number(user_level)
+        user.save()
 
-      res.sendStatus(200)
+        res.sendStatus(200)
+      } catch (error) {
+          console.log('error params', error.message)
+      }
     })
 
 module.exports = router
