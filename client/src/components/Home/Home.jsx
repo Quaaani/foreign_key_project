@@ -16,6 +16,7 @@ import style from './Home.module.css'
 import StudyList from "../StudyList/StudyList";
 import MapList from "../MapList/MapList";
 import Example from '../Example/Example'
+import Info from "../Info/Info";
 
 
 
@@ -31,11 +32,13 @@ function Home(props) {
 
       <div id='TestingComponents'>
         {/* <Example /> */}
-        <StudyList />
+        {/*<StudyList />*/}
+        {/*  <MapList />*/}
       </div>
 
       <div>
         <StatisticList />
+          <Info />
         <CoursesList />
         <Feedback />
         <ImgBlock />
