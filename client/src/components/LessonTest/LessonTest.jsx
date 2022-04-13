@@ -61,41 +61,39 @@ function LessonTest({ test }) {
     }
   };
 
-  console.log('price =>', price);
-
   return (
     <>
       <div>
-        {studylist ? (
+        {test ? (
           <Card sx={{ maxWidth: 640, mx: 'auto', mt: 5 }}>
             <CardHeader
               title={
                 'Вопрос ' +
                 (qnIndex + 1) +
                 ' из ' +
-                test.length
+                test?.length
               }
             />
             <Box>
               <LinearProgress
                 variant="determinate"
                 value={
-                  ((qnIndex + 1) * 100) / test.length
+                  ((qnIndex + 1) * 100) / test?.length
                 }
               />
             </Box>
             <CardContent>
               <Typography variant="h6">
-                {test[qnIndex].test_question}
+                {test[qnIndex]?.test_question}
               </Typography>
               <List>
-                {test[qnIndex].options.map(
+                {test[qnIndex]?.options.map(
                   (item, idx) => (
                     <ListItemButton
                       key={idx}
                       onClick={() =>
                         updateAnswer(
-                          test[qnIndex].id,
+                          test[qnIndex]?.id,
                           idx
                         )
                       }
