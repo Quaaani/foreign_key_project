@@ -115,28 +115,29 @@ function ProfileTeacher () {
 
       <Grid container>
         <Grid item
-          xs={2}
-          sm={2}
-          md={3}
-          sx={{ my: 'auto'}}        
+          xs={4}
+          sm={4}
+          md={4}
+          sx={{ mx: 'auto'}}
+          // sx={{ md: {'mx' : 'auto'}}}        
         >
-          
+        <IconButton onClick={handleClick}  >
+        <Typography style={{fontWeight: 'bold'}} >
+          ДОМАШНИЕ ЗАДАНИЯ УЧЕНИКОВ
+        </Typography>
+        <ExpandMoreIcon />
+      </IconButton>
 
         </Grid>
         <Grid item
           xs={12}
           sm={12}
           md={12}
-          sx={{ my: 'auto'}}        
+          sx={{ my: 'auto', mx: 'auto'}}        
         >
 
 
-      <IconButton onClick={handleClick}>
-        <Typography>
-          ДОМАШНЕЕ ЗАДАНИЕ
-        </Typography>
-        <ExpandMoreIcon />
-      </IconButton>
+ 
      {open ? homework?.map(homework => <Homework key={homework?.id} homework={homework}/>) : null }
 
   
