@@ -124,9 +124,9 @@ function ProfileTeacher () {
 
         </Grid>
         <Grid item
-          xs={2}
-          sm={2}
-          md={3}
+          xs={12}
+          sm={12}
+          md={12}
           sx={{ my: 'auto'}}        
         >
 
@@ -137,7 +137,7 @@ function ProfileTeacher () {
         </Typography>
         <ExpandMoreIcon />
       </IconButton>
-     {open ? homework.map(homework => <Homework key={homework?.id} homework={homework}/>) : null }
+     {open ? homework?.map(homework => <Homework key={homework?.id} homework={homework}/>) : null }
 
   
         </Grid>
