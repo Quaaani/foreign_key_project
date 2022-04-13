@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
 import {Typography} from "@mui/material";
@@ -33,10 +33,28 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-function StudyList(props) {
 
+
+function StudyList(props) {
     const classes = useStyles()
     const { studylist } = useSelector(state => state.studylistReducer)
+
+    const[lesson, setLesson] = useState(studylist?.first_lesson_data)
+
+    const changeLesson = (event) => {
+        event.preventDefault()
+
+        setLesson(studylist?.second_lesson_data)
+    }
+
+    const previousLesson = (event) => {
+        event.preventDefault()
+
+        setLesson(studylist?.first_lesson_data)
+    }
+
+    console.log('studylist heeereeeeee', studylist)
+    console.log('lesson =>', lesson)
 
     return (
     <div className={classes.cont}>
@@ -44,7 +62,7 @@ function StudyList(props) {
             variant="h4"
             mt={4}
         >
-            {studylist?.first_lesson_data.lesson_name}
+            {lesson?.lesson_name}
         </Typography>
         <div className={classes.list}>
 
@@ -53,8 +71,9 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task1">
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
-                    <StudyListVideo lesson_video={studylist?.first_lesson_data.lesson_video}/>
-                    <div>Translator
+                    <StudyListVideo lesson_video={lesson?.lesson_video}/>
+                    {/*<StudyListVideo lesson_video={lesson.lesson_video}/>*/}
+                    <div>
                       <Translator />
                     </div>
 
@@ -69,7 +88,9 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task3">
                         Задание 3. Выполните задание ниже, не забудьте отправить его на проверку!
                     </Typography>
-                    <StudyListTaskForm lesson_img={studylist?.first_lesson_data.lesson_img}/>
+                    <StudyListTaskForm id={lesson?.id} lesson_img={lesson?.lesson_img} lesson={lesson}/>
+                    <button onClick={previousLesson}>Пред урок</button>
+                    <button onClick={changeLesson}>След урок</button>
                 </div>
             </div>
             <div>

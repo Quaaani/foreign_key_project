@@ -29,7 +29,8 @@ function Home(props) {
       <ImageButton />
 
       <div id='TestingComponents'>
-
+<StudyList />
+          {/*<MapList />*/}
       </div>
 
       <div>
