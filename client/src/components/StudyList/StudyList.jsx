@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> 35c064b9ebeac7cc950edc503702733bdd31bb41
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
 import {Typography} from "@mui/material";
@@ -95,7 +91,7 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task3">
                         Задание 3. Выполните задание ниже, не забудьте отправить его на проверку!
                     </Typography>
-                    <StudyListTaskForm lesson_img={lesson?.lesson_img}/>
+                    <StudyListTaskForm lesson_img={lesson?.lesson_img} lesson={lesson} id={lesson?.id}/>
                 </div>
                 <button onClick={previousLesson}>Предыдущий урок</button>
                 <button onClick={nextLesson}>Следующий урок</button>

@@ -30,11 +30,12 @@ function StudyListTaskForm({lesson_img, lesson}) {
     const handleSubmit = (event) => {
         event.preventDefault()
         const homework = {
-            from_user_id: session.id,
+            from_user_id: session?.id,
             to_user_id: studylist.user_id,
-            lesson_id: lesson.id,
+            lesson_id: lesson?.id,
             homework: homeworkText.current.value
         }
+        console.log('homework', homework);
         dispatch(axiosSendHomeworkAAC(homework))
     }
 
