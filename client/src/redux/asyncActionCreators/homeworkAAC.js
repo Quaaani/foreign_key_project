@@ -21,3 +21,13 @@ export const axiosInitHomeworkAAC = () => {
     }
   }
 }
+
+export const axiosAddLevelAAC = (id, payload) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`/homework/${id}`, payload)
+    } catch (error) {
+        throw error
+    }
+  }
+}

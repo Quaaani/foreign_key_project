@@ -14,7 +14,6 @@ const favoritesRouter = require('./routes/favoritesRouter.route')
 const dictionariesRouter = require('./routes/dictionariesRouter.route')
 const feedbackRouter = require('./routes/feedbackRouter.route')
 const teacherRouter = require('./routes/teachersProfileRouter.route')
- 
 const homeworkRouter = require('./routes/homeworkRouter.route')
 
 // app && PORT

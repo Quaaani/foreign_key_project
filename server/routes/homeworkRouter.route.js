@@ -85,4 +85,20 @@ router.route('/')
       }
     })
 
+router.route('/:id')
+    .post(async (req, res) => {
+      const {id} = req.params
+      const { user_level } = req.body
+
+      console.log('id', id)
+      console.log('req.body', req.body)
+
+      const user = await User.findByPk(id)
+
+      user.user_level += Number(user_level)
+      user.save()
+
+      res.sendStatus(200)
+    })
+
 module.exports = router
