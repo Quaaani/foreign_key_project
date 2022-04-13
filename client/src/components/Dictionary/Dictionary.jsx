@@ -17,11 +17,6 @@ function Dictionary ({dictionary}) {
       console.log('Error DELETE WORD', {...error})
     }
   }
-
-  const initId = (event) => {
-    event.preventDefault();
-    console.log(event.target.dataset.id)
-  }
   
   return (
 

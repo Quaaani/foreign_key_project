@@ -1,14 +1,48 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography, Divider } from "@mui/material";
-import { useSelector } from "react-redux";
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography, Divider, ClickAwayListener, IconButton } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useEffect } from "react";
+import * as React from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInitHomeworkAAC } from '../../redux/asyncActionCreators/homeworkAAC'
+import Homework from "../Homework/Homework";
 
 function ProfileTeacher () {
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
+  const { homework } = useSelector((state) => state.homeworkReducer)
+  const dispatch = useDispatch()
 
-  console.log('Teacher Fav => ', favorites);
-  console.log('session => ', session)
+  const [open, setOpen] = React.useState(false)
+
+  const handleClick = async() => {
+    setOpen((prev) => !prev)
+    try {
+      await dispatch(axiosInitHomeworkAAC())
+    } catch(error) {
+      console.log('ERROR INIT HOMEWORK', error)
+    }
+  }
+
+  const handleClickAway = () => {
+    setOpen(false)
+  }
+
+  const authBTN = async (event) => {
+    event.preventDefault()
+    try {
+      await dispatch(axiosInitHomeworkAAC())
+    } catch(error) {
+      console.log('ERROR INIT HOMEWORK', error)
+    }
+  }
   
+  useEffect(() => {
+    console.log('Homework', homework);
+  },[homework])
+
+
   return (
+    <ClickAwayListener onClickAway={handleClickAway}>
     <Container >
       <Grid container
         columns={{ xs: 4, sm: 8, md: 12 }}
@@ -21,7 +55,6 @@ function ProfileTeacher () {
           md={4}
           sx={{ mx: 'auto', my: 'auto'}}
         >
-          
           <Card
             sx={{ maxWidth: 345 }}
           >
@@ -36,7 +69,6 @@ function ProfileTeacher () {
               <Button color="secondary" variant="outlined" sx={{ mx: 'auto'}}>Редактировать профиль</Button>
             </CardActions>
           </Card>
-          
           </Grid>
 
           <Grid item
@@ -83,19 +115,37 @@ function ProfileTeacher () {
 
       <Grid container>
         <Grid item
-          xs={2}
-          sm={2}
-          md={3}
-          sx={{ my: 'auto'}}        
+          xs={4}
+          sm={4}
+          md={4}
+          sx={{ mx: 'auto'}}
+          // sx={{ md: {'mx' : 'auto'}}}        
         >
-          
+        <IconButton onClick={handleClick} >
+        <Typography style={{fontWeight: 'bold'}} >
+          ДОМАШНИЕ ЗАДАНИЯ УЧЕНИКОВ
+        </Typography>
+        <ExpandMoreIcon />
+      </IconButton>
 
-          Мои курсы
-      </Grid>
+        </Grid>
+        <Grid item
+          xs={12}
+          sm={12}
+          md={12}
+          sx={{ my: 'auto', mx: 'auto'}}        
+        >
 
+
+ 
+     {open ? homework?.map(homework => <Homework key={homework?.id} homework={homework}/>) : null }
+
+  
+        </Grid>
       </Grid>
 
     </Container>
+  </ClickAwayListener>
   )
 }
 

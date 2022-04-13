@@ -1,12 +1,12 @@
-import { SEND_HOMEWORK } from '../actionTypes/homeworkAT'
+import { INIT_HOMEWORK } from '../actionTypes/homeworkAT'
 
 const initialState = { homework: null}
 
-export const homeworkReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SEND_HOMEWORK:
-            return { ...state, homework: action.payload}
-        default:
-            return state
+export const homeworkReducer = (state = initialState, action) => {  
+  switch(action.type) {
+    case INIT_HOMEWORK:
+      return { ...state, homework: action.payload}
+    default:
+      return state
     }
 }

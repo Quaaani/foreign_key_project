@@ -6,7 +6,8 @@ import { dictionariesReducer } from "./dictionariesReducer";
 import {tLevelsReducer} from "./tlevelsReducer";
 import {studylistReducer} from "./studylistReducer";
 import {feedbackReducer} from "./feedbackReducer";
+import { homeworkReducer } from './homeworkReducer'
 
 export const rootReducer = combineReducers({
-  sessionReducer, coursesReducer, favoritesReducer, dictionariesReducer, tLevelsReducer, studylistReducer, feedbackReducer
+  sessionReducer, coursesReducer, favoritesReducer, dictionariesReducer, tLevelsReducer, studylistReducer, feedbackReducer, homeworkReducer
 })

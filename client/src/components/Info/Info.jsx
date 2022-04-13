@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container} from "@mui/material";
 import { makeStyles } from '@mui/styles';
+import { textAlign } from '@mui/system';
 
 
 const useStyles = makeStyles(() => ({
@@ -14,7 +15,8 @@ const useStyles = makeStyles(() => ({
         marginBottom: "40px"
     },
     infoText: {
-        fontSize: "1rem"
+        fontSize: "1rem",
+        textAlign: 'justify'
     }
 }))
 
