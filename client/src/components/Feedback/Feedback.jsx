@@ -16,19 +16,22 @@ const useStyles = makeStyles(() => ({
     "justify-content": "center",
     fontFamily: "Roboto",
     fontSize: "1.5rem",
-    "box-shadow": "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px"
+    "box-shadow": "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px",
+    backgroundColor: "#bfbfb6"
   },
   textHeader: {
     marginBottom: "40px",
-    fontSize: "3rem",
-    fontWeight: 400,
+    marginTop: "60px",
+    fontSize: "2rem",
+    fontWeight: 700,
     letterSpacing: "1.5px",
     "text-shadow": "0px 10px 30px rgba(150, 150, 150, 0.7)"
   },
   carouselBox: {
     "box-shadow": "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
     padding: "20px",
-    borderRadius: "30px"
+    borderRadius: "30px",
+    backgroundColor: "white"
   },
   ava: {
     width: "50px",
@@ -48,58 +51,16 @@ const useStyles = makeStyles(() => ({
     paddingTop: "20px"
   },
   buttons: {
-    fontSize: "1.1rem"
+    fontSize: "1.1rem",
+    color: "#265351"
   },
   feedText: {
     overflowY: "scroll"
+  },
+  btnLeave: {
+    backgroundColor: "#265351 !important"
   }
 }))
-
-const steps = [
-  {
-    label: "Azamat",
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more. An ad group contains one or more ads which target a shared set of keywords.`,
-  },
-  {
-    label: "Anton",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords. An ad group contains one or more ads which target a shared set of keywords. An ad group contains one or more ads which target a shared set of keywords. Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions. ",
-  },
-  {
-    label: "Natalia",
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: "Vetal",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-  {
-    label: "Natalia",
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: "Vetal",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-];
 
 function Feedback(props) {
 
@@ -133,7 +94,7 @@ function Feedback(props) {
 
   return (
     <div className={styles.wrapper} id='feedback'>
-      <h2 className={styles.textHeader}>Feedback</h2>
+      <h2 className={styles.textHeader}>Отзывы</h2>
       <Box className={styles.carouselBox} sx={{ maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, flexGrow: 1 }}>
         <Paper
           square
@@ -145,13 +106,13 @@ function Feedback(props) {
             pl: 2,
             bgcolor: "background.default",
           }}
-          className={styles.authorBox} 
+          className={styles.authorBox}
         > <Avatar className={styles.ava} src={ feedbacks && `./img/avatars/${feedbacks[activeStep].user_avatar}`} />
           <Typography className={styles.authorName}>{feedbacks && feedbacks[activeStep]?.user_firstName}</Typography>
         </Paper>
         <Box sx={{ height: 255, maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, p: 2 }} className={styles.feedText}>
           {feedbacks && feedbacks[activeStep].comment}
-          
+
         </Box>
         <MobileStepper
           className={styles.buttonsBox}
@@ -166,7 +127,7 @@ function Feedback(props) {
               disabled={activeStep === maxSteps - 1}
               className={styles.buttons}
             >
-              Next
+              Далее
               {theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
@@ -186,18 +147,18 @@ function Feedback(props) {
               ) : (
                 <KeyboardArrowLeft />
               )}
-              Back
+              Назад
             </Button>
           }
         />
       </Box>
       {session && (
-        <Link to="/feedback">
-          <Button variant="contained" sx={{marginTop: "3vw"}}>Оставить отзыв</Button>
+        <Link to="/feedback" style={{"text-decoration": "none"}}>
+          <Button className={styles.btnLeave} variant="contained" sx={{marginTop: "3vw"}}>Оставить отзыв</Button>
         </Link>
       ) }
-        
-        
+
+
     </div>
   );
 }

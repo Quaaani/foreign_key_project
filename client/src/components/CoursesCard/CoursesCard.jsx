@@ -1,11 +1,27 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 import {useDispatch, useSelector} from "react-redux";
 import {axiosInitStudylistAAC} from "../../redux/asyncActionCreators/studylistAAC";
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles(() => ({
+  courseHeader: {
+    fontWeight: "700"
+  },
+  courseCard: {
+    backgroundColor: "rgba(127,186,182, .1)"
+  },
+  courseBtn: {
+    color: "white",
+    backgroundColor: "rgba(38,83,81)"
+  }
+}))
 
 
 function CoursesCard ({course}) {
   const dispatch = useDispatch()
   const { studylist } = useSelector((state) => state.studylistReducer)
+  const classes = useStyles()
 
   const startCourse = async () => {
     try{
@@ -21,17 +37,20 @@ function CoursesCard ({course}) {
       <Grid
         item
         xs={12}
-        sm={4}
-        md={4}
+        sm={6}
+        md={6}
+        sx={{mx: 'auto'}}
       >
         <Card
           sx={{
             display: 'flex',
             height: 250
-        }}>
+          }}
+          className={classes.courseCard}
+        >
           <CardMedia
             component='img'
-            sx={{ width: 150}}
+            sx={{ width: 200}}
             image={`/img/courses/${course.course_img}`}
             alt='Course NAME'
           >
@@ -43,6 +62,7 @@ function CoursesCard ({course}) {
           >
             <Typography
               variant="h5"
+              className={classes.courseHeader}
             >
                 {course.course_name}
             </Typography>
@@ -62,9 +82,9 @@ function CoursesCard ({course}) {
 
               }}
             >
-              <Button onClick={startCourse} variant="outlined" color="success" sx={{
+              <Button onClick={startCourse} variant="contained" color="success" sx={{
                 flexGrow: '1',
-              }}>ГАЗУЙ</Button>
+              }} className={classes.courseBtn}>Добавить</Button>
           </CardActions>
           </CardContent>
 

@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
         alignItems: "center",
         padding: "70px",
         boxSizing: "border-box",
-        backgroundImage: `url(img/HomePhoto/statCard.png)`
+        background: "linear-gradient(-320deg, #7fbab6 0%, #73dcc8 100%)"
     }
 }))
 

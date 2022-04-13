@@ -17,7 +17,19 @@ import {
 import {makeStyles} from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingTop: "20vh",
+    backgroundColor: 'rgba(127,186,182, 0.7)',
+    zIndex: 200,
+  },
+  "css-eglki6-MuiLinearProgress-root": {
+    backgroundColor: "#7fbab6 !important"
+}
 }))
 
 function RegTest(props) {
@@ -65,7 +77,7 @@ function RegTest(props) {
 
   return (
     <>
-      <div>
+      <div className={classes.overlay}>
         {tLevels ? (
           <Card
             sx={{maxWidth: 640, mx: 'auto', mt: 5}}>

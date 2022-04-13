@@ -5,14 +5,16 @@ import { makeStyles } from "@mui/styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { style } from "@mui/system";
+import {Container} from "@mui/material";
 
 const useStyles = makeStyles(() => ({
   wrapper: {
-    margin: "40px 0",
+    margin: "0",
+    marginTop: "-20px",
+    marginBottom: "-50px",
     boxSizing: "border-box",
     padding: "40px",
-    backgroundColor: "rgba(30, 144, 255, 0.4)",
-    "box-shadow": "0px 0px 20px 40px rgba(30, 144, 255, 0.35)"
+    backgroundColor: "white"
 
   },
   item: {
@@ -23,20 +25,30 @@ const useStyles = makeStyles(() => ({
     "align-items": "center",
   },
   itemImg: {
-    width: "90%",
+    width: "80%",
     margin: "0 auto",
     marginTop: "-5%",
+  },
+  header: {
+    textAlign: "center",
+    fontSize: "2rem",
+    marginBottom: "10px",
+    fontWeight: 700,
+    letterSpacing: "1.5px",
+  },
+  galleryWrapper: {
+    paddingTop: "70px"
   }
 }));
 
-const images = ['https://nalogcons78.ru/img/23864060.jpg', 'https://jourcsu.ru/wp-content/uploads/2018/01/howust.jpg', 'https://www.estudy.ru/upload/0102/3.png', 'https://perspektiva-klab.ru/wp-content/uploads/2021/07/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1-3.jpg', 'https://kuda-mo.ru/uploads/52dea95b0c2ffee78ba3163f067b13b7.jpeg']
+const images = ['pic-1.jpg', 'pic-2.jpg', 'pic-3.jpg', 'pic-4.jpg', 'pic-5.jpg']
 
 
 function ImgBlock(props) {
   const styles = useStyles();
 
   const settings = {
-    dots: true,
+    dots: false,
     fade: true,
     infinite: true,
     slidesToShow: 1,
@@ -49,20 +61,26 @@ function ImgBlock(props) {
   };
 
   return (
-    <div className={styles.wrapper} id="gallery">
-      <Slider {...settings}>
+      <div id="gallery" className={styles.galleryWrapper}>
+        <h2 className={styles.header}>Галерея</h2>
+        <Container maxWidth="lg">
+          <div className={styles.wrapper} >
+            <Slider {...settings}>
 
-        {images.length > 0 ? images.map(el => (
-          <div className={styles.item}>
-            <img className={styles.itemImg} src={el} alt="text" />
+              {images.length > 0 ? images.map(el => (
+                  <div className={styles.item}>
+                    <img className={styles.itemImg} src={`/img/carousel/${el}`} alt="text" />
+                  </div>
+              )) : (
+                  <div> No Data</div>
+              )}
+
+
+            </Slider>
           </div>
-        )) : (
-          <div> No Data</div>
-        )}
+        </Container>
+      </div>
 
-        
-      </Slider>
-    </div>
   );
 }
 
