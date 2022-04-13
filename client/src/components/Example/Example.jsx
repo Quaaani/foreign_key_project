@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { tLevelsReducer } from '../../redux/reducers/tlevelsReducer';
@@ -63,8 +63,6 @@ function Example(props) {
   //   }
   // }
 
-  console.log('studylist =>', studylist)
-
   // Tests
   const updateAnswer = (id, optionIdx) => {
 
@@ -119,6 +117,8 @@ function Example(props) {
           <div>No Data</div>
         )}
       </div> */}
+
+
             <div>
         {studylist ? (
           <Card

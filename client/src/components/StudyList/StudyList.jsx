@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
 import {Typography} from "@mui/material";
@@ -6,6 +6,7 @@ import {makeStyles} from "@mui/styles";
 import StudyListTaskForm from "../StudyListTaskForm/StudyListTaskForm";
 import {useSelector} from "react-redux";
 import Translator from '../Translator/Translator';
+import LessonTest from '../LessonTest/LessonTest'
 
 
 const useStyles = makeStyles(() => ({
@@ -33,10 +34,30 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-function StudyList(props) {
 
+
+function StudyList(props) {
     const classes = useStyles()
     const { studylist } = useSelector(state => state.studylistReducer)
+
+    const [lesson, setLesson] = useState(studylist?.first_lesson_data)
+    const [test, setTest] = useState(studylist?.first_lesson_tests)
+    const [qnIndex, setQnIndex] = useState(0)
+
+
+    const previousLesson = (event) => {
+      event.preventDefault()
+      setLesson(studylist?.first_lesson_data)
+      setTest(studylist?.first_lesson_tests)
+    }
+
+    const nextLesson = (event) => {
+      event.preventDefault()
+      setLesson(studylist?.second_lesson_data)
+      setTest(studylist?.second_lesson_tests)
+    }
+
+    console.log('studylist =>', studylist)
 
     return (
     <div className={classes.cont}>
@@ -44,7 +65,7 @@ function StudyList(props) {
             variant="h4"
             mt={4}
         >
-            {studylist?.first_lesson_data.lesson_name}
+            {lesson?.lesson_name}
         </Typography>
         <div className={classes.list}>
 
@@ -53,7 +74,7 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task1">
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
-                    <StudyListVideo lesson_video={studylist?.first_lesson_data.lesson_video}/>
+                    <StudyListVideo lesson_video={lesson?.lesson_video}/>
                     <div>Translator
                       <Translator />
                     </div>
@@ -63,17 +84,20 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task2">
                         Задание 2. Ответьте на вопросы.
                     </Typography>
-                    <div>Здесь должен быть тест</div>
+                    {/* <div>Здесь должен быть тест</div> */}
+                    {studylist && <LessonTest test={test}/>}
                 </div>
                 <div>
                     <Typography className={classes.taskText} id="task3">
                         Задание 3. Выполните задание ниже, не забудьте отправить его на проверку!
                     </Typography>
-                    <StudyListTaskForm lesson_img={studylist?.first_lesson_data.lesson_img}/>
+                    <StudyListTaskForm lesson_img={lesson?.lesson_img} lesson={lesson} id={lesson?.id}/>
                 </div>
+                <button onClick={previousLesson}>Предыдущий урок</button>
+                <button onClick={nextLesson}>Следующий урок</button>
             </div>
             <div>
-                {/*<StudyListMenu />*/}
+                {/* <StudyListMenu /> */}
             </div>
         </div>
     </div>
