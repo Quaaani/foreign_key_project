@@ -32,6 +32,7 @@ function Home(props) {
       <div id='TestingComponents'>
         {/* <Example /> */}
         <StudyList />
+          <MapList />
       </div>
 
       <div>
