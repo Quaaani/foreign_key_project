@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> 35c064b9ebeac7cc950edc503702733bdd31bb41
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
 import {Typography} from "@mui/material";
@@ -34,8 +38,9 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-function StudyList(props) {
 
+
+function StudyList(props) {
     const classes = useStyles()
     const { studylist } = useSelector(state => state.studylistReducer)
 
