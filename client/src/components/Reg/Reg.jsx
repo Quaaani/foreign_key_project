@@ -49,7 +49,8 @@ function Reg(props) {
 
   const onFormSubmit = async (data) => {
     if (localStorage.getItem('user_level')) {
-      data.user_level = localStorage.getItem('user_level');
+      data.user_level = +localStorage.getItem('user_level');
+      data.user_age = +data.user_age
       try {
         await dispatch(axiosAddUserAAC(data));
         await dispatch(axiosInitSession());
@@ -205,7 +206,7 @@ function Reg(props) {
                   type="file"
                   id="ava-photo"
                   hidden
-                  {...register("user_avatar")}
+                  // {...register("user_avatar")}
                   name="user_avatar"
                 />
               </Button>

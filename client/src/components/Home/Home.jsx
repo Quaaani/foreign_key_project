@@ -15,6 +15,7 @@ import Translator from '../Translator/Translator';
 import style from './Home.module.css'
 import StudyList from "../StudyList/StudyList";
 import MapList from "../MapList/MapList";
+import Example from '../Example/Example'
 
 
 
@@ -29,8 +30,8 @@ function Home(props) {
       <ImageButton />
 
       <div id='TestingComponents'>
-<StudyList />
-          {/*<MapList />*/}
+        {/* <Example /> */}
+        <StudyList />
       </div>
 
       <div>
