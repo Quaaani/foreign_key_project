@@ -25,7 +25,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const { useEffect } = React
   const navigate = useNavigate();
-  
+
   const { session } = useSelector((state) => state.sessionReducer);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,7 +39,7 @@ const Header = () => {
       console.log('/session Error =>', { ...error });
     }
   }, [dispatch]);
-  
+
   // Logout Функция
   const logoutClick = async (event) => {
     await dispatch(axiosLogoutUserAAC());
@@ -76,8 +76,8 @@ const Header = () => {
   return (
     <>
     <AppBar style={{zIndex: '100',
-      position: 'sticky', backgroundColor: "rgba(0,0,0, .55)"}}>
-      <Container maxWidth="xl">
+      position: 'sticky', backgroundColor: "rgba(38,83,81, .7)"}}>
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Link to="/home" style={{textDecoration: "none", color: "inherit"}}>
             <Typography
@@ -86,7 +86,7 @@ const Header = () => {
               component="div"
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
-              LOGO
+              ForeignKey
             </Typography>
           </Link>
 
@@ -124,7 +124,7 @@ const Header = () => {
                   <Typography textAlign="center">Статистика</Typography>
                 </MenuItem>
               </a>
-              
+
               <a href='#courses' style={{"textDecoration": "none", "color": "inherit"}}>
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Курсы</Typography>
@@ -151,7 +151,7 @@ const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            FK
           </Typography>
           <Container maxWidth="sm">
             <Box
@@ -229,6 +229,11 @@ const Header = () => {
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Link to={'/profile'} onClick={profileClick}  style={{textDecoration: "none", color: "inherit"}}>
                     <Typography textAlign="center">Профиль</Typography>
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Link to={'/mymap'} style={{textDecoration: "none", color: "inherit"}}>
+                    <Typography textAlign="center">Моя Карта</Typography>
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={logoutClick}>

@@ -9,7 +9,7 @@ import RegTest from '../RegTest/RegTest'
 const useStyles = makeStyles(() => ({
   mainFeaturesPost: {
     position: 'relative',
-    height: '55vh',
+    height: '81vh',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     // zIndex: "-1"
   },
   mainFeaturesPostContent: {
-    height: '40vh',
+    height: '25vh',
   },
   buttonCenter: {
     display: 'flex',
@@ -26,12 +26,24 @@ const useStyles = makeStyles(() => ({
   },
   ourBtn: {
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    justifyContent: "start"
   },
   btn: {
     width: '230px',
     height: '50px',
+    backgroundColor: "#a8875f !important; &>span{color: #977034}",
+    // marginLeft: "100px"
+
   },
+  head1: {
+    color: "white",
+    fontSize: "3rem"
+  },
+  head2: {
+    color: "white",
+    fontSize: "1.5rem"
+  }
 }));
 
 function ImageButton(props) {
@@ -65,18 +77,25 @@ function ImageButton(props) {
                 variant="h3"
                 color="inherit"
                 gutterBottom
-              ></Typography>
-              <Typography component="h5" color="inherit" paragraph></Typography>
+                className={classes.head1}
+              >
+                Знать много языков
+              </Typography>
+              <Typography component="h5" color="inherit" paragraph
+                className={classes.head2}
+              >
+                — значит иметь много ключей <br/>
+                к одному замку.
+              </Typography>
             </div>
           </Grid>
           <Grid item className={classes.ourBtn}>
             <Button
               onClick={handleChange}
               variant="contained"
-              color="secondary"
               className={classes.btn}
             >
-              Начать обучение
+              пройти тест
             </Button>
           </Grid>
         </Grid>

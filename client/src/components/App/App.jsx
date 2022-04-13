@@ -15,6 +15,7 @@ import FeedbackForm from "../FeedbackForm/FeedbackForm";
 import Feedback from "../Feedback/Feedback";
 import ImgBlock from "../ImgBlock/ImgBlock";
 import Profile from "../Profile/Profile";
+import MapList from "../MapList/MapList";
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/feedback" element={<FeedbackForm />} />
           <Route path="/profile" element={<Profile />} />
+            <Route path="/mymap" element={<MapList />} />
+
         </Routes>
 
         <Footer />

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
@@ -44,17 +45,22 @@ function StudyList(props) {
     const [test, setTest] = useState(studylist?.first_lesson_tests)
     const [qnIndex, setQnIndex] = useState(0)
 
+    const addIndex = () => {
+      setQnIndex(prev => prev + 1)
+    }
 
     const previousLesson = (event) => {
       event.preventDefault()
       setLesson(studylist?.first_lesson_data)
       setTest(studylist?.first_lesson_tests)
+      setQnIndex(0)
     }
 
     const nextLesson = (event) => {
       event.preventDefault()
       setLesson(studylist?.second_lesson_data)
       setTest(studylist?.second_lesson_tests)
+      setQnIndex(0)
     }
 
     console.log('studylist =>', studylist)
@@ -75,7 +81,7 @@ function StudyList(props) {
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
                     <StudyListVideo lesson_video={lesson?.lesson_video}/>
-                    <div>Translator
+                    <div>
                       <Translator />
                     </div>
 
@@ -85,7 +91,7 @@ function StudyList(props) {
                         Задание 2. Ответьте на вопросы.
                     </Typography>
                     {/* <div>Здесь должен быть тест</div> */}
-                    {studylist && <LessonTest test={test}/>}
+                    {studylist && <LessonTest test={test} qnIndex={qnIndex} addIndex={addIndex}/>}
                 </div>
                 <div>
                     <Typography className={classes.taskText} id="task3">
