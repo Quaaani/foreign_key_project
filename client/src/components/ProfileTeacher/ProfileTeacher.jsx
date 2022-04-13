@@ -82,13 +82,16 @@ function ProfileTeacher () {
       <Divider variant="middle" />
 
       <Grid container>
-        <Grid item>
+        <Grid item
+          xs={2}
+          sm={2}
+          md={3}
+          sx={{ my: 'auto'}}        
+        >
+          
 
-          <Grid container>
-
-          </Grid>
-
-        </Grid>
+          Мои курсы
+      </Grid>
 
       </Grid>
 
