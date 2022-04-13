@@ -39,7 +39,7 @@ router.route('/:course_id')
     let second_lesson_id = 0
     course.first_lesson_tests = []
     course.second_lesson_tests = []
-    let lessons = []
+    let lesson = []
 
     if (course_id == 1) {
       first_lesson_id = 1
@@ -71,6 +71,8 @@ router.route('/:course_id')
 
     course.first_lesson_data = lesson[0]
     course.second_lesson_data = lesson[1]
+
+    console.log('course =>', course)
 
     res.status(200).json(course)
   })
