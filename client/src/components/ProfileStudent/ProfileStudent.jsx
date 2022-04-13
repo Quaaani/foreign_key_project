@@ -45,16 +45,16 @@ function ProfileStudent () {
         >
           <CardContent>
             <Typography variant="h6">
-              Name:
+              Имя:
             </Typography>
             <Typography variant="h6">
-              Last Name:
+              Фамилия:
             </Typography>
             <Typography variant="h6">
-              Status:
+              Статус:
             </Typography>
             <Typography variant="h6">
-              Level:
+              Уровень:
             </Typography>
           </CardContent>
         </Grid>
