@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
@@ -75,7 +76,7 @@ function StudyList(props) {
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
                     <StudyListVideo lesson_video={lesson?.lesson_video}/>
-                    <div>Translator
+                    <div>
                       <Translator />
                     </div>
 
