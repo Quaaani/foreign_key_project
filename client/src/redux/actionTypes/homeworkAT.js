@@ -1,1 +1,1 @@
-export const { SEND_HOMEWORK} = 'SEND_HOMEWORK'
+export const INIT_HOMEWORK = 'INIT_HOMEWORK'

@@ -3,7 +3,7 @@ import {TextField, Button, FormControl, TextareaAutosize} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import {safePreventDefault} from "react-slick/lib/utils/innerSliderUtils";
 import {useDispatch, useSelector} from "react-redux";
-import {axiosSendHomeworkAAC} from "../../redux/asyncActionCreators/homeworkAAC";
+import {axiosSendHomeworkAAC, axiosInitHomeworkAAC} from "../../redux/asyncActionCreators/homeworkAAC";
 
 const useStyles = makeStyles(() => ({
     taskSend: {
@@ -35,8 +35,7 @@ function StudyListTaskForm({lesson_img, lesson}) {
             lesson_id: lesson?.id,
             homework: homeworkText.current.value
         }
-        console.log('homework', homework);
-        dispatch(axiosSendHomeworkAAC(homework))
+    dispatch(axiosSendHomeworkAAC(homework))
     }
 
     return (

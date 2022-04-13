@@ -1,8 +1,10 @@
-import {SEND_HOMEWORK } from '../actionTypes/homeworkAT'
+import { INIT_HOMEWORK } from '../actionTypes/homeworkAT'
 
-export function sendHomeworkAC (payload) {
-    return {
-        type: SEND_HOMEWORK,
+export function initHomeworkAC (payload) {
+    
+  console.log('INIT',INIT_HOMEWORK)
+  return {
+        type: INIT_HOMEWORK,
         payload
     }
 }

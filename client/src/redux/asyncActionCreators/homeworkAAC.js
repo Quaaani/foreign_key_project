@@ -1,5 +1,5 @@
 import axios from '../../axios/axios'
-import { sendHomeworkAC } from '../actionCreators/homeworkAC'
+import { initHomeworkAC } from '../actionCreators/homeworkAC'
 
 export const axiosSendHomeworkAAC = (payload) => {
     return async (dispatch) => {
@@ -9,4 +9,15 @@ export const axiosSendHomeworkAAC = (payload) => {
             throw error
         }
     }
+}
+
+export const axiosInitHomeworkAAC = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('/homework')
+      dispatch(initHomeworkAC(response.data))
+    } catch (error) {
+      throw error
+    }
+  }
 }

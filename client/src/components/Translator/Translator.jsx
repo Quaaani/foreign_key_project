@@ -60,7 +60,6 @@ function Translator() {
       word_name: word_name.current.value.toLowerCase(),
       word_translate: word_translate.toLowerCase(),
     }
-    console.log(newWord)
     try {
       await dispatch(axiosAddNewWord(newWord))
     } catch(error) {
