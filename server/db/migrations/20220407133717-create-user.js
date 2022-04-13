@@ -32,7 +32,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_avatar: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        defaultValue: 'default.png'
       },
       user_country: {
         type: Sequelize.TEXT

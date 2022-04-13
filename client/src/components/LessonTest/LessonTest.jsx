@@ -15,11 +15,11 @@ import {
   LinearProgress,
 } from '@mui/material';
 
-function LessonTest({ test }) {
+function LessonTest({ test, qnIndex, addIndex }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [qnIndex, setQnIndex] = useState(0);
+  // const [qnIndex, setQnIndex] = useState(0);
   const [price, setPrice] = useState(0);
 
   const { tLevels } = useSelector((state) => state.tLevelsReducer);
@@ -51,7 +51,7 @@ function LessonTest({ test }) {
       if (test[qnIndex].answers[optionIdx] === 'yes') {
         setPrice((prev) => prev + test.lesson_price);
       }
-      setQnIndex((prev) => prev + 1);
+      addIndex()
     } else {
       if (test[qnIndex].answers[optionIdx] === 'yes') {
         setPrice((prev) => prev + test.lesson_price);
@@ -60,8 +60,6 @@ function LessonTest({ test }) {
       localStorage.setItem('user_level', price);
     }
   };
-
-  console.log('price =>', price);
 
   return (
     <>

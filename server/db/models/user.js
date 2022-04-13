@@ -49,7 +49,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     user_avatar: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      defaultValue: 'default.png'
     },
     user_country: {
       type: DataTypes.TEXT
