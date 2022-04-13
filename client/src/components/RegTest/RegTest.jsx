@@ -14,8 +14,17 @@ import {
   Box,
   LinearProgress
 } from '@mui/material';
+import {makeStyles} from "@mui/styles";
+
+const useStyles = makeStyles(() => ({
+
+}))
 
 function RegTest(props) {
+
+  const classes = useStyles()
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -33,7 +42,7 @@ function RegTest(props) {
       console.log('tLevels Error =>', { ...error });
     }
   };
-  
+
   // tLevels
   const updateAnswer = (id, optionIdx) => {
 
@@ -60,11 +69,11 @@ function RegTest(props) {
         {tLevels ? (
           <Card
             sx={{maxWidth: 640, mx: 'auto', mt: 5}}>
-              <CardHeader 
+              <CardHeader
                 title={'Вопрос ' + (qnIndex + 1) + ' из 10'}
               />
               <Box>
-                <LinearProgress 
+                <LinearProgress
                   variant='determinate'
                   value={(qnIndex + 1) * 100 / tLevels.length}
                 />
