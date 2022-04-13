@@ -35,7 +35,6 @@ function StudyListTaskForm({lesson_img, lesson}) {
             lesson_id: lesson.id,
             homework: homeworkText.current.value
         }
-        console.log(homework)
         dispatch(axiosSendHomeworkAAC(homework))
     }
 
