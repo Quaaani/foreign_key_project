@@ -13,6 +13,8 @@ const tlevelRouter = require('./routes/tlevelRouter.route')
 const favoritesRouter = require('./routes/favoritesRouter.route')
 const dictionariesRouter = require('./routes/dictionariesRouter.route')
 const feedbackRouter = require('./routes/feedbackRouter.route')
+const teacherRouter = require('./routes/teachersProfileRouter.route')
+ 
 const homeworkRouter = require('./routes/homeworkRouter.route')
 
 // app && PORT
@@ -33,6 +35,7 @@ app.use('/tlevel', tlevelRouter)
 app.use('/favorites', favoritesRouter)
 app.use('/dictionaries', dictionariesRouter)
 app.use('/feedback', feedbackRouter)
+app.use('teacherProfile', teacherRouter)
 app.use('/homework', homeworkRouter)
 
 

@@ -47,13 +47,13 @@ function ProfileTeacher () {
           >
             <CardContent>
               <Typography variant="h6">
-                Name:
+                Имя:
               </Typography>
               <Typography variant="h6">
-                Last Name:
+                Фамилия:
               </Typography>
               <Typography variant="h6">
-                Status:
+                Статус:
               </Typography>
             </CardContent>
           </Grid>
@@ -82,13 +82,16 @@ function ProfileTeacher () {
       <Divider variant="middle" />
 
       <Grid container>
-        <Grid item>
+        <Grid item
+          xs={2}
+          sm={2}
+          md={3}
+          sx={{ my: 'auto'}}        
+        >
+          
 
-          <Grid container>
-
-          </Grid>
-
-        </Grid>
+          Мои курсы
+      </Grid>
 
       </Grid>
 
