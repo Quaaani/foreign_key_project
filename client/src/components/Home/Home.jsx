@@ -15,7 +15,6 @@ import Translator from '../Translator/Translator';
 import style from './Home.module.css'
 import StudyList from "../StudyList/StudyList";
 import MapList from "../MapList/MapList";
-import Example from '../Example/Example'
 import Info from "../Info/Info";
 
 
