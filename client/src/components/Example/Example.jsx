@@ -35,15 +35,15 @@ function Example(props) {
     }
   }
 
-  const toInit = async (event) => {
-    event.preventDefault();
+  // const toInit = async (event) => {
+  //   event.preventDefault();
 
-    try {
-      await dispatch(axiosInitTLevels());
-    } catch (error) {
-      console.log('tLevels Error =>', { ...error });
-    }
-  };
+  //   try {
+  //     await dispatch(axiosInitTLevels());
+  //   } catch (error) {
+  //     console.log('tLevels Error =>', { ...error });
+  //   }
+  // };
   
   // tLevels
   // const updateAnswer = (id, optionIdx) => {
@@ -83,8 +83,8 @@ function Example(props) {
 
   return (
     <>
-      <button onClick={toInit}>Init tLevels</button>
-      <button onClick={toInitTest}>Init Tests</button>
+      {/* <button onClick={toInit}>Init tLevels</button>
+      <button onClick={toInitTest}>Init Tests</button> */}
       {/* <div>
         {tLevels ? (
           <Card

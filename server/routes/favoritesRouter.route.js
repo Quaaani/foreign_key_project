@@ -32,7 +32,7 @@ router.route('/')
   router.route('/')
     .post(async (req, res) => {
       try {
-        if(!req.session.user_data) return res.status(400).json({ message: 'No session!'})
+        if(!req.session.user_data) return res.status(400).json({ message: 'Вы не авторизованы'})
 
         const {user_id, course_id} = req.body
 

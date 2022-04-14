@@ -18,6 +18,9 @@ import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC';
 import axios from '../../axios/axios'
 import { axiosInitFavoritesAAC } from '../../redux/asyncActionCreators/favoritesAAC';
 import { axiosInitDictionaryAAC } from '../../redux/asyncActionCreators/dictionariesAAC';
+import { axiosInitCards } from '../../redux/asyncActionCreators/coursesAAC';
+import { axiosInitFeedback } from '../../redux/asyncActionCreators/feedbackAAC';
+import { axiosInitTLevels } from '../../redux/asyncActionCreators/tlevelsAAC';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
@@ -34,6 +37,11 @@ const Header = () => {
   useEffect(async () => {
     try {
       await dispatch(axiosInitSession());
+      await dispatch(axiosInitFavoritesAAC())
+      await dispatch(axiosInitDictionaryAAC())
+      await dispatch(axiosInitCards())
+      await dispatch(axiosInitFeedback())
+      await dispatch(axiosInitTLevels());
       localStorage.clear()
     } catch (error) {
       console.log('/session Error =>', { ...error });
@@ -51,8 +59,8 @@ const Header = () => {
   // Profile Функция
   const profileClick = async (event) => {
     window.scrollTo(0, 0);
-    await dispatch(axiosInitFavoritesAAC())
-    await dispatch(axiosInitDictionaryAAC())
+    // await dispatch(axiosInitFavoritesAAC())
+    // await dispatch(axiosInitDictionaryAAC())
   };
 
 
