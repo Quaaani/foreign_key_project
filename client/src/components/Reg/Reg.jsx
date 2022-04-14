@@ -56,11 +56,12 @@ function Reg(props) {
     if (localStorage.getItem('user_level')) {
       data.user_level = +localStorage.getItem('user_level');
       data.user_age = +data.user_age
+      data.user_phone = +data.user_phone
       try {
         await dispatch(axiosAddUserAAC(data));
         await dispatch(axiosInitSession());
-        await dispatch(axiosInitFavoritesAAC())
-        await dispatch(axiosInitDictionaryAAC())
+        // await dispatch(axiosInitFavoritesAAC())
+        // await dispatch(axiosInitDictionaryAAC())
         await dispatch(axiosInitCards())
         await dispatch(axiosInitFeedback())
         await dispatch(axiosInitTLevels());
@@ -73,6 +74,8 @@ function Reg(props) {
         }, 2000);
       }
     } else {
+      data.user_age = +data.user_age
+      data.user_phone = +data.user_phone
       try {
         await dispatch(axiosAddUserAAC(data));
         await dispatch(axiosInitSession());

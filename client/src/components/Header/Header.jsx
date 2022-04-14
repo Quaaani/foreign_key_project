@@ -59,8 +59,8 @@ const Header = () => {
   // Profile Функция
   const profileClick = async (event) => {
     window.scrollTo(0, 0);
-    // await dispatch(axiosInitFavoritesAAC())
-    // await dispatch(axiosInitDictionaryAAC())
+    await dispatch(axiosInitFavoritesAAC())
+    await dispatch(axiosInitDictionaryAAC())
   };
 
 

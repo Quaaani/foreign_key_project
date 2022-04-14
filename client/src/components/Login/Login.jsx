@@ -57,8 +57,8 @@ function Login(props) {
     try {
       await dispatch(axiosLoginUserAAC(data))
       await dispatch(axiosInitSession())
-      await dispatch(axiosInitFavoritesAAC())
-      await dispatch(axiosInitDictionaryAAC())
+      // await dispatch(axiosInitFavoritesAAC())
+      // await dispatch(axiosInitDictionaryAAC())
       await dispatch(axiosInitCards())
       await dispatch(axiosInitFeedback())
       await dispatch(axiosInitTLevels());
