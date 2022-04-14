@@ -1,14 +1,14 @@
-import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton, CardHeader, Divider } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Typography, IconButton, CardHeader, Divider } from "@mui/material";
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
 function ProfileStudentCourse ({favorite}) {
-
   const [open, setOpen] = React.useState(false)
 
   const handleClick = () => {
@@ -17,6 +17,12 @@ function ProfileStudentCourse ({favorite}) {
 
   const handleClickAway = () => {
     setOpen(false)
+  }
+
+  const initCard = (event) => {
+    event.preventDefault()
+
+    console.log(event.target)
   }
 
   return(
@@ -93,11 +99,15 @@ function ProfileStudentCourse ({favorite}) {
         </CardContent>
         <CardActions>
           <Button 
+          onClick={initCard}
           color="success" 
           variant="outlined" 
           sx={{ mx: 'auto'}}
-         
+          data-id={favorite?.id}
           >
+            <Link to={`/studylist/${favorite?.id}`}>
+              начать
+            </Link>
             Начать обучение
           </Button>
         </CardActions>
