@@ -38,13 +38,16 @@ router.route('/')
 
         console.log('REQ BODY FARVORITES ====>>>>>',req.body)
 
-        const newFavorite = await Favorite.create({
-          user_id,
-          course_id
-        })
-
-        return res.status(200).json({message: 'Успешное добавление курса в личный кабинет'})
-
+        const checkFavor = await User.findOne({ where: { user_id, course_id } });
+        if (checkFavor) {
+          return res.status(400).json({ message: 'Такой курс уже добавлен' });
+        } else {
+          const newFavorite = await Favorite.create({
+            user_id,
+            course_id
+          })  
+          return res.status(200).json({message: 'Курс добавлен'})
+        }
       } catch (error) {
           console.log('error add favorites', error.message)
       }
