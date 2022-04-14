@@ -16,11 +16,25 @@ import Feedback from "../Feedback/Feedback";
 import ImgBlock from "../ImgBlock/ImgBlock";
 import Profile from "../Profile/Profile";
 import MapList from "../MapList/MapList";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#265351",
+    },
+    secondary: {
+      main: "#11cb5f",
+    }
+  },
+});
 
 function App() {
 
  return (
     <Provider store={store}>
+      <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
 
@@ -30,13 +44,17 @@ function App() {
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
           <Route path="/feedback" element={<FeedbackForm />} />
-          <Route path="/profile" element={<Profile />} />
+          
+            <Route path="/profile" element={<Profile />} />
+         
+          
             <Route path="/mymap" element={<MapList />} />
 
         </Routes>
 
         <Footer />
       </BrowserRouter>
+      </ThemeProvider>
     </Provider>
  );
 }

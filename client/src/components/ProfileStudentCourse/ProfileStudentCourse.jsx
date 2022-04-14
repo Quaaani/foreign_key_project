@@ -4,10 +4,22 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles(()=>({
+  details: {
+    display: "flex",
+    alignItems: "center"
+  }
+
+}))
 
 
 
 function ProfileStudentCourse ({favorite}) {
+
+  const styles = useStyles()
 
   const [open, setOpen] = React.useState(false)
 
@@ -50,17 +62,20 @@ function ProfileStudentCourse ({favorite}) {
         
         </CardMedia>
         <CardContent>
-
-        <IconButton
-               
-               onClick={handleClick}
-               
-            >
-              <ExpandMoreIcon />
-            </IconButton>
+            <div className={styles.details}>
+              <IconButton
+                    
+                    onClick={handleClick}
+                    
+                  >
+                <ExpandMoreIcon />
+              </IconButton>
+            <div className={styles.detailsText}>Подробнее...</div>
+            </div>
+           
 
           {open ? 
-          <div>
+          <div >
             <Typography align="center">
               {favorite.course_description}
             </Typography>
@@ -93,9 +108,8 @@ function ProfileStudentCourse ({favorite}) {
         </CardContent>
         <CardActions>
           <Button 
-          color="success" 
           variant="outlined" 
-          sx={{ mx: 'auto'}}
+          sx={{ mx: 'auto', backgroundColor: "#265351", color: "white"}}
          
           >
             Начать обучение

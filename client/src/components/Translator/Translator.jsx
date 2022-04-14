@@ -1,31 +1,95 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 
-import axios from 'axios'
-import { Button, Container, FormControl, InputLabel, Input, FormHelperText, Grid, TextareaAutosize, TextField, Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useDispatch } from 'react-redux';
-import { axiosAddNewWord } from '../../redux/asyncActionCreators/dictionariesAAC';
+import axios from "axios";
+import {
+  Button,
+  Container,
+  FormControl,
+  InputLabel,
+  Input,
+  FormHelperText,
+  Grid,
+  TextareaAutosize,
+  TextField,
+  Accordion,
+  AccordionSummary,
+  Typography,
+  AccordionDetails,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useDispatch } from "react-redux";
+import { axiosAddNewWord } from "../../redux/asyncActionCreators/dictionariesAAC";
+import { makeStyles } from "@mui/styles";
+import { width } from "@mui/system";
+
+const useStyles = makeStyles(() => ({
+  wrapper: {
+    height: "380px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  containerOut: {
+    display: "flex",
+    backgroundColor: "rgba(38, 83, 81, 0.15)",
+    border: "none",
+    marginLeft: "10px",
+    borderRadius: "10px",
+    "box-shadow": "0px 0px 50px -32px rgba(34, 60, 80, 0.2)"
+
+  },
+  btnWrapper: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-around",
+    padding: "0 10%",
+    marginBottom: "15px"
+  },
+  btnTranslate: {
+    minWidth: "180px",
+    backgroundColor: "#265351 !important",
+    color: "white"
+  },
+  btnAdd: {
+    backgroundColor: "#265351 !important",
+    color: "white"
+  },
+
+  wordArea: {
+    backgroundColor: "white",
+    border: "none",
+    marginBottom: "10px"
+  },
+  transHeader: {
+    fontWeight: "bold"
+  },
+
+
+}))
 
 function Translator() {
 
+
+const classes = useStyles()
+
   const dispatch = useDispatch();
   const word_name = useRef();
-  const [word_translate, setWord] = useState('');
+  const [word_translate, setWord] = useState("");
   const [btnEnColor, setEnBtnColor] = useState(true);
   const [btnRuColor, setRuBtnColor] = useState(false);
-  const [langpair, setLangpair] = useState('en|ru');
-
+  const [langpair, setLangpair] = useState("en|ru");
 
   const toChangeRU = (event) => {
     event.preventDefault();
-    setLangpair('ru|en');
+    setLangpair("ru|en");
     setRuBtnColor(!btnRuColor);
     setEnBtnColor(false);
   };
 
   const toChangeEN = (event) => {
     event.preventDefault();
-    setLangpair('en|ru');
+    setLangpair("en|ru");
     setEnBtnColor(!btnEnColor);
     setRuBtnColor(false);
   };
@@ -35,13 +99,13 @@ function Translator() {
     const q = word_name.current.value;
 
     const options = {
-      method: 'GET',
-      url: 'https://translated-mymemory---translation-memory.p.rapidapi.com/api/get',
-      params: { langpair, q, mt: '1', onlyprivate: '0', de: 'a@b.c' },
+      method: "GET",
+      url: "https://translated-mymemory---translation-memory.p.rapidapi.com/api/get",
+      params: { langpair, q, mt: "1", onlyprivate: "0", de: "a@b.c" },
       headers: {
-        'X-RapidAPI-Host':
-          'translated-mymemory---translation-memory.p.rapidapi.com',
-        'X-RapidAPI-Key': '466b582432msh4d47608325c8ec9p1d585bjsnee90b9688688',
+        "X-RapidAPI-Host":
+          "translated-mymemory---translation-memory.p.rapidapi.com",
+        "X-RapidAPI-Key": "466b582432msh4d47608325c8ec9p1d585bjsnee90b9688688",
       },
     };
 
@@ -49,131 +113,149 @@ function Translator() {
       const response = await axios.request(options);
       setWord(response.data.responseData.translatedText);
     } catch (error) {
-      console.log('error =>', { ...error });
+      console.log("error =>", { ...error });
     }
   };
-
 
   const addNewWord = async (event) => {
     event.preventDefault();
     const newWord = {
       word_name: word_name.current.value.toLowerCase(),
       word_translate: word_translate.toLowerCase(),
-    }
+    };
     try {
-      await dispatch(axiosAddNewWord(newWord))
-    } catch(error) {
-      console.log('Error ADD WORD', {...error})
+      await dispatch(axiosAddNewWord(newWord));
+    } catch (error) {
+      console.log("Error ADD WORD", { ...error });
     }
-  }
+  };
 
   return (
-    <Container
-        sx={{mt: 2}}
-    >
-      
-      <FormControl
-        sx={{border: 'solid', borderRadius: '10px'}}
-      >
-
+    <div sx={{ mt: 2 }} className={classes.containerOut}>
+      <FormControl sx={{ borderRadius: "10px", width: "min-content", padding: "20px" }} >
         <Grid container>
-          <Grid
-          sx={{ mx: 'auto', my: 'auto'}}
-          >
-            <Typography align="center">
-              Мой Переводчик
-            </Typography>
+          <Grid sx={{ mx: "auto", my: "auto" }}>
+            <Typography align="center" className={classes.transHeader}>Мой Переводчик</Typography>
           </Grid>
-
         </Grid>
 
-        <Grid container
-        >
-
-          <Grid item
-            xs={12}
-            sm={12}
-            md={4}
-            sx={{ mx: 'auto'}}
-            style={{textAlign: 'center' }}
-            marginY={{xs: 1, sm: 1, md: 1}}
+        <Grid container className={classes.wrapper}>
+          <Grid
+            item
+            // xs={12}
+            // sm={12}
+            // md={4}
+            sx={{ mx: "auto" }}
+            style={{ textAlign: "center" }}
+            marginY={{ xs: 1, sm: 1, md: 1 }}
           >
             <TextareaAutosize
               maxRows={10}
-              minRows={6}
+              minRows={4}
               aria-label="maximum height"
               placeholder="Написать текст"
-              ref={word_name} 
-              style={{ width: 300, borderRadius: '10px' }}
+              ref={word_name}
+              style={{ width: 300, borderRadius: "10px" }}
+              className={classes.wordArea}
             />
-        </Grid>
+            <Grid
+              item
+              // xs={12}
+              // sm={12}
+              // md={4}
+              sx={{
+                mx: "auto",
+                // textAlign: { xs: "center", sm: "center", md: "left" },
+              }}
+              marginBottom={{ xs: 1, sm: 1, md: 3 }}
+            >
+              <Button
+                color="success"
+                variant="outlined"
+                // size="small"
+                onClick={toTranslate}
+                className={classes.btnTranslate}
+              >
+                Перевести
+              </Button>
+            </Grid>
+          </Grid>
 
-        <Grid item
-          xs={12}
-          sm={12}
-          md={1}
-          sx={{ mx: 'auto', my: 'auto'}}
-          style={{textAlign: 'center' }}
-        >
-          <Button size="small" onClick={toChangeEN} variant = {btnEnColor ? "contained" : "outlined"}>
+          <Grid
+            item
+            // xs={12}
+            // sm={12}
+            // md={1}
+            // sx={{ mx: "auto", my: "auto" }}
+            // style={{ textAlign: "center" }}
+            className={classes.btnWrapper}
+          >
+            <Button
+              size="small"
+              onClick={toChangeEN}
+              style={btnEnColor ? {'backgroundColor' : 'rgb(105 135 133)', 'color': 'white'} : {'backgroundColor' : 'white', 'color': 'black'}} 
+              className={classes.btnChange1}
+            >
               EN-RU
-          </Button>
-          <Button size="small" variant = {btnRuColor ? "contained" : "outlined"} onClick={toChangeRU}>
+            </Button>
+            <Button
+              size="small"
+              // variant={btnRuColor ? "contained" : "outlined"}
+              onClick={toChangeRU}
+              style={btnRuColor ? {'backgroundColor' : 'rgb(105 135 133)', 'color': 'white'} : {'backgroundColor' : 'white', 'color': 'black'}} 
+              className={classes.btnChange2}
+            >
               RU-EN
-          </Button>
-        </Grid>
-            
-        <Grid item
-          xs={12}
-          sm={12}
-          md={4}
-          sx={{ mx: 'auto'}}
-          style={{textAlign: 'center' }}
-          marginY={{xs: 1, sm: 1, md: 1}}          
-        >
-          <TextareaAutosize
-            maxRows={10}
-            minRows={6}
-            aria-label="maximum height"
-            placeholder='Перевод'
-            sx={{ mx: 'auto', backgroundColor: 'red',}}
-            defaultValue={word_translate}
-            style={{ width: 300, borderRadius: '10px' }}
-          />
-        </Grid>
+            </Button>
+          </Grid>
 
-      <Grid container>
-        <Grid item
-          xs={12}
-          sm={12}
-          md={4}
-          sx={{ mx: 'auto', textAlign: {xs: 'center', sm: 'center', md: 'left'}}}
-          marginBottom={{xs: 1, sm: 1, md: 3}}
-        >
-          <Button color="success" variant="outlined" size="small" onClick={toTranslate}>
-            Перевести
-          </Button>
+          <Grid
+            item
+            // xs={12}
+            // sm={12}
+            // md={4}
+            sx={{ mx: "auto" }}
+            style={{ textAlign: "center" }}
+            marginY={{ xs: 1, sm: 1, md: 1 }}
+          >
+            <TextareaAutosize
+              maxRows={10}
+              minRows={4}
+              aria-label="maximum height"
+              placeholder="Перевод"
+              sx={{ mx: "auto", backgroundColor: "red" }}
+              defaultValue={word_translate}
+              style={{ width: 300, borderRadius: "10px" }}
+              className={classes.wordArea}
+            />
+
+            <Grid
+              item
+              // xs={12}
+              // sm={12}
+              // md={5}
+              sx={{
+                mx: "auto",
+              }}
+              marginBottom={{ xs: 1, sm: 1, md: 3 }}
+            >
+              <Button
+                color="success"
+                type="submit"
+                variant="outlined"
+                // size="small"
+                // sx={{width: "200px"}}
+                onClick={addNewWord}
+                className={classes.btnAdd}
+              >
+                Добавить к себе
+              </Button>
+            </Grid>
+          </Grid>
+
         </Grid>
-        <Grid item
-          xs={12}
-          sm={12}
-          md={5}
-          sx={{ mx: 'auto', textAlign: {xs: 'center', sm: 'center', md: 'right'}}}
-          marginBottom={{xs: 1, sm: 1, md: 3}}
-        >
-          <Button color="success" type='submit' variant="outlined" size="small" onClick={addNewWord}>
-            Добавить к себе
-          </Button>
-        </Grid>
-      </Grid>
-      </Grid>
       </FormControl>
-    
-
-
-
-
-      </Container>
+    </div>
   );
 }
 
