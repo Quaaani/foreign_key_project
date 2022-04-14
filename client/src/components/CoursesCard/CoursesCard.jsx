@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 import {useDispatch, useSelector} from "react-redux";
 import {axiosInitStudylistAAC} from "../../redux/asyncActionCreators/studylistAAC";
+import {axiosAddFavoritesAAC} from '../../redux/asyncActionCreators/favoritesAAC'
 import { makeStyles } from '@mui/styles';
 
 
@@ -19,12 +20,26 @@ const useStyles = makeStyles(() => ({
 
 
 function CoursesCard ({course}) {
+
+  const { favorites } = useSelector((state) => state.favoritesReducer)
+  const { session } = useSelector(state => state.sessionReducer)
   const dispatch = useDispatch()
   const { studylist } = useSelector((state) => state.studylistReducer)
   const classes = useStyles()
 
-  const startCourse = async () => {
+  console.log('favorites', favorites)
+  const startCourse = async (event) => {
+    event.preventDefault()
+    
+
+    const newFavCourse = {
+      user_id : session?.id,
+      course_id : course?.id
+    } 
+
+    console.log('asdasdasd', newFavCourse)
     try{
+      await dispatch(axiosAddFavoritesAAC(newFavCourse))
       await dispatch(axiosInitStudylistAAC(course.id))
     } catch (error){
       console.log('Studylist error', {...error})
@@ -82,7 +97,8 @@ function CoursesCard ({course}) {
 
               }}
             >
-              <Button onClick={startCourse} variant="contained" color="success" sx={{
+              <Button onClick={startCourse}
+              variant="contained" color="success" sx={{
                 flexGrow: '1',
               }} className={classes.courseBtn}>Добавить</Button>
           </CardActions>
