@@ -18,7 +18,10 @@ import { axiosLogoutUserAAC } from '../../redux/asyncActionCreators/userAAC';
 import axios from '../../axios/axios'
 import { axiosInitFavoritesAAC } from '../../redux/asyncActionCreators/favoritesAAC';
 import { axiosInitDictionaryAAC } from '../../redux/asyncActionCreators/dictionariesAAC';
-
+import { axiosInitCards } from '../../redux/asyncActionCreators/coursesAAC';
+import { axiosInitFeedback } from '../../redux/asyncActionCreators/feedbackAAC';
+import { axiosInitTLevels } from '../../redux/asyncActionCreators/tlevelsAAC';
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 const pages = ['Products', 'Pricing', 'Blog'];
 
 const Header = () => {
@@ -33,8 +36,25 @@ const Header = () => {
 
   useEffect(async () => {
     try {
-      await dispatch(axiosInitSession());
-      localStorage.clear()
+      const favorite_id = localStorage.getItem('favorite_id')
+      if(favorite_id) {
+        await dispatch(axiosInitSession());
+        await dispatch(axiosInitFavoritesAAC())
+        await dispatch(axiosInitDictionaryAAC())
+        await dispatch(axiosInitCards())
+        await dispatch(axiosInitFeedback())
+        await dispatch(axiosInitTLevels())
+        await dispatch(axiosInitStudylistAAC(favorite_id))
+        localStorage.clear()
+      } else {
+        await dispatch(axiosInitSession());
+        await dispatch(axiosInitFavoritesAAC())
+        await dispatch(axiosInitDictionaryAAC())
+        await dispatch(axiosInitCards())
+        await dispatch(axiosInitFeedback())
+        await dispatch(axiosInitTLevels())
+        localStorage.clear()
+      }
     } catch (error) {
       console.log('/session Error =>', { ...error });
     }
@@ -145,6 +165,7 @@ const Header = () => {
 
             </Menu>
           </Box>
+          <Link to="/home" style={{textDecoration: "none", color: "inherit"}}>
           <Typography
             variant="h6"
             noWrap
@@ -153,6 +174,7 @@ const Header = () => {
           >
             FK
           </Typography>
+          </Link>
           <Container maxWidth="sm">
             <Box
               sx={{

@@ -1,7 +1,9 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography, Alert, AlertTitle } from '@mui/material'
 import {useDispatch, useSelector} from "react-redux";
 import {axiosInitStudylistAAC} from "../../redux/asyncActionCreators/studylistAAC";
+import {axiosAddFavoritesAAC} from '../../redux/asyncActionCreators/favoritesAAC'
 import { makeStyles } from '@mui/styles';
+import { useState } from 'react';
 
 
 const useStyles = makeStyles(() => ({
@@ -19,15 +21,38 @@ const useStyles = makeStyles(() => ({
 
 
 function CoursesCard ({course}) {
-  const dispatch = useDispatch()
-  const { studylist } = useSelector((state) => state.studylistReducer)
-  const classes = useStyles()
 
-  const startCourse = async () => {
+  const { favorites } = useSelector((state) => state.favoritesReducer)
+  const { session } = useSelector(state => state.sessionReducer)
+  const { studylist } = useSelector((state) => state.studylistReducer)
+  const dispatch = useDispatch()
+  const classes = useStyles()
+  const [toggle, setToggle] = useState(false)
+  const [msg, setMsg] = useState('');
+
+  const [accessToggle, setAccessToggle] = useState(false)
+  const [accessMsg, setAccessMsg] = useState('')
+
+  const startCourse = async (event) => {
+    event.preventDefault()
+    const newFavCourse = {
+      user_id : session?.id,
+      course_id : course?.id
+    } 
     try{
+      await dispatch(axiosAddFavoritesAAC(newFavCourse))
+      setAccessMsg('Курс добавлен');
+      setAccessToggle(true);
+      setTimeout(() => {
+        setAccessToggle(false);
+      }, 2000);
       await dispatch(axiosInitStudylistAAC(course.id))
     } catch (error){
-      console.log('Studylist error', {...error})
+      setMsg(error.response.data.message);
+      setToggle(true);
+      setTimeout(() => {
+        setToggle(false);
+      }, 2000);
     }
 
   }
@@ -82,10 +107,19 @@ function CoursesCard ({course}) {
 
               }}
             >
-              <Button onClick={startCourse} variant="contained" color="success" sx={{
+              <Button onClick={startCourse}
+              variant="contained" color="success" sx={{
                 flexGrow: '1',
               }} className={classes.courseBtn}>Добавить</Button>
           </CardActions>
+          {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
+            <AlertTitle>Ошибка</AlertTitle>
+            {msg}
+          </Alert>}
+          {accessToggle && <Alert severity="success" sx={{m: 1, mb: 7}}>
+            <AlertTitle>Успешно</AlertTitle>
+            {accessMsg}
+          </Alert>}
           </CardContent>
 
         </Card>

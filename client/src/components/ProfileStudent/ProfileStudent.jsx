@@ -134,7 +134,7 @@ function ProfileStudent () {
             <Grid container
                
             >
-              {favorites ? favorites.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
+              {favorites ? favorites?.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
             </Grid>
           </Grid>
 

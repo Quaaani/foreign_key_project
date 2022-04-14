@@ -24,7 +24,7 @@ function TestLevel(props) {
     const classes = useStyles()
 
     const {tLevels} = useSelector((state) => state.tLevelsReducer)
-    // console.log('list of questions', tLevels)
+  
 
     const [quest, setQuest] = useState(1);
     const [curQuest, setCurQuest] = useState({})
@@ -35,20 +35,6 @@ function TestLevel(props) {
         const q = tLevels.filter(el => el.id === quest)
         setCurQuest(q[0])
     }
-
-
-    // const handleChange = (event, value) => {
-    //
-    //
-    //     setQuest(value);
-    //     // console.log(value)
-    //
-    //     // console.log("find element q =>", q[0])
-    //
-    //     // console.log("find element in state  curQuest =>", curQuest)
-    //
-    // }
-
 
         return (
             <div className={classes.testLevelList}>

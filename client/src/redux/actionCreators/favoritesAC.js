@@ -1,4 +1,4 @@
-import { INIT_FAVORITES } from "../actionTypes/favoritesAT"
+import { INIT_FAVORITES, ADD_FAAVORITES } from "../actionTypes/favoritesAT"
 
 export function initFavoritesAC (payload) {
   return {
@@ -7,3 +7,9 @@ export function initFavoritesAC (payload) {
   }
 }
 
+export function addFavoritesAC (payload) {
+  return {
+    type: ADD_FAAVORITES,
+    payload
+  }
+}

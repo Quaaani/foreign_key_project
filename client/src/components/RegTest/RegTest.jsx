@@ -45,15 +45,15 @@ function RegTest(props) {
 
   const { tLevels } = useSelector((state) => state.tLevelsReducer);
 
-  const toInit = async (event) => {
-    event.preventDefault();
+  // const toInit = async (event) => {
+  //   event.preventDefault();
 
-    try {
-      await dispatch(axiosInitTLevels());
-    } catch (error) {
-      console.log('tLevels Error =>', { ...error });
-    }
-  };
+  //   try {
+  //     await dispatch(axiosInitTLevels());
+  //   } catch (error) {
+  //     console.log('tLevels Error =>', { ...error });
+  //   }
+  // };
 
   // tLevels
   const updateAnswer = (id, optionIdx) => {
@@ -72,8 +72,6 @@ function RegTest(props) {
       navigate('/registration')
     }
   }
-
-  console.log('price =>', price)
 
   return (
     <>

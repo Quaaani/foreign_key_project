@@ -27,7 +27,6 @@ export const axiosDeleteWord = (payload) => {
     try {
       const response = await axios.delete(`/dictionaries/${payload}`)
 
-      console.log(response)
       dispatch(deleteWordAC(response.data))
     } catch (error) {
         throw error
