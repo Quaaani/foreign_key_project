@@ -5,9 +5,11 @@ export const axiosInitDictionaryAAC = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get('/dictionaries')
+      
       dispatch(initDictionaryAC(response.data))
     } catch (error) {
-      throw error
+        dispatch(initDictionaryAC(null))
+        throw error
     }
   }
 }
