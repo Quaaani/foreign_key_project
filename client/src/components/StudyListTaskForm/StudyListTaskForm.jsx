@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import {TextField, Button, FormControl, TextareaAutosize} from "@mui/material";
+import React, {useRef, useState} from 'react';
+import {TextField, Button, FormControl, TextareaAutosize, Alert} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import {safePreventDefault} from "react-slick/lib/utils/innerSliderUtils";
 import {useDispatch, useSelector} from "react-redux";
@@ -26,6 +26,8 @@ function StudyListTaskForm({lesson_img, lesson}) {
     const { session } = useSelector(state => state.sessionReducer)
     const { studylist } = useSelector( state => state.studylistReducer)
     const homeworkText = useRef()
+    const [accessToggle, setAccessToggle] = useState(false)
+    const [accessMsg, setAccessMsg] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -36,6 +38,11 @@ function StudyListTaskForm({lesson_img, lesson}) {
             homework: homeworkText.current.value
         }
     dispatch(axiosSendHomeworkAAC(homework))
+    setAccessMsg('Домашнее задание отправлено');
+      setAccessToggle(true);
+      setTimeout(() => {
+        setAccessToggle(false);
+      }, 2000);
     }
 
     return (
@@ -55,6 +62,9 @@ function StudyListTaskForm({lesson_img, lesson}) {
                     />
                     <Button onClick={handleSubmit} className={classes.butt} variant="outlined">Отправить на проверку</Button>
                 </div>
+                {accessToggle && <Alert severity="success" sx={{m: 1, mb: 7}}>
+                  {accessMsg}
+                </Alert>}
             </FormControl>
         </div>
     );
