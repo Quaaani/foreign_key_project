@@ -34,8 +34,7 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         alignItems: "center",
         justifyContent: 'center',
-  
-        
+        marginBottom: "3vw"
     },
     videoWrapper: {
       display: "flex",
