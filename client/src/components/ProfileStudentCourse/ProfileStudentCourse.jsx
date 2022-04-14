@@ -5,10 +5,16 @@ import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 
 
 
 function ProfileStudentCourse ({favorite}) {
+
+  const { studylist } = useSelector(state => state.studylistReducer)
+  const dispatch = useDispatch();
+
   const [open, setOpen] = React.useState(false)
 
   const handleClick = () => {
@@ -19,9 +25,15 @@ function ProfileStudentCourse ({favorite}) {
     setOpen(false)
   }
 
-  const initCard = (event) => {
+  const initCard = async (event) => {
     event.preventDefault()
-
+    try {
+      await dispatch(axiosInitStudylistAAC(favorite.id))
+      localStorage.clear()
+      localStorage.setItem('favorite_id', favorite.id)
+    } catch (error) {
+        console.log('error init card', {...error})
+    }
   }
 
   return(
@@ -102,12 +114,12 @@ function ProfileStudentCourse ({favorite}) {
           color="success" 
           variant="outlined" 
           sx={{ mx: 'auto'}}
-          data-id={favorite?.id}
+          
           >
             <Link to={`/studylist/${favorite?.id}`}>
-              начать
+              Nачать
             </Link>
-            Начать обучение
+            
           </Button>
         </CardActions>
       </Card>

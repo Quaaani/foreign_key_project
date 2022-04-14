@@ -21,7 +21,7 @@ import { axiosInitDictionaryAAC } from '../../redux/asyncActionCreators/dictiona
 import { axiosInitCards } from '../../redux/asyncActionCreators/coursesAAC';
 import { axiosInitFeedback } from '../../redux/asyncActionCreators/feedbackAAC';
 import { axiosInitTLevels } from '../../redux/asyncActionCreators/tlevelsAAC';
-
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 const pages = ['Products', 'Pricing', 'Blog'];
 
 const Header = () => {
@@ -36,13 +36,25 @@ const Header = () => {
 
   useEffect(async () => {
     try {
-      await dispatch(axiosInitSession());
-      await dispatch(axiosInitFavoritesAAC())
-      await dispatch(axiosInitDictionaryAAC())
-      await dispatch(axiosInitCards())
-      await dispatch(axiosInitFeedback())
-      await dispatch(axiosInitTLevels());
-      localStorage.clear()
+      const favorite_id = localStorage.getItem('favorite_id')
+      if(favorite_id) {
+        await dispatch(axiosInitSession());
+        await dispatch(axiosInitFavoritesAAC())
+        await dispatch(axiosInitDictionaryAAC())
+        await dispatch(axiosInitCards())
+        await dispatch(axiosInitFeedback())
+        await dispatch(axiosInitTLevels())
+        await dispatch(axiosInitStudylistAAC(favorite_id))
+        localStorage.clear()
+      } else {
+        await dispatch(axiosInitSession());
+        await dispatch(axiosInitFavoritesAAC())
+        await dispatch(axiosInitDictionaryAAC())
+        await dispatch(axiosInitCards())
+        await dispatch(axiosInitFeedback())
+        await dispatch(axiosInitTLevels())
+        localStorage.clear()
+      }
     } catch (error) {
       console.log('/session Error =>', { ...error });
     }

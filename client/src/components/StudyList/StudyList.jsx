@@ -5,9 +5,12 @@ import StudyListMenu from "../StudyListMenu/StudyListMenu";
 import {Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import StudyListTaskForm from "../StudyListTaskForm/StudyListTaskForm";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Translator from '../Translator/Translator';
 import LessonTest from '../LessonTest/LessonTest'
+import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 
 
 const useStyles = makeStyles(() => ({
@@ -38,10 +41,26 @@ const useStyles = makeStyles(() => ({
 function StudyList(props) {
     const classes = useStyles()
     const { studylist } = useSelector(state => state.studylistReducer)
-
+    const dispatch = useDispatch();
+    const { id } = useParams()
+    
     const [lesson, setLesson] = useState(studylist?.first_lesson_data)
     const [test, setTest] = useState(studylist?.first_lesson_tests)
     const [qnIndex, setQnIndex] = useState(0)
+
+
+  useEffect(async () => {
+    try {
+      // await dispatch(axiosInitStudylistAAC(id))
+      // localStorage.clear()
+      // localStorage.setItem('favorite_id', id)
+      setLesson(studylist?.first_lesson_data)
+      setTest(studylist?.first_lesson_tests)
+      setQnIndex(0)
+    } catch (error) {
+        console.log('error lesson', {...error})
+    }  
+  },[dispatch, studylist])
 
     const addIndex = () => {
       setQnIndex(prev => prev + 1)
