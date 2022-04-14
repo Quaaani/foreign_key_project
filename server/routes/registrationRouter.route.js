@@ -26,7 +26,6 @@ router.route('/')
 
   req.body.user_password = await bcrypt.hash(user_password, 10);
   const data = await User.create(req.body)
-  console.log('/registration data =>', data)
 
   req.session.user_data = data
 

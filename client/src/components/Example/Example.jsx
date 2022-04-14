@@ -81,8 +81,6 @@ function Example(props) {
     }
   }
 
-  console.log('price =>', price)
-
   return (
     <>
       <button onClick={toInit}>Init tLevels</button>

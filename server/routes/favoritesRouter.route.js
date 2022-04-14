@@ -36,8 +36,6 @@ router.route('/')
 
         const {user_id, course_id} = req.body
 
-        console.log('REQ BODY FARVORITES ====>>>>>',req.body)
-
         const checkFavor = await Favorite.findOne({ where: { user_id, course_id } });
         if (checkFavor) {
           return res.status(400).json({ message: 'Такой курс уже добавлен' });

@@ -61,8 +61,6 @@ function StudyList(props) {
       setQnIndex(0)
     }
 
-    console.log('studylist =>', studylist)
-
     return (
     <div className={classes.cont}>
         <Typography

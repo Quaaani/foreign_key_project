@@ -73,8 +73,6 @@ function RegTest(props) {
     }
   }
 
-  console.log('price =>', price)
-
   return (
     <>
       <div className={classes.overlay}>

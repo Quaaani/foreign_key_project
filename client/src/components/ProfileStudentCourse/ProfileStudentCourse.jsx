@@ -22,7 +22,6 @@ function ProfileStudentCourse ({favorite}) {
   const initCard = (event) => {
     event.preventDefault()
 
-    console.log(event.target)
   }
 
   return(

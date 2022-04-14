@@ -73,7 +73,6 @@ router.route('/:id')
   .delete( async (req, res) => {
     try {
       const { id } = req.params
-      console.log('IDDDD', id)
       await Word.destroy({
         where: {id}
       })

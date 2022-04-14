@@ -18,7 +18,6 @@ const useStyles = makeStyles(() => ({
 
     function TestLevelCard({curQuest}) {
 
-        console.log(curQuest)
 
         const classes = useStyles()
 

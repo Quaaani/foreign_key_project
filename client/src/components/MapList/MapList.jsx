@@ -44,7 +44,6 @@ function MapList(props) {
 
     const { session } = useSelector((state) => state.sessionReducer)
 
-    console.log(session?.user_level)
     let notice = ''
     if (session?.user_level < 100){
         notice = "Тебе нужно пройти начальный курс."

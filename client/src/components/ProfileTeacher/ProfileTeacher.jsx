@@ -35,10 +35,7 @@ function ProfileTeacher () {
       console.log('ERROR INIT HOMEWORK', error)
     }
   }
-  
-  useEffect(() => {
-    console.log('Homework', homework);
-  },[homework])
+
 
 
   return (

@@ -52,14 +52,13 @@ function FeedbackForm(props) {
   const {register, handleSubmit} = useForm();
 
   const { session } = useSelector((state) => state.sessionReducer);
-  // console.log(session);
+
 
   const [msg, setMsg] = useState('')
 
 
   const onFormSubmit = async(data) => {
     data.user_id = session.id
-    console.log(data);
     dispatch(axiosAddFeedback(data))
     navToHome("/home")
     dispatch(axiosInitFeedback())
