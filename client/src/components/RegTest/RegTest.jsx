@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
 }
 }))
 
-function RegTest(props) {
+function RegTest({setPress}) {
 
   const classes = useStyles()
 
@@ -75,12 +75,13 @@ function RegTest(props) {
 
   return (
     <>
-      <div className={classes.overlay}>
+      <div className={classes.overlay} onClick={() => setPress(false)}>
         {tLevels ? (
-          <Card
+          <Card onClick={(event) => event.stopPropagation()}
             sx={{maxWidth: 640, mx: 'auto', mt: 5}}>
               <CardHeader
                 title={'Вопрос ' + (qnIndex + 1) + ' из 10'}
+                
               />
               <Box>
                 <LinearProgress

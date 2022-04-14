@@ -34,7 +34,7 @@ app.use('/tlevel', tlevelRouter)
 app.use('/favorites', favoritesRouter)
 app.use('/dictionaries', dictionariesRouter)
 app.use('/feedback', feedbackRouter)
-app.use('teacherProfile', teacherRouter)
+app.use('/teacherProfile', teacherRouter)
 app.use('/homework', homeworkRouter)
 
 

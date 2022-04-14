@@ -4,14 +4,25 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
+import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 
 
+const useStyles = makeStyles(()=>({
+  details: {
+    display: "flex",
+    alignItems: "center"
+  }
+
+}))
+
+
 
 function ProfileStudentCourse ({favorite}) {
 
+  const styles = useStyles()
   const { studylist } = useSelector(state => state.studylistReducer)
   const dispatch = useDispatch();
 
@@ -67,17 +78,20 @@ function ProfileStudentCourse ({favorite}) {
         
         </CardMedia>
         <CardContent>
-
-        <IconButton
-               
-               onClick={handleClick}
-               
-            >
-              <ExpandMoreIcon />
-            </IconButton>
+            <div className={styles.details}>
+              <IconButton
+                    
+                    onClick={handleClick}
+                    
+                  >
+                <ExpandMoreIcon />
+              </IconButton>
+            <div className={styles.detailsText}>Подробнее...</div>
+            </div>
+           
 
           {open ? 
-          <div>
+          <div >
             <Typography align="center">
               {favorite.course_description}
             </Typography>
@@ -111,10 +125,9 @@ function ProfileStudentCourse ({favorite}) {
         <CardActions>
           <Button 
           onClick={initCard}
-          color="success" 
           variant="outlined" 
-          sx={{ mx: 'auto'}}
-          
+          sx={{ mx: 'auto', backgroundColor: "#265351", color: "white"}}
+         
           >
             <Link to={`/studylist/${favorite?.id}`}>
               Nачать

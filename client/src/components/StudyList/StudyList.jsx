@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import StudyListVideo from "../StudyListVideo/StudyListVideo";
 import StudyListMenu from "../StudyListMenu/StudyListMenu";
-import {Typography} from "@mui/material";
+import {Typography, Container, Button} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import StudyListTaskForm from "../StudyListTaskForm/StudyListTaskForm";
 import {useDispatch, useSelector} from "react-redux";
@@ -34,6 +34,29 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         alignItems: "center",
         justifyContent: 'center',
+  
+        
+    },
+    videoWrapper: {
+      display: "flex",
+      width: "100%",
+      justifyContent: "space-between"
+    },
+    video: {
+      flexGrow: 1
+    },
+    translator: {
+      width: "auto"
+    },
+    prevNext: {
+      backgroundColor: "#265351 !important",
+      color: "white",
+      border: "none",
+    },
+    butCont: {
+      display: "flex",
+      justifyContent: "space-around",
+      marginTop: '20px'
     }
 
 }))
@@ -57,6 +80,7 @@ function StudyList(props) {
       setLesson(studylist?.first_lesson_data)
       setTest(studylist?.first_lesson_tests)
       setQnIndex(0)
+      console.log('studylist =>', studylist)
     } catch (error) {
         console.log('error lesson', {...error})
     }  
@@ -80,8 +104,11 @@ function StudyList(props) {
       setQnIndex(0)
     }
 
+    console.log('studylist =>', studylist)
+
     return (
-    <div className={classes.cont}>
+      
+    <Container maxwidth="lg" className={classes.cont}>
         <Typography
             variant="h4"
             mt={4}
@@ -95,9 +122,10 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task1">
                         Задание 1. Посмотрите видео и запишите в словарь новые слова.
                     </Typography>
-                    <StudyListVideo lesson_video={lesson?.lesson_video}/>
-                    <div>
-                      <Translator />
+
+                    <div className={classes.videoWrapper}>
+                      <StudyListVideo lesson_video={lesson?.lesson_video} className={classes.video} />
+                      <Translator className={classes.translator} />
                     </div>
 
                 </div>
@@ -105,7 +133,6 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task2">
                         Задание 2. Ответьте на вопросы.
                     </Typography>
-                    {/* <div>Здесь должен быть тест</div> */}
                     {studylist && <LessonTest test={test} qnIndex={qnIndex} addIndex={addIndex}/>}
                 </div>
                 <div>
@@ -114,14 +141,16 @@ function StudyList(props) {
                     </Typography>
                     <StudyListTaskForm lesson_img={lesson?.lesson_img} lesson={lesson} key={lesson?.id}/>
                 </div>
-                <button onClick={previousLesson}>Предыдущий урок</button>
-                <button onClick={nextLesson}>Следующий урок</button>
+                <div className={classes.butCont}>
+                   <Button className={classes.prevNext} variant='contained' onClick={previousLesson}>Предыдущий урок</Button>
+                   <Button className={classes.prevNext} variant='contained' onClick={nextLesson}>Следующий урок</Button>
+                </div>
             </div>
             <div>
                 {/* <StudyListMenu /> */}
             </div>
         </div>
-    </div>
+    </Container>
     );
 }
 

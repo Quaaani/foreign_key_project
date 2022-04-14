@@ -85,7 +85,7 @@ function ImageButton(props) {
                 className={classes.head2}
               >
                 — значит иметь много ключей <br/>
-                к одному замку.
+                к одному замку
               </Typography>
             </div>
           </Grid>
@@ -99,7 +99,7 @@ function ImageButton(props) {
             </Button>
           </Grid>
         </Grid>
-        {press && <RegTest />}
+        {press && <RegTest  setPress={setPress}/>}
       </Container>
     </Paper>
   );

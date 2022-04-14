@@ -2,11 +2,22 @@ import { Button, Card, CardActions, CardContent, CardMedia, Container, Divider, 
 import { useSelector } from "react-redux";
 import Dictionary from "../Dictionary/Dictionary";
 import ProfileStudentCourse from "../ProfileStudentCourse/ProfileStudentCourse";
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles(() => ({
+  boldText: {
+    fontWeight: "bold"
+  }
+
+}));
 
 function ProfileStudent () {
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
   const { dictionary } = useSelector((state) => state.dictionariesReducer)
+
+  const styles = useStyles();
     
   return (
     <Container>
@@ -31,9 +42,9 @@ function ProfileStudent () {
               alt="avatar"
             >
             </CardMedia>
-            <CardActions centered>
+            {/* <CardActions centered>
               <Button color="secondary" variant="outlined" sx={{ mx: 'auto'}}>Редактировать профиль</Button>
-            </CardActions>
+            </CardActions> */}
           </Card>
         </Grid>
         <Grid item
@@ -66,16 +77,16 @@ function ProfileStudent () {
           sx={{ mx: 'auto', my: 'auto'}}
         >
           <CardContent>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               {session?.user_firstName[0].toUpperCase() + session?.user_firstName.slice(1)}
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               {session?.user_lastName[0].toUpperCase() + session?.user_lastName.slice(1)}
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               Студент
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               {session?.user_level}
             </Typography>
           </CardContent>
@@ -92,9 +103,9 @@ function ProfileStudent () {
                   <Typography align="center">
                     Твой прогресс 
                   </Typography> 
-                  <LinearProgress sx={{height: 15}} variant="determinate" color="secondary" value={Number(session?.user_level)/4} />
-                  <Typography variant="caption" color="text.secondary">
-                   {(session?.user_level)/4}%
+                  <LinearProgress sx={{height: 15, primary: "red"}} variant="determinate" value={Number(session?.user_level)/4} />
+                  <Typography variant="caption">
+                    {(session?.user_level)/4}%
                   </Typography> 
                 </Grid>: 
                 <Grid > 
@@ -128,13 +139,14 @@ function ProfileStudent () {
             <Typography 
               variant='h6'
               align="center"
+              className={styles.boldText}
             >
               Мои курсы
             </Typography>
             <Grid container
                
             >
-              {favorites ? favorites?.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
+              {favorites ? favorites?.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : null }
             </Grid>
           </Grid>
 
@@ -147,12 +159,13 @@ function ProfileStudent () {
             <Typography 
               variant='h6'
               align="center"
+              className={styles.boldText}
             >
               Мой словарь
             </Typography>
             <Grid container>
 
-                {dictionary ? dictionary.map(dictionary => <Dictionary key={dictionary.id} dictionary={dictionary} />) : 'NO WORDS'}
+                {dictionary ? dictionary.map(dictionary => <Dictionary key={dictionary.id} dictionary={dictionary} />) : null}
 
             </Grid>
           </Grid>

@@ -12,15 +12,19 @@ router.route('/')
       const user_id = req.session.user_data.id
   
       const dictionaries = await Dictionary.findAll({ raw: true, where: { user_id } })
-    console.log('dictionaries =>', dictionaries)
-
+    if (dictionaries.length) {
       const words_id = dictionaries.map(el => el.word_id)
       const words = await Word.findAll({ raw: true, where: { id: { [Op.or]: words_id } } })
   
       res.status(200).json(words)
-    } catch(error) {
-        throw error
+      
+    } else {
+      return res.sendStatus(400)
     }
+  } catch(error) {
+      console.log('/dictionaries Error', error.message)
+  }
+
 
   })
 

@@ -10,18 +10,32 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
+import StudyList from '../StudyList/StudyList';
 import ProfileStudent from "../ProfileStudent/ProfileStudent";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 import Feedback from "../Feedback/Feedback";
 import ImgBlock from "../ImgBlock/ImgBlock";
 import Profile from "../Profile/Profile";
 import MapList from "../MapList/MapList";
-import StudyList from "../StudyList/StudyList";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#265351",
+    },
+    secondary: {
+      main: "#11cb5f",
+    }
+  },
+});
 
 function App() {
 
  return (
     <Provider store={store}>
+      <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
 
@@ -33,12 +47,13 @@ function App() {
           <Route path="/feedback" element={<FeedbackForm />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/mymap" element={<MapList />} />
-          <Route path="studylist/:id" element={<StudyList/>} />
+          <Route path="/studylist/:id" element={<StudyList/>} />
 
         </Routes>
 
         <Footer />
       </BrowserRouter>
+      </ThemeProvider>
     </Provider>
  );
 }

@@ -4,6 +4,7 @@ import {makeStyles} from "@mui/styles";
 import {safePreventDefault} from "react-slick/lib/utils/innerSliderUtils";
 import {useDispatch, useSelector} from "react-redux";
 import {axiosSendHomeworkAAC, axiosInitHomeworkAAC} from "../../redux/asyncActionCreators/homeworkAAC";
+import { CleaningServices } from '@mui/icons-material';
 
 const useStyles = makeStyles(() => ({
     taskSend: {
@@ -14,7 +15,23 @@ const useStyles = makeStyles(() => ({
     butt: {
         display: "flex",
         marginTop: "10px",
-
+        width: "750px",
+        margin: "0 auto",
+        backgroundColor: "rgba(105, 135, 133, 0.6)",
+        border: "none",
+        color: "black"
+    },
+    imgWrapper: {
+      display: "flex",
+      justifyContent: "center"
+    },
+    mainWrapper: {
+      display: "flex",
+      flexDirection: "column"
+    },
+    inputAnsw: {
+      width: "750px",
+      margin: "0 auto"
     }
 }))
 
@@ -46,8 +63,8 @@ function StudyListTaskForm({lesson_img, lesson}) {
     }
 
     return (
-        <div>
-            <div>
+        <div className={classes.mainWrapper}>
+            <div className={classes.imgWrapper}>
                <img src={`/img/lessons/${lesson_img}`} width="750px"/>
             </div>
 
@@ -58,7 +75,8 @@ function StudyListTaskForm({lesson_img, lesson}) {
                         multiline
                         maxRows={5}
                         minRows={5}
-                        fullWidth={15}
+                        // fullWidth={15}
+                        className={classes.inputAnsw}
                     />
                     <Button onClick={handleSubmit} className={classes.butt} variant="outlined">Отправить на проверку</Button>
                 </div>
