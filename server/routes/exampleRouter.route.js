@@ -2,14 +2,20 @@ const router = require('express').Router()
 
 router.route('/')
   .get((req, res) => {
-    console.log('*** GET REQUEST ***')
-
-    res.status(200).json({ message: 'GET RESPONSE FROM SERVER' })
+    try {
+      console.log('*** GET REQUEST ***')
+      return res.status(200).json({ message: 'GET RESPONSE FROM SERVER' })
+    } catch (error) {
+        console.log('example error', error.message)
+    }
   }) 
   .post((req, res) => {
-    console.log('*** POST REQUEST ***')
-
-    res.status(200).json({ message: 'POST RESPONSE FROM SERVER' })
+    try {
+      console.log('*** POST REQUEST ***')
+      return  res.status(200).json({ message: 'POST RESPONSE FROM SERVER' })
+    } catch (error) {
+        console.log('example error', error.message)
+  }
   })
 
 module.exports = router

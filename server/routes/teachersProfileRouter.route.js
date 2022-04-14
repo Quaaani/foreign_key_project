@@ -23,10 +23,10 @@ router.route('/')
         }
       })
 
-      res.status(200).json(currnetCourse, students)
+      return res.status(200).json(currnetCourse, students)
       
     } catch (error) {
-        throw error
+        console.log('teacher profile error', error.message)
     }
   })
 

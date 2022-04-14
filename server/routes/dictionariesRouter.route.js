@@ -12,20 +12,16 @@ router.route('/')
       const user_id = req.session.user_data.id
   
       const dictionaries = await Dictionary.findAll({ raw: true, where: { user_id } })
-    if (dictionaries.length) {
-      const words_id = dictionaries.map(el => el.word_id)
-      const words = await Word.findAll({ raw: true, where: { id: { [Op.or]: words_id } } })
-  
-      res.status(200).json(words)
-      
-    } else {
-      return res.sendStatus(400)
-    }
-  } catch(error) {
-      console.log('/dictionaries Error', error.message)
-  }
-
-
+      if (dictionaries.length) {
+        const words_id = dictionaries.map(el => el.word_id)
+        const words = await Word.findAll({ raw: true, where: { id: { [Op.or]: words_id } } })
+        return res.status(200).json(words)
+      } else {
+          return res.sendStatus(400)
+        }
+    } catch(error) {
+        console.log('/dictionaries  GET Error', error.message)
+      }
   })
 
   .post( async (req, res) => {
@@ -82,9 +78,9 @@ router.route('/:id')
       await Word.destroy({
         where: {id}
       })
-      res.status(200).json({message: 'Успешное удаление слова'})
+      return res.status(200).json({message: 'Успешное удаление слова'})
     } catch(error) {
-        throw error
+      console.log('error delete word', error.message)
     }
   })
 
