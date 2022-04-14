@@ -14,15 +14,15 @@ router.route('/')
                 homework,
             })
 
-            res.status(200).json({message: 'Домашнее задание отправлено'})
+            return res.status(200).json({message: 'Домашнее задание отправлено'})
         } catch(error) {
-            throw error
+            console.log('homework POST error', error.message)
         }
     })
     .get(async (req, res) => {
-      console.log('*** REQ REQUEST /homework ***')
+      
       try {
-
+        console.log('*** REQ REQUEST /homework ***')
         if (!req.session.user_data) return res.json(400).json({ message: 'No session!' })
 
         const homework = await Homework.findAll({
@@ -76,11 +76,11 @@ router.route('/')
           }
         }
 
-        res.status(200).json(homework)
+        return res.status(200).json(homework)
         
       } catch(error) {
 
-          console.log('error =>', error.message)
+          console.log('error  GET homework =>', error.message)
       }
     })
 
@@ -95,9 +95,9 @@ router.route('/:id')
         user.user_level += Number(user_level)
         user.save()
 
-        res.sendStatus(200)
+        return res.sendStatus(200)
       } catch (error) {
-          console.log('error params', error.message)
+          console.log('error homework params', error.message)
       }
     })
 

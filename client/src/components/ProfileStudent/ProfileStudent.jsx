@@ -170,7 +170,7 @@ function ProfileStudent () {
             </Typography>
             <Grid container>
 
-                {dictionary ? dictionary.map(dictionary => <Dictionary key={dictionary.id} dictionary={dictionary} />) : null}
+                {dictionary ? dictionary?.map(dictionary => <Dictionary key={dictionary?.id} dictionary={dictionary} />) : null}
 
             </Grid>
           </Grid>
