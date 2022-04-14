@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import axios from 'axios'
-import { Button, Container, FormControl, InputLabel, Input, FormHelperText, Grid, TextareaAutosize, TextField, Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
+import { Button, Container, FormControl, FormHelperText, Grid, TextareaAutosize, TextField, Accordion, AccordionSummary, Typography, AccordionDetails, Alert, AlertTitle } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch } from 'react-redux';
 import { axiosAddNewWord } from '../../redux/asyncActionCreators/dictionariesAAC';
@@ -14,7 +14,10 @@ function Translator() {
   const [btnEnColor, setEnBtnColor] = useState(true);
   const [btnRuColor, setRuBtnColor] = useState(false);
   const [langpair, setLangpair] = useState('en|ru');
-
+  const [toggle, setToggle] = useState(false)
+  const [msg, setMsg] = useState('');
+  const [accessToggle, setAccessToggle] = useState(false)
+  const [accessMsg, setAccessMsg] = useState('')
 
   const toChangeRU = (event) => {
     event.preventDefault();
@@ -62,8 +65,17 @@ function Translator() {
     }
     try {
       await dispatch(axiosAddNewWord(newWord))
+      setAccessMsg('Курс добавлен');
+      setAccessToggle(true);
+      setTimeout(() => {
+        setAccessToggle(false);
+      }, 2000);
     } catch(error) {
-      console.log('Error ADD WORD', {...error})
+      setMsg(error.response.data.message);
+      setToggle(true);
+      setTimeout(() => {
+        setToggle(false);
+      }, 2000);
     }
   }
 
@@ -166,6 +178,14 @@ function Translator() {
           <Button color="success" type='submit' variant="outlined" size="small" onClick={addNewWord}>
             Добавить к себе
           </Button>
+          {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
+            <AlertTitle>Ошибка</AlertTitle>
+            {msg}
+          </Alert>}
+          {accessToggle && <Alert severity="success" sx={{m: 1, mb: 7}}>
+            <AlertTitle>Успешно</AlertTitle>
+            {accessMsg}
+          </Alert>}
         </Grid>
       </Grid>
       </Grid>

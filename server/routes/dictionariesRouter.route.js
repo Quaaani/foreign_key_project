@@ -28,6 +28,8 @@ router.route('/')
       const user_id = req.session.user_data.id
       
       const { word_name, word_translate } = req.body
+
+      const checkWord = await Dictionary.findOne({ where: { user_id, course_id } });
       
       const newWord = await Word.create({ 
         word_name,
