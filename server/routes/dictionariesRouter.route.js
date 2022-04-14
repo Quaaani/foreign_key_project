@@ -29,25 +29,44 @@ router.route('/')
       
       const { word_name, word_translate } = req.body
 
-      const checkWord = await Dictionary.findOne({ where: { user_id, course_id } });
-      
-      const newWord = await Word.create({ 
-        word_name,
-        word_translate,
-        word_transcription: '',
-        word_example: '...',
-        word_transExample: '...',
-        topic_id: 5,
-      })
-      
-      await Dictionary.create({
-        user_id,
-        word_id: newWord.id,
+      const myWordsArr = await Dictionary.findAll({
+        where: {
+          user_id
+        },
+        raw: true}
+      )
+      const myWordsId = myWordsArr.map(el => el.word_id)
+
+      const myWordsNameArr = await Word.findAll({
+        where: {
+          id: { [Op.or] : myWordsId}
+        },
+        raw: true
       })
 
-      res.status(200).json({message: 'Успешное добавление слова'})
+      const myWordsName = myWordsNameArr.map(el => el.word_name) 
+      const chekWordName = myWordsName.includes(word_name)
+
+      if(chekWordName) {
+        return res.status(400).json({ message: 'Такое слово уже существует в словаре' });
+      } else {
+        const newWord = await Word.create({ 
+          word_name,
+          word_translate,
+          word_transcription: '',
+          word_example: '...',
+          word_transExample: '...',
+          topic_id: 5,
+        })
+        await Dictionary.create({
+          user_id,
+          word_id: newWord.id,
+        })
+        return res.status(200).json({message: 'Успешное добавление слова'})
+      }
+   
     } catch (error) {
-      throw error
+        console.log('error add word', error.message)
     }
   })
 router.route('/:id')

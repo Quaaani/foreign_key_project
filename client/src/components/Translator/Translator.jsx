@@ -65,7 +65,7 @@ function Translator() {
     }
     try {
       await dispatch(axiosAddNewWord(newWord))
-      setAccessMsg('Курс добавлен');
+      setAccessMsg('Слово добавлено');
       setAccessToggle(true);
       setTimeout(() => {
         setAccessToggle(false);
@@ -179,11 +179,9 @@ function Translator() {
             Добавить к себе
           </Button>
           {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
-            <AlertTitle>Ошибка</AlertTitle>
             {msg}
           </Alert>}
           {accessToggle && <Alert severity="success" sx={{m: 1, mb: 7}}>
-            <AlertTitle>Успешно</AlertTitle>
             {accessMsg}
           </Alert>}
         </Grid>
