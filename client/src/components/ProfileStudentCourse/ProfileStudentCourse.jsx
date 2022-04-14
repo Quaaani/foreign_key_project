@@ -14,8 +14,16 @@ const useStyles = makeStyles(()=>({
   details: {
     display: "flex",
     alignItems: "center"
-  }
-
+  },
+  btn: {
+    textDecoration: "none",
+  
+    backgroundColor: "#265351",
+  },
+  nolink: {
+    textDecoration: "none",
+  color: "white",
+}
 }))
 
 
@@ -109,11 +117,11 @@ function ProfileStudentCourse ({favorite}) {
             <Typography align="center">
                   
               <a href={`tel:${favorite.course_phone}`}>
-                <PhoneIphoneIcon />
+                <PhoneIphoneIcon color="primary"/>
               </a>
 
               <a href={`mailto:${favorite.course_email}`}>
-                <EmailIcon />
+                <EmailIcon color="primary"/>
               </a>
 
             </Typography>
@@ -125,12 +133,17 @@ function ProfileStudentCourse ({favorite}) {
         <CardActions>
           <Button 
           onClick={initCard}
-          variant="outlined" 
-          sx={{ mx: 'auto', backgroundColor: "#265351", color: "white"}}
+          variant="contained" 
+          color="primary"
+          sx={{ mx: 'auto'}}
+          className={styles.btn}
          
           >
-            <Link to={`/studylist/${favorite?.id}`}>
-              Nачать
+            <Link to={`/studylist/${favorite?.id}`} className={styles.nolink}>
+              
+                Начать
+            
+              
             </Link>
             
           </Button>

@@ -104,7 +104,7 @@ function Login(props) {
           <TextField
             fullWidth
             id="outlined-read-only-input"
-            label="Email"
+            label="Почта"
             type="email"
             required
 
@@ -115,7 +115,7 @@ function Login(props) {
             fullWidth
             required
             id="outlined-password-input"
-            label="Password"
+            label="Пароль"
             type="password"
             autoComplete="current-password"
 

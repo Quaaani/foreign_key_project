@@ -108,7 +108,7 @@ function Feedback(props) {
         > <Avatar className={styles.ava} src={ feedbacks && `./img/avatars/${feedbacks[activeStep].user_avatar}`} />
           <Typography className={styles.authorName}>{feedbacks && feedbacks[activeStep]?.user_firstName}</Typography>
         </Paper>
-        <Box sx={{ height: 255, maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, p: 2 }} className={styles.feedText}>
+        <Box sx={{ height: 255, maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, p: 2 , minWidth: "42vw"}} className={styles.feedText}>
           {feedbacks && feedbacks[activeStep].comment}
 
         </Box>

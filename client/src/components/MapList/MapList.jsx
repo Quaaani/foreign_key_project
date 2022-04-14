@@ -8,8 +8,9 @@ const useStyles = makeStyles(() => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         marginTop: "40px",
+        minHeight: "83vh"
         // backgroundImage: `url(https://images.pexels.com/photos/3584309/pexels-photo-3584309.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)`
     },
     levelText: {
