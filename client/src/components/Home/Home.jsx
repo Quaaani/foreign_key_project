@@ -30,20 +30,12 @@ function Home(props) {
     <>
       <ImageButton />
 
-      <div id='TestingComponents'>
-        {/* <Example /> */}
-        {/* <StudyList /> */}
-        {/*  <MapList />*/}
-      </div>
-
       <div>
         <StatisticList />
         <Info />
         <CoursesList />
-        
         <Feedback />
         <ImgBlock />
-        {/*<Container  sx={{width: "70vw"}}>*/}
       </div>
     </>
   );
