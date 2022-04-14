@@ -8,6 +8,10 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles(() => ({
   boldText: {
     fontWeight: "bold"
+  },
+  avatar: {
+    border: "none",
+    boxShadow: "none"
   }
 
 }));
@@ -34,10 +38,11 @@ function ProfileStudent () {
         >
           <Card
             sx={{ maxWidth: 345 }}
+            className={styles.avatar}
           >
             <CardMedia
               component='img'
-              height="194"
+              height="340"
               image={`/img/avatars/${session?.user_avatar}`}
               alt="avatar"
             >

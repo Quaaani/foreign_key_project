@@ -65,6 +65,16 @@ const useStyles = makeStyles(() => ({
   transHeader: {
     fontWeight: "bold"
   },
+  alertBox: {
+    position: "absolute",
+    bottom: "140px",
+    left: "0"
+  },
+  alertBoxAdd: {
+    position: "absolute",
+    bottom: "150px",
+    left: "67px"
+  }
 
 
 }))
@@ -267,10 +277,10 @@ const classes = useStyles()
 
             </Grid>
 
-            {toggle && <Alert severity='error' sx={{m: 1, mb: 7}}>
+            {toggle && <Alert severity='error' sx={{m: 1, mb: 7}} className={classes.alertBox}>
                 {msg}
                 </Alert>}
-                {accessToggle && <Alert severity='success' sx={{m: 1, mb: 7}}>
+                {accessToggle && <Alert severity='success' sx={{m: 1, mb: 7}} className={classes.alertBoxAdd}>
                 {accessMsg}
                 </Alert>}
           </Grid>

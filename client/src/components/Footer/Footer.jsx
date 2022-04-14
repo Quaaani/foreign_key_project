@@ -13,7 +13,11 @@ const useStyles = makeStyles(() => ({
   curLink: {
     fontFamily: "Roboto",
     textDecoration: "none"
+  },
+  foot: {
+    marginTop: "auto"
   }
+
 
 }))
 
@@ -22,7 +26,7 @@ function Footer(props) {
   const styles = useStyles()
 
   return (
-    <footer>
+    <footer className={styles.foot}>
       <Box
         px={{ xs: 3, sm: 3 }}
         py={{ xs: 2, sm: 2 }}

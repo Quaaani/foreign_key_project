@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
+    backgroundColor: 'rgba(127,186,182, 0.7)',
     zIndex:200
   },
   form: {
@@ -72,7 +72,7 @@ function FeedbackForm(props) {
       <Container
       maxWidth="sm"
       className={styles.form}
-      sx={{ maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, flexGrow: 1 }}
+      sx={{ maxWidth: { lg: "45vw", md: "55vw", sm: "80vw", xs: "85vw"}, flexGrow: 1, }}
       onClick={(event) => event.stopPropagation()}
     >
         <Typography variant="h2" gutterBottom component="h2" sx={{my: 7, marginBottom: 0, mx: "auto", textAlign: "center"}}>
@@ -97,7 +97,7 @@ function FeedbackForm(props) {
               bgcolor: "background.default",
             }}
             className={styles.authorBox} 
-          > <Avatar className={styles.ava} src={session && `./img/${session.avatar}`} />
+          > <Avatar className={styles.ava} src={session && `/img/avatars/${session.user_avatar}`} />
             <Typography sx={{marginLeft: "1vw"}}>{session && `${session.user_firstName} ${session.user_lastName}`}</Typography>
           </Paper>
 
@@ -110,8 +110,8 @@ function FeedbackForm(props) {
           />
 
           <div className={styles.btnWrapper}>
-            <Button sx={{width: "150px"}} variant="contained" type="submit">Отправить</Button>
-            <Button sx={{width: "150px"}} variant="contained" color="error" onClick={()=> navToHome("/")}>Отмена</Button>
+            <Button sx={{width: "150px", backgroundColor: "#265351"}} variant="contained" type="submit">Отправить</Button>
+            <Button sx={{width: "150px", backgroundColor: "#c45536"}} variant="contained" onClick={()=> navToHome("/")}>Отмена</Button>
           </div>
         </FormControl>
       </Container>

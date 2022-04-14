@@ -5,8 +5,21 @@ import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInitHomeworkAAC } from '../../redux/asyncActionCreators/homeworkAAC'
 import Homework from "../Homework/Homework";
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles(()=> ({
+  avatar: {
+    border: "none",
+    boxShadow: "none"
+  },
+  boldText: {
+    fontWeight: "bold"
+  }
+}))
 
 function ProfileTeacher () {
+  const styles = useStyles()
   const { session } = useSelector((state) => state.sessionReducer)
   const { favorites } = useSelector((state) => state.favoritesReducer)
   const { homework } = useSelector((state) => state.homeworkReducer)
@@ -40,7 +53,7 @@ function ProfileTeacher () {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-    <Container >
+    <Container sx={{"minHeight": "86vh"}}>
       <Grid container
         columns={{ xs: 4, sm: 8, md: 12 }}
         spacing={{ xs: 2, md: 3 }}
@@ -54,17 +67,20 @@ function ProfileTeacher () {
         >
           <Card
             sx={{ maxWidth: 345 }}
+            className={styles.avatar}
           >
             <CardMedia
               component='img'
-              height="194"
+              height="340"
               image={`/img/avatars/${session?.user_avatar}`}
               alt="avatar"
+              
+
             >
             </CardMedia>
-            <CardActions centered>
+            {/* <CardActions centered>
               <Button color="secondary" variant="outlined" sx={{ mx: 'auto'}}>Редактировать профиль</Button>
-            </CardActions>
+            </CardActions> */}
           </Card>
           </Grid>
 
@@ -94,13 +110,13 @@ function ProfileTeacher () {
             sx={{ my: 'auto'}}
           >
             <CardContent>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               {session?.user_firstName[0].toUpperCase() + session?.user_firstName.slice(1)}
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               {session?.user_lastName[0].toUpperCase() + session?.user_lastName.slice(1)}
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" className={styles.boldText}>
               Преподаватель
             </Typography>
           </CardContent>
@@ -115,7 +131,7 @@ function ProfileTeacher () {
           xs={4}
           sm={4}
           md={4}
-          sx={{ mx: 'auto'}}
+          sx={{ mx: 'auto', minHeight: "150px"}}
           // sx={{ md: {'mx' : 'auto'}}}        
         >
         <IconButton onClick={handleClick} >
