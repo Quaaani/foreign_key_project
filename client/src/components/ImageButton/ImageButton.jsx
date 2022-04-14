@@ -99,7 +99,7 @@ function ImageButton(props) {
             </Button>
           </Grid>
         </Grid>
-        {press && <RegTest />}
+        {press && <RegTest  setPress={setPress}/>}
       </Container>
     </Paper>
   );

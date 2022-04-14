@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
 import { makeStyles } from '@mui/styles';
+import ImageButton from '../ImageButton/ImageButton';
 
 const useStyles = makeStyles(() => ({
   overlay: {
@@ -19,13 +20,14 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(127,186,182, 0.7)',
     zIndex: 200,
   },
   form: {
     backgroundColor: 'white',
     'box-shadow': '0px 10px 28px 12px rgba(34, 60, 80, 0.28)',
     borderRadius: '20px',
+    transform: "scale(.9)"
   },
   btnWrapper: {
     display: 'flex',
@@ -33,6 +35,12 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     margin: '40px 0 40px',
   },
+  btnSuccess: {
+    backgroundColor: "#265351"
+  },
+  btnCancel: {
+    backgroundColor: "#c45536"
+  }
 }));
 
 function Reg(props) {
@@ -80,7 +88,8 @@ function Reg(props) {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.overlay} onClick={() => navigate('/')}>
+    <div>
+       <div className={styles.overlay} onClick={() => navigate('/')}>
       <Container
       maxWidth="sm"
       className={styles.form}
@@ -195,29 +204,14 @@ function Reg(props) {
                 {...register("user_phone")}
                 name="user_phone"
               />
-
-              <Button
-                variant="outlined"
-                component="label"
-                sx={{m: 1}}
-              >
-                Загрузить аватар
-                <input
-                  type="file"
-                  id="ava-photo"
-                  hidden
-                  // {...register("user_avatar")}
-                  name="user_avatar"
-                />
-              </Button>
             
 
             </AccordionDetails>
           </Accordion>
 
             <div className={styles.btnWrapper}>
-              <Button sx={{width: "150px"}} variant="contained" type="submit">Регистрация</Button>
-              <Button sx={{width: "150px"}} variant="contained" color="error" onClick={() => navigate('/')}>Отмена</Button>
+              <Button sx={{width: "150px"}} variant="contained" type="submit" className={styles.btnSuccess}>Регистрация</Button>
+              <Button sx={{width: "150px"}} variant="contained" color="error" onClick={() => navigate('/')} className={styles.btnCancel}>Отмена</Button>
             </div>
 
             
@@ -229,6 +223,10 @@ function Reg(props) {
         </FormControl>
       </Container>
     </div>
+    <ImageButton />
+
+    </div>
+   
   );
 }
 

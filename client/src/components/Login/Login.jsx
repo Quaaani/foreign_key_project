@@ -9,6 +9,7 @@ import axios from '../../axios/axios'
 import { initSessionAC } from '../../redux/actionCreators/sessionAC'
 import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
 import { makeStyles } from '@mui/styles';
+import ImageButton from '../ImageButton/ImageButton';
 
 
 const useStyles = makeStyles(() => ({
@@ -21,8 +22,8 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    zIndex:200
+    backgroundColor: 'rgba(127,186,182, 0.7)',
+    zIndex:200,
   },
   form: {
     backgroundColor: "white",
@@ -34,6 +35,12 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-around",
     alignItems: "center",
     margin: "40px 0 40px"
+  },
+  btnSuccess: {
+    backgroundColor: "#265351"
+  },
+  btnCancel: {
+    backgroundColor: "#c45536"
   }
 }))
 
@@ -66,7 +73,8 @@ function Login(props) {
 
 
   return (
-    <div className={styles.overlay}
+    <div> 
+      <div className={styles.overlay}
       onClick={()=> navToHome("/")}
     >
       <Container
@@ -107,8 +115,8 @@ function Login(props) {
             name="user_password"
           />
           <div className={styles.btnWrapper}>
-            <Button sx={{width: "150px"}} variant="contained" type="submit">Войти</Button>
-            <Button sx={{width: "150px"}} variant="contained" color="error" onClick={()=> navToHome("/")}>Отмена</Button>
+            <Button sx={{width: "150px"}} variant="contained" type="submit" className={styles.btnSuccess}>Войти</Button>
+            <Button sx={{width: "150px"}} variant="contained" color="error" onClick={()=> navToHome("/")} className={styles.btnCancel}>Отмена</Button>
           </div>
           {toggle && <Alert severity="error" sx={{m: 1, mb: 7}}>
             <AlertTitle>Ошибка</AlertTitle>
@@ -117,8 +125,9 @@ function Login(props) {
         </FormControl>
       </Container>
     </div>
+      <ImageButton />
     
-    
+    </div>
   );
 }
 
