@@ -15,6 +15,7 @@ import {
   AccordionSummary,
   Typography,
   AccordionDetails,
+  Alert,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useDispatch } from "react-redux";
@@ -78,7 +79,11 @@ const classes = useStyles()
   const [word_translate, setWord] = useState("");
   const [btnEnColor, setEnBtnColor] = useState(true);
   const [btnRuColor, setRuBtnColor] = useState(false);
-  const [langpair, setLangpair] = useState("en|ru");
+  const [langpair, setLangpair] = useState('en|ru');
+  const [toggle, setToggle] = useState(false)
+  const [msg, setMsg] = useState('');
+  const [accessToggle, setAccessToggle] = useState(false)
+  const [accessMsg, setAccessMsg] = useState('')
 
   const toChangeRU = (event) => {
     event.preventDefault();
@@ -124,9 +129,18 @@ const classes = useStyles()
       word_translate: word_translate.toLowerCase(),
     };
     try {
-      await dispatch(axiosAddNewWord(newWord));
-    } catch (error) {
-      console.log("Error ADD WORD", { ...error });
+      await dispatch(axiosAddNewWord(newWord))
+      setAccessMsg('Слово добавлено');
+      setAccessToggle(true);
+      setTimeout(() => {
+        setAccessToggle(false);
+      }, 2000);
+    } catch(error) {
+      setMsg(error.response.data.message);
+      setToggle(true);
+      setTimeout(() => {
+        setToggle(false);
+      }, 2000);
     }
   };
 
@@ -250,7 +264,15 @@ const classes = useStyles()
               >
                 Добавить к себе
               </Button>
+
             </Grid>
+
+            {toggle && <Alert severity='error' sx={{m: 1, mb: 7}}>
+                {msg}
+                </Alert>}
+                {accessToggle && <Alert severity='success' sx={{m: 1, mb: 7}}>
+                {accessMsg}
+                </Alert>}
           </Grid>
 
         </Grid>

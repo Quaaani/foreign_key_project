@@ -76,7 +76,6 @@ router.route('/')
           }
         }
 
-        // console.log('homework => ', homework)
         res.status(200).json(homework)
         
       } catch(error) {
@@ -90,9 +89,6 @@ router.route('/:id')
       try {
         const {id} = req.params
         const { user_level } = req.body
-
-        console.log('id', id)
-        console.log('req.body', req.body)
 
         const user = await User.findByPk(id)
 

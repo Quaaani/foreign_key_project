@@ -28,21 +28,21 @@ function Home(props) {
 
   return (
     <>
-      {/* <ImageButton /> */}
+      <ImageButton />
 
       <div id='TestingComponents'>
         {/* <Example /> */}
-        <StudyList />
+        {/* <StudyList /> */}
         {/*  <MapList />*/}
       </div>
 
       <div>
+        <StatisticList />
+        <Info />
         <CoursesList />
-        {/* <StatisticList />
-          <Info />
         
         <Feedback />
-        <ImgBlock /> */}
+        <ImgBlock />
         {/*<Container  sx={{width: "70vw"}}>*/}
       </div>
     </>

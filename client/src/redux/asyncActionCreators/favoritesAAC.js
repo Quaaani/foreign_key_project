@@ -11,3 +11,13 @@ export const axiosInitFavoritesAAC = () => {
     }
   }
 }
+
+export const axiosAddFavoritesAAC = (payload) => {
+  return async (dispatch) => {
+    try {
+      const resposne = await axios.post('/favorites', payload)
+    } catch (error) {
+        throw error
+    }
+  }
+}

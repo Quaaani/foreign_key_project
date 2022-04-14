@@ -1,10 +1,13 @@
-import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Link, Typography, IconButton, CardHeader, Divider } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, ClickAwayListener, Grid, Typography, IconButton, CardHeader, Divider } from "@mui/material";
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
 import { makeStyles } from '@mui/styles';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 
 
 const useStyles = makeStyles(()=>({
@@ -20,6 +23,8 @@ const useStyles = makeStyles(()=>({
 function ProfileStudentCourse ({favorite}) {
 
   const styles = useStyles()
+  const { studylist } = useSelector(state => state.studylistReducer)
+  const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false)
 
@@ -29,6 +34,17 @@ function ProfileStudentCourse ({favorite}) {
 
   const handleClickAway = () => {
     setOpen(false)
+  }
+
+  const initCard = async (event) => {
+    event.preventDefault()
+    try {
+      await dispatch(axiosInitStudylistAAC(favorite.id))
+      localStorage.clear()
+      localStorage.setItem('favorite_id', favorite.id)
+    } catch (error) {
+        console.log('error init card', {...error})
+    }
   }
 
   return(
@@ -108,11 +124,15 @@ function ProfileStudentCourse ({favorite}) {
         </CardContent>
         <CardActions>
           <Button 
+          onClick={initCard}
           variant="outlined" 
           sx={{ mx: 'auto', backgroundColor: "#265351", color: "white"}}
          
           >
-            Начать обучение
+            <Link to={`/studylist/${favorite?.id}`}>
+              Nачать
+            </Link>
+            
           </Button>
         </CardActions>
       </Card>

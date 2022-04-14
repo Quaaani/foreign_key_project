@@ -10,6 +10,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Reg from "../Reg/Reg";
 import Login from "../Login/Login";
+import StudyList from '../StudyList/StudyList';
 import ProfileStudent from "../ProfileStudent/ProfileStudent";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 import Feedback from "../Feedback/Feedback";
@@ -44,11 +45,9 @@ function App() {
           <Route path="/registration" element={<Reg />} />
           <Route path="/login" element={<Login />} />
           <Route path="/feedback" element={<FeedbackForm />} />
-          
-            <Route path="/profile" element={<Profile />} />
-         
-          
-            <Route path="/mymap" element={<MapList />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/mymap" element={<MapList />} />
+          <Route path="/studylist/:id" element={<StudyList/>} />
 
         </Routes>
 

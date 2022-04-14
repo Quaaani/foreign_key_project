@@ -22,7 +22,6 @@ const Homework = ({homework}) => {
     setStatus(true)
   }
 
-  console.log(homework)
   return (
     <Grid
         item

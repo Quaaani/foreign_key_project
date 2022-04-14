@@ -146,7 +146,7 @@ function ProfileStudent () {
             <Grid container
                
             >
-              {favorites ? favorites.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : <div>No fav course</div> }
+              {favorites ? favorites?.map(favorite => <ProfileStudentCourse key={favorite.id} favorite={favorite} />) : null }
             </Grid>
           </Grid>
 
@@ -165,7 +165,7 @@ function ProfileStudent () {
             </Typography>
             <Grid container>
 
-                {dictionary ? dictionary.map(dictionary => <Dictionary key={dictionary.id} dictionary={dictionary} />) : 'NO WORDS'}
+                {dictionary ? dictionary.map(dictionary => <Dictionary key={dictionary.id} dictionary={dictionary} />) : null}
 
             </Grid>
           </Grid>

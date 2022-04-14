@@ -5,9 +5,12 @@ import StudyListMenu from "../StudyListMenu/StudyListMenu";
 import {Typography, Container, Button} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import StudyListTaskForm from "../StudyListTaskForm/StudyListTaskForm";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Translator from '../Translator/Translator';
-import LessonTest from '../LessonTest/LessonTest';
+import LessonTest from '../LessonTest/LessonTest'
+import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { axiosInitStudylistAAC } from '../../redux/asyncActionCreators/studylistAAC'
 
 
 const useStyles = makeStyles(() => ({
@@ -58,15 +61,30 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-
-
 function StudyList(props) {
     const classes = useStyles()
     const { studylist } = useSelector(state => state.studylistReducer)
-
+    const dispatch = useDispatch();
+    const { id } = useParams()
+    
     const [lesson, setLesson] = useState(studylist?.first_lesson_data)
     const [test, setTest] = useState(studylist?.first_lesson_tests)
     const [qnIndex, setQnIndex] = useState(0)
+
+
+  useEffect(async () => {
+    try {
+      // await dispatch(axiosInitStudylistAAC(id))
+      // localStorage.clear()
+      // localStorage.setItem('favorite_id', id)
+      setLesson(studylist?.first_lesson_data)
+      setTest(studylist?.first_lesson_tests)
+      setQnIndex(0)
+      console.log('studylist =>', studylist)
+    } catch (error) {
+        console.log('error lesson', {...error})
+    }  
+  },[dispatch, studylist])
 
     const addIndex = () => {
       setQnIndex(prev => prev + 1)
@@ -115,14 +133,13 @@ function StudyList(props) {
                     <Typography className={classes.taskText} id="task2">
                         Задание 2. Ответьте на вопросы.
                     </Typography>
-                    {/* <div>Здесь должен быть тест</div> */}
                     {studylist && <LessonTest test={test} qnIndex={qnIndex} addIndex={addIndex}/>}
                 </div>
                 <div>
                     <Typography className={classes.taskText} id="task3">
                         Задание 3. Выполните задание ниже, не забудьте отправить его на проверку!
                     </Typography>
-                    <StudyListTaskForm lesson_img={lesson?.lesson_img} lesson={lesson} id={lesson?.id}/>
+                    <StudyListTaskForm lesson_img={lesson?.lesson_img} lesson={lesson} key={lesson?.id}/>
                 </div>
                 <div className={classes.butCont}>
                    <Button className={classes.prevNext} variant='contained' onClick={previousLesson}>Предыдущий урок</Button>

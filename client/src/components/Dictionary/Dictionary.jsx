@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { axiosInitDictionaryAAC, axiosDeleteWord } from "../../redux/asyncActionCreators/dictionariesAAC";
 
 function Dictionary ({dictionary}) {
-  console.log(dictionary.id)
   const dispatch = useDispatch()
 
   const deleteWord = async (event) => {

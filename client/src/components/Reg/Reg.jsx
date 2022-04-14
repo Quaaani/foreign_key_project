@@ -7,6 +7,11 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosInitSession } from '../../redux/asyncActionCreators/sessionAAC';
+import { axiosInitFavoritesAAC } from '../../redux/asyncActionCreators/favoritesAAC';
+import { axiosInitDictionaryAAC } from '../../redux/asyncActionCreators/dictionariesAAC';
+import { axiosInitCards } from '../../redux/asyncActionCreators/coursesAAC';
+import { axiosInitFeedback } from '../../redux/asyncActionCreators/feedbackAAC';
+import { axiosInitTLevels } from '../../redux/asyncActionCreators/tlevelsAAC';
 import { makeStyles } from '@mui/styles';
 import ImageButton from '../ImageButton/ImageButton';
 
@@ -59,9 +64,15 @@ function Reg(props) {
     if (localStorage.getItem('user_level')) {
       data.user_level = +localStorage.getItem('user_level');
       data.user_age = +data.user_age
+      data.user_phone = +data.user_phone
       try {
         await dispatch(axiosAddUserAAC(data));
         await dispatch(axiosInitSession());
+        // await dispatch(axiosInitFavoritesAAC())
+        // await dispatch(axiosInitDictionaryAAC())
+        await dispatch(axiosInitCards())
+        await dispatch(axiosInitFeedback())
+        await dispatch(axiosInitTLevels());
         navToHome('/home');
       } catch (error) {
         setMsg(error.response.data.message);
@@ -71,6 +82,8 @@ function Reg(props) {
         }, 2000);
       }
     } else {
+      data.user_age = +data.user_age
+      data.user_phone = +data.user_phone
       try {
         await dispatch(axiosAddUserAAC(data));
         await dispatch(axiosInitSession());

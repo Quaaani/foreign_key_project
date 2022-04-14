@@ -67,8 +67,6 @@ function Feedback(props) {
   const { session } = useSelector((state) => state.sessionReducer);
   const { feedbacks } = useSelector((state) => state.feedbackReducer);
 
-  console.log(feedbacks);
-
   const styles = useStyles()
   const theme = useTheme();
   const dispatch = useDispatch()
