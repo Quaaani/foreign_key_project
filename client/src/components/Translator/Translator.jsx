@@ -115,7 +115,9 @@ function Translator() {
           sx={{ mx: 'auto', my: 'auto'}}
           style={{textAlign: 'center' }}
         >
-          <Button size="small" onClick={toChangeEN} variant = {btnEnColor ? "contained" : "outlined"}>
+          <Button size="small" onClick={toChangeEN} variant = {btnEnColor ? "contained" : "outlined"}
+          
+          >
               EN-RU
           </Button>
           <Button size="small" variant = {btnRuColor ? "contained" : "outlined"} onClick={toChangeRU}>

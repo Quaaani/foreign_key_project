@@ -30,8 +30,6 @@ function CoursesCard ({course}) {
   console.log('favorites', favorites)
   const startCourse = async (event) => {
     event.preventDefault()
-    
-
     const newFavCourse = {
       user_id : session?.id,
       course_id : course?.id
@@ -42,7 +40,7 @@ function CoursesCard ({course}) {
       await dispatch(axiosAddFavoritesAAC(newFavCourse))
       await dispatch(axiosInitStudylistAAC(course.id))
     } catch (error){
-      console.log('Studylist error', {...error})
+        console.log('Studylist error', {...error})
     }
 
   }

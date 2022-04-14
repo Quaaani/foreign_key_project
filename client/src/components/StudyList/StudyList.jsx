@@ -35,8 +35,6 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-
-
 function StudyList(props) {
     const classes = useStyles()
     const { studylist } = useSelector(state => state.studylistReducer)

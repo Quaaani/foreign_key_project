@@ -26,14 +26,14 @@ router.route('/')
       }
     }
 
-    res.status(200).json(courses)
+    return res.status(200).json(courses)
   })
 
   router.route('/')
     .post(async (req, res) => {
       try {
         if(!req.session.user_data) return res.status(400).json({ message: 'No session!'})
-        // const user_id = req.session.user_data.id
+
         const {user_id, course_id} = req.body
 
         console.log('REQ BODY FARVORITES ====>>>>>',req.body)

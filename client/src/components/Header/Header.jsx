@@ -145,6 +145,7 @@ const Header = () => {
 
             </Menu>
           </Box>
+          <Link to="/home" style={{textDecoration: "none", color: "inherit"}}>
           <Typography
             variant="h6"
             noWrap
@@ -153,6 +154,7 @@ const Header = () => {
           >
             FK
           </Typography>
+          </Link>
           <Container maxWidth="sm">
             <Box
               sx={{
