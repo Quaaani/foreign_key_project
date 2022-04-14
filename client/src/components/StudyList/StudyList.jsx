@@ -80,7 +80,6 @@ function StudyList(props) {
       setLesson(studylist?.first_lesson_data)
       setTest(studylist?.first_lesson_tests)
       setQnIndex(0)
-      console.log('studylist =>', studylist)
     } catch (error) {
         console.log('error lesson', {...error})
     }  
@@ -103,8 +102,6 @@ function StudyList(props) {
       setTest(studylist?.second_lesson_tests)
       setQnIndex(0)
     }
-
-    console.log('studylist =>', studylist)
 
     return (
       
